@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Репетитор по нидерландскому и английскому языкам</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Подключение библиотеки красивых иконок Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            DEFAULT: '#C77D3A',
+                            hover: '#A86528',
+                            light: '#E8B97A'
+                        },
+                        navy: '#1F2D3D',
+                        surface: '#F7F7F5',
+                        mint: '#EBF5ED',
+                        peach: '#FCEFE8',
+                        rose: '#FBECEF',
+                        lavender: '#F1EBF5',
+                        sky: '#E8F3F8',
+                        yellow_bg: '#FDF3C6',
+                        notion_text: '#37352F'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'mockup': '0 24px 48px -8px rgba(15,15,15,0.25)',
+                        'card-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #37352F; -webkit-font-smoothing: antialiased; }
+        
+        /* Типографика */
+        .h1-hero {
+            font-weight: 600;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+            font-size: 32px;
+        }
+        @media (min-width: 480px) { .h1-hero { font-size: 40px; letter-spacing: -1px; line-height: 1.08; } }
+        @media (min-width: 640px) { .h1-hero { font-size: 48px; letter-spacing: -2px; line-height: 1.05; } }
+        @media (min-width: 768px) { .h1-hero { font-size: 56px; } }
+        @media (min-width: 1024px) { .h1-hero { font-size: 80px; } }
+
+        .h2-section {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        @media (min-width: 640px) { .h2-section { font-size: 36px; } }
+
+        .body-text { font-size: 16px; font-weight: 400; line-height: 1.55; }
+        .btn-text { font-size: 14px; font-weight: 500; }
+
+        /* Анимации */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 250ms ease-out, transform 250ms ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        .hover-lift { transition: box-shadow 150ms ease-out, transform 150ms ease-out; }
+        .hover-lift:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        .touch-target { min-height: 44px; min-width: 44px; flex-shrink: 0; }
+
+        /* Стили для переключателя валют */
+        .currency-btn { transition: all 150ms ease-out; }
+        .currency-active { background-color: white; box-shadow: 0 1px 2px rgba(0,0,0,0.05); color: #37352F; border-color: #E5E7EB; }
+        .currency-inactive { color: #6B7280; border-color: transparent; }
+        .currency-inactive:hover { color: #37352F; }
+        .price-display {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #F1F2F4;
+        }
+        .price-display::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 56px;
+            height: 2px;
+            background: linear-gradient(90deg, #C77D3A, rgba(199,125,58,0));
+            border-radius: 999px;
+        }
+        .price-val {
+            display: inline-block;
+            color: #37352F;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 0.95;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+            transition: opacity 150ms ease, transform 150ms ease, filter 150ms ease;
+            will-change: opacity, transform, filter;
+        }
+        @media (min-width: 640px) {
+            .price-val { font-size: 48px; }
+        }
+        .price-val.is-changing {
+            opacity: 0;
+            transform: translateY(8px);
+            filter: blur(2px);
+        }
+        .price-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            padding-bottom: 7px;
+            color: #6B7280;
+            font-size: 14px;
+            line-height: 1.1;
+        }
+        .currency-code {
+            display: inline-flex;
+            align-items: center;
+            height: 20px;
+            padding: 0 7px;
+            border-radius: 999px;
+            background: rgba(199,125,58,0.11);
+            color: #A86528;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        /* Hero background animations */
+        .hero-bg-pattern {
+            z-index: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.95;
+        }
+        .hero-bg-pattern::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(174,28,40,0.14), transparent 34%, transparent 66%, rgba(33,70,139,0.16)),
+                linear-gradient(180deg, rgba(31,45,61,0), rgba(31,45,61,0.2));
+        }
+        .nl-icon {
+            position: absolute;
+            filter: drop-shadow(0 16px 28px rgba(0,0,0,0.35));
+            animation: nlIconFloat var(--float-speed, 10s) ease-in-out infinite both;
+            animation-delay: var(--float-delay, 0s);
+        }
+        .nl-icon img {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: var(--icon-opacity, 0.2);
+            filter: brightness(0) invert(1);
+        }
+        @keyframes nlIconFloat {
+            0%, 100% { transform: translate3d(0,0,0) rotate(var(--rotate-a, -5deg)); }
+            50% { transform: translate3d(var(--drift-x, 10px), var(--drift-y, -18px), 0) rotate(var(--rotate-b, 4deg)); }
+        }
+        .nl-icon.is-orange img {
+            filter: brightness(0) saturate(100%) invert(57%) sepia(59%) saturate(774%) hue-rotate(342deg) brightness(93%) contrast(89%);
+        }
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: #F3F4F6;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .review-avatar img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+            opacity: 0.55;
+            filter: brightness(0) saturate(100%) invert(66%) sepia(10%) saturate(447%) hue-rotate(179deg) brightness(89%) contrast(86%);
+        }
+        .doc-modal {
+            width: min(880px, calc(100vw - 32px));
+            max-height: min(760px, calc(100vh - 32px));
+            border: 0;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.24);
+            color: #37352F;
+        }
+        .doc-modal::backdrop { background: rgba(31,45,61,0.42); backdrop-filter: blur(4px); }
+        .doc-modal-inner {
+            max-height: min(760px, calc(100vh - 32px));
+            overflow-y: auto;
+            background: white;
+        }
+        .doc-modal-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .doc-content h3 {
+            margin-top: 24px;
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .doc-content p,
+        .doc-content li {
+            color: #4B5563;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+        .doc-content ul {
+            margin: 8px 0 14px;
+            padding-left: 18px;
+            list-style: disc;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans overflow-x-hidden w-full">
+
+    <!-- 1. Промо-баннер -->
+    <div class="bg-surface border-b border-gray-200 text-center py-2 px-4 btn-text text-gray-600 text-xs sm:text-sm flex items-center justify-center gap-2">
+        <i class="ph ph-sparkle text-amber"></i> Waitlist открыт для групповых занятий — осталось 3 места
+    </div>
+
+    <!-- 2. Sticky-навигация -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full transition-all duration-200">
+        <div class="flex items-center gap-8">
+            <a href="#" class="font-semibold text-[18px] tracking-tight touch-target flex items-center gap-2">
+                <i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Лариса Калугина
+            </a>
+            <div class="hidden lg:flex gap-6 btn-text text-gray-500">
+                <a href="#about" class="hover:text-notion_text transition-colors">О репетиторе</a>
+                <a href="#languages" class="hover:text-notion_text transition-colors">Языки</a>
+                <a href="#method" class="hover:text-notion_text transition-colors">Методика</a>
+                <a href="#pricing" class="hover:text-notion_text transition-colors">Цены</a>
+                <a href="#reviews" class="hover:text-notion_text transition-colors">Отзывы</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button id="mob-menu-btn" class="lg:hidden touch-target w-10 h-10 flex items-center justify-center rounded-[8px] hover:bg-gray-100 transition-colors" aria-label="Открыть меню" aria-expanded="false">
+                <i class="ph ph-list text-[22px] text-notion_text" id="mob-menu-icon"></i>
+            </button>
+            <a href="#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-4 py-2 rounded-[8px] transition-colors duration-150 h-[40px] flex items-center justify-center gap-2 shadow-sm">
+                <i class="ph ph-calendar-plus text-[16px]"></i> <span class="hidden sm:inline">Пробный урок</span><span class="sm:hidden">Записаться</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Мобильное меню -->
+    <div id="mob-menu" class="hidden fixed left-0 right-0 bottom-0 z-40 bg-white flex flex-col overflow-hidden">
+        <nav class="flex flex-col px-5 py-4 flex-1 overflow-y-auto">
+            <a href="#about"     class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">О репетиторе <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#languages" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Языки <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#method"    class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Методика <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#pricing"   class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Цены <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#reviews"   class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Отзывы <i class="ph ph-caret-right text-gray-400"></i></a>
+        </nav>
+        <div class="px-5 py-6 border-t border-gray-100">
+            <a href="#contact" class="mob-nav-link bg-amber hover:bg-amber-hover text-white font-medium text-base px-6 rounded-[8px] h-[52px] flex items-center justify-center gap-2 shadow-sm w-full">
+                <i class="ph ph-calendar-plus"></i> Записаться на пробный урок
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. HERO BAND -->
+    <header class="bg-navy py-10 sm:py-24 lg:py-[120px] px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center justify-center text-center w-full">
+
+        <div class="hero-bg-pattern absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+            <div class="nl-icon hidden sm:block" style="left:5%;top:8%;width:150px;--icon-opacity:0.19;--float-speed:9s;--float-delay:-1s;--rotate-a:-8deg;--rotate-b:-3deg;--drift-x:12px;--drift-y:-18px;">
+                <img src="dutch-svgrepo-com.svg" alt="">
+            </div>
+
+            <div class="nl-icon hidden sm:block" style="right:7%;top:8%;width:150px;--icon-opacity:0.2;--float-speed:10s;--float-delay:-4s;--rotate-a:4deg;--rotate-b:-4deg;--drift-x:-14px;--drift-y:-20px;">
+                <img src="windmill-illustration-1-svgrepo-com.svg" alt="">
+            </div>
+
+            <div class="nl-icon hidden lg:block" style="left:4%;bottom:12%;width:145px;--icon-opacity:0.18;--float-speed:11s;--float-delay:-2s;--rotate-a:3deg;--rotate-b:8deg;--drift-x:18px;--drift-y:-12px;">
+                <img src="bike-svgrepo-com.svg" alt="">
+            </div>
+
+            <div class="nl-icon is-orange hidden lg:block" style="right:5%;bottom:12%;width:118px;--icon-opacity:0.25;--float-speed:9.5s;--float-delay:-5s;--rotate-a:-7deg;--rotate-b:-2deg;--drift-x:-16px;--drift-y:-16px;">
+                <img src="crown-svgrepo-com.svg" alt="">
+            </div>
+
+            <div class="nl-icon is-orange hidden md:block" style="left:18%;top:48%;width:92px;--icon-opacity:0.2;--float-speed:12s;--float-delay:-7s;--rotate-a:-12deg;--rotate-b:-5deg;--drift-x:10px;--drift-y:-14px;">
+                <img src="stroopwafel-solid-svgrepo-com.svg" alt="">
+            </div>
+
+            <div class="nl-icon hidden md:block" style="right:20%;top:42%;width:88px;--icon-opacity:0.16;--float-speed:10.5s;--float-delay:-3s;--rotate-a:9deg;--rotate-b:2deg;--drift-x:-10px;--drift-y:-22px;">
+                <img src="tulip-svgrepo-com.svg" alt="">
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl w-full fade-in-up">
+            <h1 class="h1-hero text-white mb-6 drop-shadow-lg">Заговорите на нидерландском так, как давно хотели</h1>
+            <p class="text-base sm:text-lg lg:text-[18px] text-white/80 font-normal mb-10 max-w-2xl mx-auto drop-shadow-sm">Индивидуальная программа без зубрёжки. Четкая структура, разговорная практика и измеримый результат для переезда, работы и учебы.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto mx-auto relative z-20">
+                <a href="#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] transition-colors duration-150 w-full sm:w-auto h-[48px] flex items-center justify-center gap-2 touch-target">
+                    Начать бесплатно <i class="ph ph-arrow-right text-[16px]"></i>
+                </a>
+                <a href="#method" class="border border-white/30 hover:bg-white/10 text-white btn-text px-6 py-3 rounded-[8px] transition-colors duration-150 w-full sm:w-auto h-[48px] flex items-center justify-center gap-2 touch-target">
+                    <i class="ph ph-info text-[16px]"></i> Узнать о методике
+                </a>
+            </div>
+        </div>
+
+        <!-- Экосистема обучения -->
+        <div class="relative z-10 mt-12 sm:mt-16 lg:mt-20 bg-white rounded-[12px] shadow-mockup p-4 sm:p-6 lg:p-8 max-w-4xl w-full text-left fade-in-up border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
+                <div class="flex gap-1.5 items-center">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                </div>
+                <div class="text-gray-400 btn-text text-xs sm:text-sm flex items-center gap-1.5">
+                    <i class="ph ph-graph"></i> Экосистема обучения
+                </div>
+            </div>
+
+            <!-- Radial glow behind center -->
+            <div class="absolute pointer-events-none" style="left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(199,125,58,0.12) 0%,transparent 70%);border-radius:50%;"></div>
+
+            <div class="flex items-center justify-between gap-2 sm:gap-5 relative">
+
+                <!-- Left column -->
+                <div class="flex flex-col gap-2.5 flex-1 min-w-0">
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="zoom.svg" alt="Zoom" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Zoom</div>
+                            <div class="text-[10px] text-gray-400">видеоурок</div>
+                        </div>
+                        <i class="ph ph-arrow-right text-gray-400 text-[11px] ml-auto shrink-0 opacity-40"></i>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="NPO_Start_logo.svg" alt="NPO Start" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">NPO Start</div>
+                            <div class="text-[10px] text-gray-400">живая речь</div>
+                        </div>
+                        <i class="ph ph-arrow-right text-gray-400 text-[11px] ml-auto shrink-0 opacity-40"></i>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1.5 shrink-0">
+                            <img src="boom.svg" alt="Boom.nl" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Boom.nl</div>
+                            <div class="text-[10px] text-gray-400">учебники</div>
+                        </div>
+                        <i class="ph ph-arrow-right text-gray-400 text-[11px] ml-auto shrink-0 opacity-40"></i>
+                    </div>
+                </div>
+
+                <!-- Center hub -->
+                <div class="hidden sm:flex flex-col items-center gap-2 shrink-0">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex flex-col items-center justify-center shadow-lg" style="background-color:#1F2D3D;">
+                        <i class="ph ph-brain text-[22px] sm:text-[24px]" style="color:#C77D3A;"></i>
+                    </div>
+                    <span class="text-[10px] text-gray-400 font-medium text-center leading-tight">один<br>урок</span>
+                </div>
+
+                <!-- Right column -->
+                <div class="flex flex-col gap-2.5 flex-1 min-w-0">
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <i class="ph ph-arrow-left text-gray-400 text-[11px] shrink-0 opacity-40"></i>
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="google-drive.svg" alt="Google Drive" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Google Drive</div>
+                            <div class="text-[10px] text-gray-400">материалы</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <i class="ph ph-arrow-left text-gray-400 text-[11px] shrink-0 opacity-40"></i>
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="telegram.svg" alt="Telegram" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Telegram</div>
+                            <div class="text-[10px] text-gray-400">ДЗ и связь</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <i class="ph ph-arrow-left text-gray-400 text-[11px] shrink-0 opacity-40"></i>
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="youtube.svg" alt="YouTube" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">YouTube</div>
+                            <div class="text-[10px] text-gray-400">видео к урокам</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- 4. Статистика -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-0 lg:-mt-10 relative z-20 fade-in-up w-full">
+        <div class="bg-surface rounded-[12px] p-6 sm:p-10 lg:p-[64px] flex flex-col sm:flex-row justify-between items-center gap-8 text-center border border-gray-100 shadow-sm">
+            <div class="w-full sm:flex-1">
+                <div class="text-4xl sm:text-5xl font-semibold text-notion_text mb-2 tabular-nums"><span class="count-up" data-target="150">0</span>+</div>
+                <div class="body-text text-gray-500 text-sm sm:text-base flex justify-center items-center gap-2"><i class="ph ph-users"></i> учеников</div>
+            </div>
+            <div class="w-full h-px bg-gray-200 sm:w-px sm:h-16 hidden sm:block shrink-0"></div>
+            <div class="w-full sm:flex-1 border-t border-gray-200 pt-6 sm:border-t-0 sm:pt-0">
+                <div class="text-4xl sm:text-5xl font-semibold text-notion_text mb-2 tabular-nums"><span class="count-up" data-target="5">0</span> мес.</div>
+                <div class="body-text text-gray-500 text-sm sm:text-base flex justify-center items-center gap-2"><i class="ph ph-rocket-launch"></i> с уровня A2 до уверенного B1</div>
+            </div>
+            <div class="w-full h-px bg-gray-200 sm:w-px sm:h-16 hidden sm:block shrink-0"></div>
+            <div class="w-full sm:flex-1 border-t border-gray-200 pt-6 sm:border-t-0 sm:pt-0">
+                <div class="text-4xl sm:text-5xl font-semibold text-notion_text mb-2 tabular-nums"><span class="count-up" data-target="98">0</span>%</div>
+                <div class="body-text text-gray-500 text-sm sm:text-base flex justify-center items-center gap-2"><i class="ph ph-certificate"></i> сдача Inburgeringsexamen / Nt2</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Логотипы -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 border-b border-gray-100 fade-in-up text-center w-full">
+        <p class="btn-text text-gray-400 mb-8 sm:mb-10 text-xs sm:text-sm uppercase tracking-wider flex justify-center items-center gap-2"><i class="ph ph-buildings"></i> Наши ученики учатся и работают в</p>
+        <div class="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 px-2 sm:px-4 grayscale opacity-50">
+            <img src="University_of_Amsterdam_logo.svg" alt="Universiteit van Amsterdam" class="h-5 sm:h-7 w-auto max-w-[110px] sm:max-w-none">
+            <img src="Logo_Erasmus_Universiteit_Rotterdam.svg" alt="Erasmus Universiteit Rotterdam" class="h-5 sm:h-7 w-auto max-w-[110px] sm:max-w-none">
+            <img src="ASML_Holding_N.V._logo.svg" alt="ASML" class="h-4 sm:h-6 w-auto max-w-[70px] sm:max-w-none">
+            <img src="Nebius_logo.svg" alt="Nebius" class="h-4 sm:h-5 w-auto max-w-[70px] sm:max-w-none">
+            <img src="PHG_BIG.svg" alt="Philips" class="h-4 sm:h-6 w-auto max-w-[70px] sm:max-w-none">
+        </div>
+    </section>
+
+    <!-- 6. Про репетитора -->
+    <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div class="w-full max-w-[260px] sm:max-w-sm md:max-w-none mx-auto md:mx-0 relative">
+                <div class="absolute inset-0 bg-amber/5 rounded-[12px] transform translate-x-3 translate-y-3 -z-10"></div>
+                <img src="Work Picture.PNG" alt="Фото преподавателя" class="rounded-[12px] object-cover w-full aspect-square bg-gray-100 shadow-sm border border-gray-100">
+            </div>
+            <div class="text-left">
+                <h2 class="h2-section mb-6 flex items-center gap-3">Кто будет преподавать</h2>
+                <div class="body-text text-gray-600 space-y-4 mb-8 text-sm sm:text-base">
+                    <p>Я преподаю языки с 2010 года, но мой профессиональный путь в Нидерландах начался гораздо раньше. Более 15 лет я работала международным журналистом-обозревателем, летала в командировки по всей Европе — и именно в Голландии проводила больше всего времени, беря интервью для деловых изданий. Я знаю, как звучит живой нидерландский в кабинетах, на улицах и в корпоративной среде.</p>
+                    <p>Фундаментальное образование в МГУ научило меня структурировать хаос: на уроках мы берём сложную грамматику и раскладываем её на логичные блоки. Вы учите не отдельные слова, а готовые конструкции, которые сразу применяете в магазине, с соседями или на работе.</p>
+                    <p>Жизнь в Нидерландах — это ещё и налоги, контракты, письма из Gemeente и KvK. Благодаря второму высшему юридическому образованию я помогаю уверенно ориентироваться в административном и деловом языке. Если параллельно нужен сильный Business English или IELTS — мои сертификаты TEFL/TESOL также к вашим услугам.</p>
+                </div>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="bg-lavender text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-calendar-check text-amber"></i> 16 лет практики</span>
+                    <span class="bg-mint text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-chats-circle text-amber"></i> Живой нидерландский</span>
+                    <span class="bg-peach text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-star text-amber"></i> 50+ отзывов</span>
+                </div>
+                <div class="mt-8 bg-surface border border-gray-100 rounded-[12px] p-5 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
+                        <div>
+                            <h3 class="font-semibold text-[16px] sm:text-lg tracking-tight flex items-center gap-2">
+                                <i class="ph ph-graduation-cap text-amber text-xl"></i> Почему мне доверяют
+                            </h3>
+                            <p class="text-[13px] sm:text-sm text-gray-500 mt-1 leading-relaxed max-w-xl">Не просто уроки языка, а понятная система под экзамен, работу, учёбу и жизнь в Нидерландах.</p>
+                        </div>
+                        <a href="https://profi.ru/profile/KaluginaLV2/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-white text-notion_text btn-text px-4 py-2 rounded-[8px] transition-colors h-[40px] flex items-center justify-center gap-2 shrink-0">
+                            Профи.ру <i class="ph ph-arrow-square-out"></i>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+                        <div class="bg-white border border-gray-100 rounded-[8px] p-4">
+                            <div class="w-9 h-9 bg-amber/10 rounded-[8px] flex items-center justify-center text-amber mb-3"><i class="ph ph-student text-xl"></i></div>
+                            <h4 class="font-semibold text-[14px] text-notion_text mb-1.5">Система</h4>
+                            <p class="text-[13px] text-gray-500 leading-relaxed">Чёткий план, уровень и измеримый прогресс.</p>
+                        </div>
+                        <div class="bg-white border border-gray-100 rounded-[8px] p-4">
+                            <div class="w-9 h-9 bg-amber/10 rounded-[8px] flex items-center justify-center text-amber mb-3"><i class="ph ph-target text-xl"></i></div>
+                            <h4 class="font-semibold text-[14px] text-notion_text mb-1.5">Экзамены</h4>
+                            <p class="text-[13px] text-gray-500 leading-relaxed">Inburgering, Nt2 и IELTS без хаоса.</p>
+                        </div>
+                        <div class="bg-white border border-gray-100 rounded-[8px] p-4">
+                            <div class="w-9 h-9 bg-amber/10 rounded-[8px] flex items-center justify-center text-amber mb-3"><i class="ph ph-briefcase text-xl"></i></div>
+                            <h4 class="font-semibold text-[14px] text-notion_text mb-1.5">Практика</h4>
+                            <p class="text-[13px] text-gray-500 leading-relaxed">Ситуации из работы, школы и быта.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Языки -->
+    <section id="languages" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <h2 class="h2-section mb-10 sm:mb-12 text-center">Направления обучения</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            <div class="bg-mint p-6 sm:p-10 lg:p-[48px] rounded-[12px] hover-lift border border-gray-100/50 flex flex-col h-full">
+                <h3 class="text-2xl sm:text-[24px] font-semibold mb-6 flex items-center gap-3">
+                    <i class="ph ph-windmill text-3xl text-amber"></i> Нидерландский
+                </h3>
+                <ul class="space-y-4 mb-10 body-text text-gray-700 text-sm sm:text-base flex-grow">
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Уровни от A0 до B2+</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Подготовка к Inburgeringsexamen и Staatsexamen NT2 (I, II)</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Разговорный курс для повседневной жизни (huisarts, gemeente, школа)</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Курс для экспатов: быстрый старт в IT/корпоративной среде</li>
+                </ul>
+                <a href="#contact" class="inline-block border border-gray-300 hover:bg-white/50 text-notion_text btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] flex items-center justify-center w-full sm:w-auto touch-target gap-2">Подробнее <i class="ph ph-caret-right"></i></a>
+            </div>
+            <div class="bg-peach p-6 sm:p-10 lg:p-[48px] rounded-[12px] hover-lift border border-gray-100/50 flex flex-col h-full">
+                <h3 class="text-2xl sm:text-[24px] font-semibold mb-6 flex items-center gap-3">
+                    <i class="ph ph-bridge text-3xl text-amber"></i> Английский
+                </h3>
+                <ul class="space-y-4 mb-10 body-text text-gray-700 text-sm sm:text-base flex-grow">
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Любой уровень: от начального до advanced</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Подготовка к международным экзаменам (IELTS, Cambridge)</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Деловое общение (Business English), презентации, собеседования</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Снятие языкового барьера (Speaking Intensive)</li>
+                </ul>
+                <a href="#contact" class="inline-block border border-gray-300 hover:bg-white/50 text-notion_text btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] flex items-center justify-center w-full sm:w-auto touch-target gap-2">Подробнее <i class="ph ph-caret-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Методика -->
+    <section id="method" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <h2 class="h2-section mb-10 sm:mb-12 text-center">Как проходят занятия</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-rose p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-crosshair text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Индивидуальный план</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">Программа строится строго под ваши цели, сроки и текущий уровень.</p>
+            </div>
+            <div class="bg-lavender p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-chats-circle text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Реальные ситуации</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">Без устаревших диалогов из учебников. Разбираем то, что пригодится вам уже сегодня.</p>
+            </div>
+            <div class="bg-sky p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-pencil-line text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Обратная связь</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">После каждого урока вы получаете домашнее задание, доп. материалы и личные рекомендации.</p>
+            </div>
+            <div class="bg-yellow_bg p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-notebook text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Все материалы</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">Конспекты, аудиоматериалы и база из 50+ учебников всегда под рукой на Google Drive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Желтый баннер -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 fade-in-up w-full">
+        <div class="bg-[#FFD966] p-6 sm:p-10 lg:p-[64px] rounded-[12px] flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12 border border-[#F4CA44] shadow-sm relative overflow-hidden">
+            <i class="ph ph-star text-9xl absolute -right-10 -bottom-10 text-white opacity-20 pointer-events-none"></i>
+            <div class="max-w-2xl text-center lg:text-left flex flex-col items-center lg:items-start grow relative z-10">
+                <h2 class="h2-section mb-5 text-[#37352F]">Первый урок бесплатный — посмотрим, подходим ли друг другу</h2>
+                <p class="body-text text-[#37352F]/80 mb-8 max-w-xl text-sm sm:text-base">На пробном занятии (30 мин) мы определим ваш уровень, обсудим цели и составим предварительный план обучения.</p>
+                <a href="#contact" class="inline-block bg-amber hover:bg-amber-hover text-white btn-text px-8 py-4 rounded-[8px] transition-colors duration-150 h-[52px] flex items-center justify-center w-full sm:w-auto touch-target gap-2 shadow-sm">Записаться бесплатно <i class="ph ph-paper-plane-right"></i></a>
+            </div>
+            <div class="hidden lg:block w-full max-w-xs bg-white p-4 rounded-[12px] shadow-mockup transform rotate-2 border border-gray-100 shrink-0 relative z-10">
+                <div class="flex items-center gap-3.5 mb-4 pb-4 border-b border-gray-100">
+                    <div class="w-10 h-10 bg-amber/15 rounded-[8px] flex items-center justify-center text-amber text-xl"><i class="ph ph-video-camera"></i></div>
+                    <div>
+                        <div class="font-semibold text-[15px]">Вводная встреча</div>
+                        <div class="text-[13px] text-gray-500 flex items-center gap-1"><i class="ph ph-monitor-play"></i> Zoom</div>
+                    </div>
+                </div>
+                <div class="space-y-2.5">
+                    <div class="h-3.5 bg-gray-100 rounded-[4px] w-full"></div>
+                    <div class="h-3.5 bg-gray-100 rounded-[4px] w-5/6"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Отзывы -->
+    <section id="reviews" class="py-16 sm:py-24 fade-in-up bg-surface mt-12 w-full overflow-hidden border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="h2-section mb-8 text-center">Результаты учеников</h2>
+            <div class="max-w-3xl mx-auto mb-10 sm:mb-12 bg-white border border-gray-200 rounded-[12px] px-5 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="w-12 h-12 rounded-[8px] bg-amber/10 text-amber flex items-center justify-center shrink-0">
+                        <i class="ph ph-star text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-center sm:justify-start gap-1 text-amber text-sm mb-1">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="font-semibold text-notion_text text-base sm:text-lg leading-tight">50+ отзывов на Профи.ру</p>
+                        <p class="text-[13px] sm:text-sm text-gray-500 mt-1">Можно проверить реальные отзывы учеников в профиле преподавателя.</p>
+                    </div>
+                </div>
+                <a href="https://profi.ru/profile/KaluginaLV2/reviews/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-gray-50 text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[40px] flex items-center justify-center gap-2 shrink-0">
+                    Смотреть профиль <i class="ph ph-arrow-square-out"></i>
+                </a>
+            </div>
+            <div class="flex overflow-x-auto gap-5 pb-8 snap-x snap-mandatory no-scrollbar cursor-grab px-2" id="carousel">
+                <!-- Отзывы -->
+                <div class="min-w-[290px] sm:min-w-[350px] md:min-w-[400px] max-w-[400px] bg-white border border-gray-200 p-6 sm:p-8 lg:p-[48px] rounded-[12px] snap-center hover-lift flex flex-col h-full shrink-0">
+                    <i class="ph ph-quotes text-amber text-4xl mb-4 opacity-50"></i>
+                    <p class="body-text text-gray-700 mb-8 text-sm sm:text-base grow">Ребёнок почти год ходил в голландскую школу, но боялся говорить. Лариса смогла разговорить его за пару занятий: сейчас он уверенно чувствует себя в школе, общается и получает высокие оценки.</p>
+                    <div class="border-t border-gray-100 pt-5 mt-auto flex items-center gap-3">
+                        <div class="review-avatar" aria-hidden="true"><img src="female-avatar-svgrepo-com.svg" alt=""></div>
+                        <div>
+                            <div class="font-semibold text-base leading-tight">Ольга</div>
+                            <div class="text-[13px] text-gray-500 mt-0.5">Цель: адаптация ребёнка в школе</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="min-w-[290px] sm:min-w-[350px] md:min-w-[400px] max-w-[400px] bg-white border border-gray-200 p-6 sm:p-8 lg:p-[48px] rounded-[12px] snap-center hover-lift flex flex-col h-full shrink-0">
+                    <i class="ph ph-quotes text-amber text-4xl mb-4 opacity-50"></i>
+                    <p class="body-text text-gray-700 mb-8 text-sm sm:text-base grow">Был хороший пассивный запас, но не хватало речи. На занятиях знания наконец перешли в разговорную практику: стало легче общаться с коллегами, в кафе, магазинах и в повседневной жизни.</p>
+                    <div class="border-t border-gray-100 pt-5 mt-auto flex items-center gap-3">
+                        <div class="review-avatar" aria-hidden="true"><img src="big-male-avatar-svgrepo-com.svg" alt=""></div>
+                        <div>
+                            <div class="font-semibold text-base leading-tight">Евгений</div>
+                            <div class="text-[13px] text-gray-500 mt-0.5">Цель: разговорный нидерландский</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="min-w-[290px] sm:min-w-[350px] md:min-w-[400px] max-w-[400px] bg-white border border-gray-200 p-6 sm:p-8 lg:p-[48px] rounded-[12px] snap-center hover-lift flex flex-col h-full shrink-0">
+                    <i class="ph ph-quotes text-amber text-4xl mb-4 opacity-50"></i>
+                    <p class="body-text text-gray-700 mb-8 text-sm sm:text-base grow">Нужно было срочно усилить speaking и writing для IELTS. Лариса быстро увидела слабые места, дала стратегию и много практики. Итог — нужный балл и уверенность на экзамене.</p>
+                    <div class="border-t border-gray-100 pt-5 mt-auto flex items-center gap-3">
+                        <div class="review-avatar" aria-hidden="true"><img src="female-avatar-svgrepo-com.svg" alt=""></div>
+                        <div>
+                            <div class="font-semibold text-base leading-tight">Елизавета</div>
+                            <div class="text-[13px] text-gray-500 mt-0.5">Цель: IELTS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-400 text-xs mt-2 md:hidden flex items-center justify-center gap-1">
+                Прокрутите вправо <i class="ph ph-arrow-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. ЦЕНЫ И ПЕРЕКЛЮЧАТЕЛЬ -->
+    <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <h2 class="h2-section mb-6 text-center">Стоимость занятий</h2>
+        
+        <!-- Переключатель валют -->
+        <div class="flex justify-center mb-10 sm:mb-12">
+            <div class="bg-surface p-1 rounded-[8px] inline-flex items-center border border-gray-200">
+                <button id="btn-eur" class="currency-btn currency-active px-5 py-2 rounded-[6px] text-sm font-medium border flex items-center gap-2">
+                    <i class="ph ph-currency-eur text-lg"></i> Евро
+                </button>
+                <button id="btn-rub" class="currency-btn currency-inactive px-5 py-2 rounded-[6px] text-sm font-medium border flex items-center gap-2">
+                    <span class="text-lg leading-none">₽</span> Рубли
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8 items-start mb-16">
+            <!-- Разовый -->
+            <div class="bg-white border border-gray-200 p-7 sm:p-8 rounded-[12px] hover-lift flex flex-col h-full order-2 md:order-1 relative">
+                <h3 class="font-medium text-lg sm:text-[20px] mb-2 tracking-tight">Разовый урок</h3>
+                <div class="price-display">
+                    <span class="price-val" data-eur="€30" data-rub="2 800 ₽">€30</span>
+                    <span class="price-meta">
+                        <span class="currency-code" data-eur="EUR" data-rub="RUB">EUR</span>
+                        <span>/ час</span>
+                    </span>
+                </div>
+                <ul class="space-y-4 mb-10 text-[14px] text-gray-600 flex-grow">
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Предоплата только за фиксацию слота</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Гибкое расписание</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Доступ к Google Drive (50+ учебников)</li>
+                </ul>
+                <a href="#contact" class="block text-center border border-gray-300 hover:bg-gray-50 text-notion_text btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target">Выбрать</a>
+            </div>
+            <!-- Пакет 10 -->
+            <div class="bg-white border-2 border-amber p-7 sm:p-8 rounded-[12px] shadow-sm relative flex flex-col h-full md:scale-105 z-10 order-1 md:order-2">
+                <div class="absolute -top-3.5 right-6 bg-amber text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                    <i class="ph ph-percent"></i> Выгодно
+                </div>
+                <h3 class="font-medium text-lg sm:text-[20px] mb-2 tracking-tight">Пакет 10 уроков</h3>
+                <div class="price-display">
+                    <span class="price-val" data-eur="€270" data-rub="25 200 ₽">€270</span>
+                    <span class="price-meta">
+                        <span class="currency-code" data-eur="EUR" data-rub="RUB">EUR</span>
+                        <span>/ курс</span>
+                    </span>
+                </div>
+                <ul class="space-y-4 mb-10 text-[14px] text-gray-600 flex-grow">
+                    <li class="flex items-start gap-2.5 font-medium text-notion_text"><i class="ph ph-piggy-bank text-amber text-lg shrink-0 mt-0.5"></i> Скидка 10%: вы экономите стоимость одного целого урока</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Фиксированные слоты в графике</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Доступ к Google Drive (50+ учебников)</li>
+                </ul>
+                <a href="#contact" class="block text-center bg-amber hover:bg-amber-hover text-white btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target shadow-sm">Выбрать пакет</a>
+            </div>
+            <!-- Группа -->
+            <div class="bg-white border border-gray-200 p-7 sm:p-8 rounded-[12px] hover-lift flex flex-col h-full order-3 md:order-3">
+                <h3 class="font-medium text-lg sm:text-[20px] mb-2 tracking-tight">Группа (Waitlist)</h3>
+                <div class="price-display">
+                    <span class="price-val" data-eur="€112" data-rub="9 600 ₽">€112</span>
+                    <span class="price-meta">
+                        <span class="currency-code" data-eur="EUR" data-rub="RUB">EUR</span>
+                        <span>/ 8 занятий</span>
+                    </span>
+                </div>
+                <ul class="space-y-4 mb-10 text-[14px] text-gray-600 flex-grow">
+                    <li class="flex items-start gap-2.5 font-medium text-notion_text"><i class="ph ph-users-three text-amber text-lg shrink-0 mt-0.5"></i> Мини-группы по 4 человека</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Интерактивный курс на базе Nederlands in Gang</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Старт при наборе группы</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Доступ к Google Drive (50+ учебников)</li>
+                </ul>
+                <a href="#contact" class="block text-center border border-gray-300 hover:bg-gray-50 text-notion_text btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target">Встать в waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. FAQ -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 fade-in-up w-full">
+        <h2 class="h2-section mb-10 text-center">Частые вопросы</h2>
+        <div class="space-y-3">
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-clock text-amber text-lg"></i> Сколько длится одно занятие?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Стандартный урок длится 60 минут. Для интенсивной подготовки к экзаменам возможны занятия по 90 минут, стоимость обсуждается индивидуально.</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-laptop text-amber text-lg"></i> Где проходят занятия: онлайн или офлайн?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Все уроки проходят онлайн в Zoom. Это позволяет использовать интерактивные доски, записывать занятия для повторения и заниматься в любое удобное вам время из любой точки мира.</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-calendar-x text-amber text-lg"></i> Как отменить или перенести урок?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Отмена или перенос без потери оплаты возможны не позднее, чем за 24 часа до начала урока. При более поздней отмене занятие считается оплаченным.</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-credit-card text-amber text-lg"></i> Как можно оплатить занятия?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Оплата возможна прямым банковским переводом на IBAN (европейский счет), а также через СБП (для карт РФ).</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-book-open text-amber text-lg"></i> Нужно ли покупать учебники?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Нет, покупать ничего не нужно. Все конспекты, аудиоматериалы, тесты и домашние задания я предоставляю в цифровом виде через Google Drive. Покупка потребуется, только если вам лично комфортнее заниматься по бумажной книге, либо если для вашей специфической цели нужен узкопрофильный материал, которого пока нет в моей базе.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- 13. ФИНАЛЬНЫЙ CTA -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <div class="bg-surface rounded-[12px] p-8 sm:p-12 lg:p-[96px] text-center border border-gray-100 shadow-sm relative overflow-hidden">
+            <h2 class="h2-section mb-5 relative z-10">Готовы начать обучение?</h2>
+            <p class="body-text text-gray-600 mb-10 max-w-lg mx-auto text-sm sm:text-base relative z-10">Оставьте заявку, и я свяжусь с вами в течение дня, чтобы подобрать удобное время для бесплатного вводного урока.</p>
+            
+            <div data-fs-success class="hidden max-w-md mx-auto mb-4 rounded-[8px] border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 text-left relative z-10">
+                Спасибо! Заявка отправлена, я свяжусь с вами в течение дня.
+            </div>
+            <div data-fs-error class="hidden max-w-md mx-auto mb-4 rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 text-left relative z-10">
+                Не получилось отправить заявку. Проверьте данные или напишите напрямую в Telegram.
+            </div>
+
+            <form id="contact-form" action="https://formspree.io/f/xzdoqzwv" method="POST" class="max-w-md mx-auto flex flex-col gap-4 text-left w-full relative z-10">
+                <input type="hidden" name="_subject" value="Новая заявка Go Dutch">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-user text-gray-400 text-lg"></i></div>
+                    <input type="text" name="name" placeholder="Ваше имя" required data-fs-field class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                </div>
+                <div class="relative">
+                    <div class="absolute top-0 left-0 h-[48px] pl-3.5 flex items-center pointer-events-none"><i class="ph ph-telegram-logo text-gray-400 text-lg"></i></div>
+                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                    <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">Можно указать @telegram, email или номер телефона.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-translate text-gray-400 text-lg"></i></div>
+                    <select name="language" required data-fs-field class="w-full pl-10 pr-10 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm text-gray-600 appearance-none transition-shadow shadow-inner bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"%3E%3Cpath stroke="%23a1a1aa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m6 8 4 4 4-4"/%3E%3C/svg%3E')] bg-[length:20px_20px] bg-[right_12px_center] bg-no-repeat">
+                        <option value="" disabled selected>Какой язык изучаем?</option>
+                        <option value="Нидерландский">Нидерландский</option>
+                        <option value="Английский">Английский</option>
+                    </select>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-target text-gray-400 text-lg"></i></div>
+                    <input type="text" name="goal" placeholder="Ваша цель (переезд, экзамен...)" data-fs-field class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                </div>
+                <button type="submit" data-fs-submit-btn class="w-full bg-amber hover:bg-amber-hover disabled:bg-amber/60 disabled:cursor-wait text-white btn-text py-3 rounded-[8px] transition-colors mt-3 h-[52px] flex items-center justify-center touch-target shadow-sm gap-2">
+                    Отправить заявку <i class="ph ph-paper-plane-right"></i>
+                </button>
+            </form>
+            <p class="text-[12px] text-gray-400 mt-5 leading-relaxed max-w-sm mx-auto relative z-10 flex items-center justify-center gap-1.5">
+                <i class="ph ph-lock-key"></i> Данные под защитой
+            </p>
+        </div>
+    </section>
+
+    <!-- 14. FOOTER -->
+    <footer class="bg-surface border-t border-gray-200 py-12 sm:py-16 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 sm:gap-y-10 text-left">
+            <div class="col-span-1 sm:col-span-2 lg:col-span-1">
+                <div class="font-semibold text-[18px] mb-4 tracking-tight flex items-center gap-2"><i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Лариса Калугина</div>
+                <p class="text-[14px] text-gray-500 mb-5 leading-relaxed max-w-xs">Индивидуальные уроки нидерландского и английского языков для жизни, работы и учебы.</p>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" class="text-[14px] text-gray-500 font-medium flex items-center gap-2 hover:text-amber transition-colors">
+                    <i class="ph ph-telegram-logo text-lg"></i> @godutch_ru
+                </a>
+            </div>
+            <div class="pl-0 sm:pl-8 lg:pl-0">
+                <h4 class="font-semibold text-[14px] mb-5 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-translate"></i> Языки</h4>
+                <ul class="space-y-3.5 text-[14px] text-gray-600">
+                    <li><a href="#" class="hover:text-amber transition-colors py-1 block">Нидерландский с нуля</a></li>
+                    <li><a href="#" class="hover:text-amber transition-colors py-1 block">Подготовка к NT2</a></li>
+                    <li><a href="#" class="hover:text-amber transition-colors py-1 block">Разговорный английский</a></li>
+                    <li><a href="#" class="hover:text-amber transition-colors py-1 block">IELTS / Business</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-[14px] mb-5 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-link"></i> Полезное</h4>
+                <ul class="space-y-3.5 text-[14px] text-gray-600">
+                    <li><a href="#about" class="hover:text-amber transition-colors py-1 block">Обо мне</a></li>
+                    <li><a href="#method" class="hover:text-amber transition-colors py-1 block">Методика</a></li>
+                    <li><a href="#pricing" class="hover:text-amber transition-colors py-1 block">Стоимость</a></li>
+                    <li><a href="#reviews" class="hover:text-amber transition-colors py-1 block">Отзывы</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-[14px] mb-5 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-file-text"></i> Документы</h4>
+                <ul class="space-y-3.5 text-[14px] text-gray-600">
+                    <li><button type="button" data-doc-open="offer-modal" class="hover:text-amber transition-colors py-1 block text-left">Договор оферты</button></li>
+                    <li><button type="button" data-doc-open="privacy-modal" class="hover:text-amber transition-colors py-1 block text-left">Конфиденциальность</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-[13px] text-gray-400 gap-4">
+            <div>© 2026 Лариса Калугина. Все права защищены.</div>
+            <div class="flex items-center gap-4 text-lg">
+                <a href="https://www.tiktok.com/@godutch_ru?_r=1&_t=ZS-96Krkxs4ReP" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-amber transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                <a href="https://www.youtube.com/@godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="hover:text-amber transition-colors"><i class="ph ph-youtube-logo"></i></a>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="hover:text-amber transition-colors"><i class="ph ph-telegram-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <dialog id="offer-modal" class="doc-modal">
+        <div class="doc-modal-inner">
+            <div class="doc-modal-header flex items-center justify-between gap-4 px-5 sm:px-8 py-4">
+                <h2 class="font-semibold text-lg sm:text-xl tracking-tight">Договор оферты</h2>
+                <button type="button" data-doc-close class="w-10 h-10 rounded-[8px] border border-gray-200 hover:bg-gray-50 flex items-center justify-center text-gray-500 transition-colors" aria-label="Закрыть">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="doc-content px-5 sm:px-8 py-6 sm:py-8">
+                <h2 class="font-semibold text-xl sm:text-2xl tracking-tight mb-6">ДОГОВОР ОФЕРТЫ на оказание информационно-консультационных услуг</h2>
+
+                <h3>1. Общие положения</h3>
+                <p>1.1. Настоящий документ в соответствии со ст. 437 Гражданского кодекса РФ является официальным предложением (публичной офертой) заключить договор на оказание информационно-консультационных услуг с любым заинтересованным физическим лицом (далее — «Заказчик»). Лицо, оказывающее услуги, далее именуется «Исполнитель».</p>
+                <p>1.2. Полным и безоговорочным акцептом (принятием) настоящей оферты является совершение Заказчиком действий по оплате услуг Исполнителя либо оставление заявки на настоящем сайте.</p>
+                <p>1.3. Исполнитель не является образовательным учреждением, не выдает дипломы и сертификаты государственного образца. Услуги носят исключительно информационно-консультационный характер (репетиторство).</p>
+
+                <h3>2. Предмет договора</h3>
+                <p>2.1. Исполнитель обязуется оказать Заказчику услуги по проведению индивидуальных или групповых онлайн-занятий по изучению иностранных языков, а Заказчик обязуется принять и оплатить эти услуги.</p>
+                <p>2.2. Расписание, формат (индивидуально/группа) и стоимость занятий определяются тарифами, размещенными на сайте, и окончательно согласовываются сторонами в мессенджерах или по электронной почте.</p>
+
+                <h3>3. Права и обязанности сторон</h3>
+                <p>3.1. Исполнитель обязуется:</p>
+                <ul>
+                    <li>Провести занятия в согласованное время с использованием платформы онлайн-связи.</li>
+                    <li>Предоставить Заказчику доступ к необходимым учебным материалам на период обучения.</li>
+                </ul>
+                <p>3.2. Заказчик обязуется:</p>
+                <ul>
+                    <li>Своевременно оплачивать услуги.</li>
+                    <li>Обеспечить наличие стабильного интернет-соединения и исправного оборудования для занятий.</li>
+                    <li>Выполнять рекомендации Исполнителя и домашние задания для достижения результата.</li>
+                </ul>
+
+                <h3>4. Правила отмены и переноса занятий</h3>
+                <p>4.1. Отмена или перенос индивидуального занятия по инициативе Заказчика без потери оплаты возможны не позднее, чем за 24 часа до согласованного времени начала занятия.</p>
+                <p>4.2. В случае отмены или переноса занятия менее чем за 24 часа, либо в случае неявки Заказчика на онлайн-занятие в течение 15 минут от его начала, услуга считается оказанной в полном объеме и подлежит 100% оплате. Денежные средства не возвращаются.</p>
+                <p>4.3. При приобретении пакета занятий устанавливается ограниченный срок его действия. По истечении согласованного срока неиспользованные занятия аннулируются.</p>
+
+                <h3>5. Оплата и возврат средств</h3>
+                <p>5.1. Услуги оказываются на условиях 100% предоплаты (за разовое занятие или пакет), если иное не согласовано сторонами индивидуально.</p>
+                <p>5.2. В случае отказа Заказчика от пакета занятий Исполнитель производит возврат средств за вычетом стоимости уже проведенных занятий (по тарифу разового урока) и фактически понесенных Исполнителем расходов.</p>
+
+                <h3>6. Ответственность и гарантии</h3>
+                <p>6.1. Исполнитель не несет ответственности за технические сбои на стороне Заказчика (плохой интернет, неработающий микрофон и т.д.), повлекшие невозможность проведения урока.</p>
+                <p>6.2. Исполнитель не гарантирует успешную сдачу Заказчиком языковых экзаменов, так как результат напрямую зависит от индивидуальных способностей Заказчика, количества затраченного им времени и самостоятельной работы.</p>
+                <p>6.3. Интеллектуальная собственность: предоставляемые Исполнителем авторские материалы и записи занятий предназначены исключительно для личного использования Заказчиком. Их копирование, распространение и передача третьим лицам запрещены.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="privacy-modal" class="doc-modal">
+        <div class="doc-modal-inner">
+            <div class="doc-modal-header flex items-center justify-between gap-4 px-5 sm:px-8 py-4">
+                <h2 class="font-semibold text-lg sm:text-xl tracking-tight">Политика конфиденциальности</h2>
+                <button type="button" data-doc-close class="w-10 h-10 rounded-[8px] border border-gray-200 hover:bg-gray-50 flex items-center justify-center text-gray-500 transition-colors" aria-label="Закрыть">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="doc-content px-5 sm:px-8 py-6 sm:py-8">
+                <h2 class="font-semibold text-xl sm:text-2xl tracking-tight mb-6">ПОЛИТИКА В ОТНОШЕНИИ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</h2>
+
+                <h3>1. Общие положения</h3>
+                <p>1.1. Настоящая политика конфиденциальности составлена в соответствии с требованиями Федерального закона от 27.07.2006. №152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по их безопасности со стороны владельца сайта (далее — «Оператор»).</p>
+                <p>1.2. Оставляя заявку на настоящем сайте, Пользователь дает свое безоговорочное согласие на обработку своих персональных данных в соответствии с настоящей Политикой.</p>
+
+                <h3>2. Какие данные мы собираем</h3>
+                <p>2.1. Оператор может обрабатывать следующие персональные данные Пользователя:</p>
+                <ul>
+                    <li>Имя (и/или фамилия);</li>
+                    <li>Контактные данные (номер телефона, никнейм в мессенджерах, адрес электронной почты);</li>
+                    <li>Иные данные, добровольно оставленные Пользователем в полях формы обратной связи.</li>
+                </ul>
+
+                <h3>3. Цели обработки данных</h3>
+                <p>3.1. Персональные данные Пользователя собираются исключительно в следующих целях:</p>
+                <ul>
+                    <li>Установление обратной связи для уточнения деталей и записи на занятия.</li>
+                    <li>Предоставление Пользователю доступа к услугам, информации и учебным материалам.</li>
+                    <li>Направление организационных уведомлений (ссылки на уроки, напоминания о занятиях).</li>
+                </ul>
+
+                <h3>4. Порядок сбора, хранения и передачи данных</h3>
+                <p>4.1. Безопасность персональных данных обеспечивается путем реализации правовых, организационных и технических мер, необходимых для выполнения требований законодательства.</p>
+                <p>4.2. Персональные данные Пользователя никогда и ни при каких условиях не передаются третьим лицам, за исключением случаев, связанных с исполнением действующего законодательства.</p>
+                <p>4.3. Срок обработки персональных данных является неограниченным. Пользователь может в любой момент отозвать свое согласие на обработку персональных данных, направив Оператору уведомление по доступным каналам связи с пометкой «Отзыв согласия на обработку персональных данных».</p>
+
+                <h3>5. Заключительные положения</h3>
+                <p>5.1. Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись к Оператору по электронной почте или в мессенджерах.</p>
+                <p>5.2. Настоящая Политика действует бессрочно до замены ее новой версией. Актуальная версия располагается на настоящем сайте.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="https://unpkg.com/libphonenumber-js@1/bundle/libphonenumber-js.min.js"></script>
+
+    <!-- Скрипты -->
+    <script>
+        // Анимация появления при скролле (Fade-in-up)
+        const observerOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.count-up').forEach(counter => {
+                        if (!counter.classList.contains('counted')) runCounter(counter);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Анимация счетчиков (Count-up)
+        function runCounter(counterEl) {
+            const target = +counterEl.getAttribute('data-target');
+            let count = 0;
+            const duration = 1500;
+            const increment = target / (duration / 16);
+
+            const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                    counterEl.innerText = Math.ceil(count);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counterEl.innerText = target;
+                    counterEl.classList.add('counted');
+                }
+            };
+            updateCount();
+        }
+
+        // Переключатель валют (EUR / RUB)
+        const btnEur = document.getElementById('btn-eur');
+        const btnRub = document.getElementById('btn-rub');
+        const priceVals = document.querySelectorAll('.price-val');
+        const currencyCodes = document.querySelectorAll('.currency-code');
+
+        if(btnEur && btnRub) {
+            const setCurrency = (currency) => {
+                const isEur = currency === 'eur';
+                btnEur.classList.toggle('currency-active', isEur);
+                btnEur.classList.toggle('currency-inactive', !isEur);
+                btnRub.classList.toggle('currency-active', !isEur);
+                btnRub.classList.toggle('currency-inactive', isEur);
+
+                priceVals.forEach(el => el.classList.add('is-changing'));
+                window.setTimeout(() => {
+                    priceVals.forEach(el => {
+                        el.innerText = el.getAttribute(`data-${currency}`);
+                        el.classList.remove('is-changing');
+                    });
+                    currencyCodes.forEach(el => el.innerText = el.getAttribute(`data-${currency}`));
+                }, 140);
+            };
+
+            btnEur.addEventListener('click', () => setCurrency('eur'));
+            btnRub.addEventListener('click', () => setCurrency('rub'));
+        }
+
+        // Документы в модальных окнах
+        document.querySelectorAll('[data-doc-open]').forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = document.getElementById(button.getAttribute('data-doc-open'));
+                if (modal) modal.showModal();
+            });
+        });
+
+        document.querySelectorAll('.doc-modal').forEach(modal => {
+            modal.querySelectorAll('[data-doc-close]').forEach(button => {
+                button.addEventListener('click', () => modal.close());
+            });
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) modal.close();
+            });
+        });
+
+        // Отправка заявки в Formspree без перезагрузки страницы
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const successMessage = document.querySelector('[data-fs-success]');
+            const errorMessage = document.querySelector('[data-fs-error]');
+            const submitButton = contactForm.querySelector('[data-fs-submit-btn]');
+            const submitButtonText = submitButton ? submitButton.innerHTML : '';
+            const contactField = document.getElementById('contact-field');
+            const contactHelp = document.getElementById('contact-help');
+
+            const setContactState = (isValid, message) => {
+                if (!contactField || !contactHelp) return;
+                contactField.classList.toggle('border-red-400', !isValid);
+                contactField.classList.toggle('focus:border-red-400', !isValid);
+                contactField.classList.toggle('focus:ring-red-400', !isValid);
+                contactField.classList.toggle('border-gray-300', isValid);
+                contactField.setAttribute('aria-invalid', String(!isValid));
+                contactHelp.textContent = message;
+                contactHelp.classList.toggle('text-red-500', !isValid);
+                contactHelp.classList.toggle('text-gray-400', isValid);
+            };
+
+            const groupDigits = (digits, groups) => {
+                const parts = [];
+                let index = 0;
+                groups.forEach(size => {
+                    if (index < digits.length) {
+                        parts.push(digits.slice(index, index + size));
+                        index += size;
+                    }
+                });
+                if (index < digits.length) parts.push(digits.slice(index));
+                return parts.filter(Boolean).join(' ');
+            };
+
+            const formatPhoneContact = (value) => {
+                const raw = value.trim();
+                if (!raw || /[A-Za-zА-Яа-я@]/.test(raw)) return value;
+                if (!/^[+\d\s().-]+$/.test(raw)) return value;
+
+                if (window.libphonenumber && raw.startsWith('+')) {
+                    const formatted = new window.libphonenumber.AsYouType().input(raw);
+                    if (formatted) return formatted;
+                }
+
+                const hasPlus = raw.startsWith('+');
+                const digits = raw.replace(/\D/g, '');
+                if (!digits) return raw;
+
+                if (hasPlus && digits.startsWith('31')) {
+                    const local = digits.slice(2, 11);
+                    return `+31 ${groupDigits(local, [1, 4, 4])}`.trim();
+                }
+                if (hasPlus && digits.startsWith('32')) {
+                    const local = digits.slice(2, 11);
+                    return `+32 ${groupDigits(local, [3, 2, 2, 2])}`.trim();
+                }
+                if (hasPlus && digits.startsWith('1')) {
+                    const local = digits.slice(1, 11);
+                    return `+1 ${groupDigits(local, [3, 3, 4])}`.trim();
+                }
+                if (hasPlus && digits.startsWith('7')) {
+                    const local = digits.slice(1, 11);
+                    return `+7 ${groupDigits(local, [3, 3, 2, 2])}`.trim();
+                }
+                if (digits.startsWith('8')) {
+                    return groupDigits(digits.slice(0, 11), [1, 3, 3, 2, 2]);
+                }
+                if (digits.startsWith('06') || digits.startsWith('04')) {
+                    return groupDigits(digits.slice(0, 10), [2, 2, 2, 2, 2]);
+                }
+                if (hasPlus) {
+                    return `+${groupDigits(digits.slice(0, 15), [2, 3, 3, 3, 4])}`;
+                }
+
+                return groupDigits(digits.slice(0, 15), [3, 3, 3, 3, 3]);
+            };
+
+            const validateContact = (value) => {
+                const raw = value.trim();
+                if (!raw) {
+                    return { valid: false, message: 'Укажите Telegram, email или телефон для связи.' };
+                }
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+                if (emailPattern.test(raw)) {
+                    return { valid: true, message: 'Email выглядит корректно.' };
+                }
+
+                const telegramPattern = /^(?:@|https?:\/\/(?:t\.me|telegram\.me)\/)([A-Za-z0-9_]{5,32})\/?$/i;
+                const bareTelegramHint = /^[A-Za-z][A-Za-z0-9_]{4,31}$/;
+                if (telegramPattern.test(raw)) {
+                    return { valid: true, message: 'Telegram выглядит корректно.' };
+                }
+                if (bareTelegramHint.test(raw) && !raw.includes('@') && !raw.includes('.')) {
+                    return { valid: false, message: 'Для Telegram добавьте @ перед ником, например @godutch_ru.' };
+                }
+
+                const compact = raw.replace(/[\s().-]/g, '');
+                const digits = compact.replace(/\D/g, '');
+                const hasPhoneCharsOnly = /^[+\d\s().-]+$/.test(raw);
+                if (hasPhoneCharsOnly) {
+                    const hasValidLength = digits.length >= 7 && digits.length <= 15;
+                    const hasValidPrefix = compact.startsWith('+') || compact.startsWith('0') || compact.startsWith('8');
+
+                    if (hasValidLength && hasValidPrefix) {
+                        return { valid: true, message: 'Телефон выглядит корректно.' };
+                    }
+
+                    if (digits.length >= 7) {
+                        return { valid: false, message: 'Проверьте номер: лучше указать его с кодом страны, например +31...' };
+                    }
+                }
+
+                return { valid: false, message: 'Введите @telegram, email или номер телефона.' };
+            };
+
+            if (contactField) {
+                contactField.addEventListener('input', () => {
+                    const formattedContact = formatPhoneContact(contactField.value);
+                    if (formattedContact !== contactField.value) {
+                        contactField.value = formattedContact;
+                    }
+
+                    if (!contactField.value.trim()) {
+                        setContactState(true, 'Можно указать @telegram, email или номер телефона.');
+                        return;
+                    }
+                    const result = validateContact(contactField.value);
+                    setContactState(result.valid, result.message);
+                });
+            }
+
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                if (successMessage) successMessage.classList.add('hidden');
+                if (errorMessage) errorMessage.classList.add('hidden');
+
+                const contactResult = validateContact(contactField ? contactField.value : '');
+                if (!contactResult.valid) {
+                    setContactState(false, contactResult.message);
+                    if (contactField) contactField.focus();
+                    return;
+                }
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Отправляем... <i class="ph ph-spinner-gap animate-spin"></i>';
+                }
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (!response.ok) throw new Error('Form submission failed');
+                    contactForm.reset();
+                    setContactState(true, 'Можно указать @telegram, email или номер телефона.');
+                    if (successMessage) successMessage.classList.remove('hidden');
+                } catch (error) {
+                    if (errorMessage) errorMessage.classList.remove('hidden');
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = submitButtonText;
+                    }
+                }
+            });
+        }
+
+        // Логика карусели
+        const carousel = document.getElementById('carousel');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        if (carousel) {
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                carousel.classList.add('cursor-grabbing');
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+            carousel.addEventListener('mouseleave', () => {
+                isDown = false;
+                carousel.classList.remove('cursor-grabbing');
+            });
+            carousel.addEventListener('mouseup', () => {
+                isDown = false;
+                carousel.classList.remove('cursor-grabbing');
+            });
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // Мобильное меню
+        const mobBtn  = document.getElementById('mob-menu-btn');
+        const mobMenu = document.getElementById('mob-menu');
+        const mobIcon = document.getElementById('mob-menu-icon');
+        const _mainNav = document.querySelector('nav[class*="sticky"]');
+        if (mobBtn && mobMenu) {
+            function closeMobMenu() {
+                mobMenu.classList.add('hidden');
+                mobIcon.className = 'ph ph-list text-[22px] text-notion_text';
+                mobBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            mobBtn.addEventListener('click', () => {
+                const isOpen = !mobMenu.classList.contains('hidden');
+                if (isOpen) { closeMobMenu(); return; }
+                // Position menu flush with nav bottom (handles promo banner offset)
+                if (_mainNav) {
+                    mobMenu.style.top = Math.round(_mainNav.getBoundingClientRect().bottom) + 'px';
+                }
+                mobMenu.classList.remove('hidden');
+                mobIcon.className = 'ph ph-x text-[22px] text-notion_text';
+                mobBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            });
+            document.querySelectorAll('.mob-nav-link').forEach(l => l.addEventListener('click', closeMobMenu));
+            // Close on resize to lg+
+            window.addEventListener('resize', () => { if (window.innerWidth >= 1024) closeMobMenu(); });
+        }
+
+        // Бесконечная прокрутка отзывов на мобильном
+        (function initCarouselAutoScroll() {
+            if (window.innerWidth >= 768) return;
+            const car = document.getElementById('carousel');
+            if (!car) return;
+
+            // Убираем snap (мешает плавной прокрутке)
+            car.classList.remove('snap-x', 'snap-mandatory');
+            car.querySelectorAll('.snap-center, .snap-start').forEach(el => el.classList.remove('snap-center', 'snap-start'));
+
+            // Скрываем подсказку "Прокрутите вправо"
+            const hint = document.querySelector('#reviews .md\\:hidden');
+            if (hint) hint.style.display = 'none';
+
+            requestAnimationFrame(() => {
+                const origWidth = car.scrollWidth;
+                // Клонируем карточки для бесшовного зацикливания
+                Array.from(car.children).forEach(c => car.appendChild(c.cloneNode(true)));
+
+                let paused = false;
+                let resumeTimer;
+                const SPEED = 0.5;
+
+                function tick() {
+                    if (!paused) {
+                        car.scrollLeft += SPEED;
+                        if (car.scrollLeft >= origWidth) car.scrollLeft -= origWidth;
+                    }
+                    requestAnimationFrame(tick);
+                }
+
+                car.addEventListener('touchstart', () => {
+                    paused = true;
+                    clearTimeout(resumeTimer);
+                }, { passive: true });
+                car.addEventListener('touchend', () => {
+                    resumeTimer = setTimeout(() => { paused = false; }, 1500);
+                }, { passive: true });
+
+                requestAnimationFrame(tick);
+            });
+        })();
+    </script>
+</body>
+</html>
