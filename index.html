@@ -279,6 +279,12 @@
             </div>
         </div>
         <div class="flex items-center gap-2">
+            <!-- Соцсети в навбаре (только desktop) -->
+            <div class="hidden lg:flex items-center gap-1 mr-2">
+                <a href="https://www.tiktok.com/@godutch_ru?_r=1&_t=ZS-96Krkxs4ReP" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-tiktok-logo"></i></a>
+                <a href="https://www.youtube.com/@godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-youtube-logo"></i></a>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-telegram-logo"></i></a>
+            </div>
             <button id="mob-menu-btn" class="lg:hidden touch-target w-10 h-10 flex items-center justify-center rounded-[8px] hover:bg-gray-100 transition-colors" aria-label="Открыть меню" aria-expanded="false">
                 <i class="ph ph-list text-[22px] text-notion_text" id="mob-menu-icon"></i>
             </button>
@@ -815,13 +821,16 @@
                 </button>
             </form>
             <div class="mt-6 flex flex-col items-center gap-3 relative z-10">
-                <div class="flex flex-wrap justify-center gap-3">
-                    <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-amber transition-colors font-medium">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://t.me/larisa_tutor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-amber transition-colors font-medium">
                         <i class="ph ph-telegram-logo text-amber"></i> Написать в Telegram
                     </a>
-                    <span class="text-gray-300 hidden sm:inline">·</span>
-                    <a href="mailto:info@godutch.ru" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-amber transition-colors font-medium">
-                        <i class="ph ph-envelope text-amber"></i> info@godutch.ru
+                    <span class="text-gray-300 hidden sm:inline self-center">·</span>
+                    <a href="mailto:info@godutch.ru" class="group inline-flex flex-col items-center gap-0.5 transition-colors font-medium">
+                        <span class="inline-flex items-center gap-2 text-sm text-gray-600 group-hover:text-amber transition-colors">
+                            <i class="ph ph-envelope text-amber"></i> Отправить имейл
+                        </span>
+                        <span class="text-[11px] text-gray-400 group-hover:text-amber transition-colors tracking-wide">info@godutch.ru</span>
                     </a>
                 </div>
                 <p class="text-[12px] text-gray-400 leading-relaxed flex items-center gap-1.5">
