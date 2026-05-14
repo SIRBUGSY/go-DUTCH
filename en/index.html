@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larisa Kalugina — Dutch & English Tutor Online | Go Dutch</title>
+    <meta name="description" content="Start speaking Dutch the way you always wanted. 16 years of experience, 5 years living in the Netherlands. Free first lesson.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://godutch.ru/en/">
+    <link rel="canonical" href="https://godutch.ru/en/">
+    <meta property="og:title" content="Larisa Kalugina — Dutch & English Tutor Online">
+    <meta property="og:description" content="Start speaking Dutch the way you always wanted. 16 years of experience, 5 years living in the Netherlands. Free first lesson.">
+    <meta property="og:image" content="https://godutch.ru/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Larisa Kalugina — Dutch & English Tutor Online">
+    <meta name="twitter:image" content="https://godutch.ru/og-image.jpg">
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ru" href="https://godutch.ru/">
+    <link rel="alternate" hreflang="en" href="https://godutch.ru/en/">
+    <link rel="alternate" hreflang="x-default" href="https://godutch.ru/">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <link rel="stylesheet" href="../transitions.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            DEFAULT: '#C77D3A',
+                            hover: '#A86528',
+                            light: '#E8B97A'
+                        },
+                        navy: '#1F2D3D',
+                        surface: '#F7F7F5',
+                        mint: '#EBF5ED',
+                        peach: '#FCEFE8',
+                        rose: '#FBECEF',
+                        lavender: '#F1EBF5',
+                        sky: '#E8F3F8',
+                        yellow_bg: '#FDF3C6',
+                        notion_text: '#37352F'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'mockup': '0 24px 48px -8px rgba(15,15,15,0.25)',
+                        'card-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #37352F; -webkit-font-smoothing: antialiased; }
+        .h1-hero {
+            font-weight: 600;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+            font-size: 32px;
+        }
+        @media (min-width: 480px) { .h1-hero { font-size: 40px; letter-spacing: -1px; line-height: 1.08; } }
+        @media (min-width: 640px) { .h1-hero { font-size: 48px; letter-spacing: -2px; line-height: 1.05; } }
+        @media (min-width: 768px) { .h1-hero { font-size: 56px; } }
+        @media (min-width: 1024px) { .h1-hero { font-size: 80px; } }
+        .h2-section {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        @media (min-width: 640px) { .h2-section { font-size: 36px; } }
+        .body-text { font-size: 16px; font-weight: 400; line-height: 1.55; }
+        .btn-text { font-size: 14px; font-weight: 500; }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 250ms ease-out, transform 250ms ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+        .hover-lift { transition: box-shadow 150ms ease-out, transform 150ms ease-out; }
+        .hover-lift:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .touch-target { min-height: 44px; min-width: 44px; flex-shrink: 0; }
+        .currency-btn { transition: all 150ms ease-out; }
+        .currency-active { background-color: white; box-shadow: 0 1px 2px rgba(0,0,0,0.05); color: #37352F; border-color: #E5E7EB; }
+        .currency-inactive { color: #6B7280; border-color: transparent; }
+        .currency-inactive:hover { color: #37352F; }
+        .price-display {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #F1F2F4;
+        }
+        .price-display::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 56px;
+            height: 2px;
+            background: linear-gradient(90deg, #C77D3A, rgba(199,125,58,0));
+            border-radius: 999px;
+        }
+        .price-val {
+            display: inline-block;
+            color: #37352F;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 0.95;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+            transition: opacity 150ms ease, transform 150ms ease, filter 150ms ease;
+            will-change: opacity, transform, filter;
+        }
+        @media (min-width: 640px) { .price-val { font-size: 48px; } }
+        .price-val.is-changing { opacity: 0; transform: translateY(8px); filter: blur(2px); }
+        .price-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            padding-bottom: 7px;
+            color: #6B7280;
+            font-size: 14px;
+            line-height: 1.1;
+        }
+        .currency-code {
+            display: inline-flex;
+            align-items: center;
+            height: 20px;
+            padding: 0 7px;
+            border-radius: 999px;
+            background: rgba(199,125,58,0.11);
+            color: #A86528;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+        .hero-bg-pattern {
+            z-index: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.95;
+        }
+        .hero-bg-pattern::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(174,28,40,0.14), transparent 34%, transparent 66%, rgba(33,70,139,0.16)),
+                linear-gradient(180deg, rgba(31,45,61,0), rgba(31,45,61,0.2));
+        }
+        .nl-icon {
+            position: absolute;
+            filter: drop-shadow(0 16px 28px rgba(0,0,0,0.35));
+            animation: nlIconFloat var(--float-speed, 10s) ease-in-out infinite both;
+            animation-delay: var(--float-delay, 0s);
+        }
+        .nl-icon img {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: var(--icon-opacity, 0.2);
+            filter: brightness(0) invert(1);
+        }
+        @keyframes nlIconFloat {
+            0%, 100% { transform: translate3d(0,0,0) rotate(var(--rotate-a, -5deg)); }
+            50% { transform: translate3d(var(--drift-x, 10px), var(--drift-y, -18px), 0) rotate(var(--rotate-b, 4deg)); }
+        }
+        .nl-icon.is-orange img {
+            filter: brightness(0) saturate(100%) invert(57%) sepia(59%) saturate(774%) hue-rotate(342deg) brightness(93%) contrast(89%);
+        }
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: #F3F4F6;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .review-avatar img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+            opacity: 0.55;
+            filter: brightness(0) saturate(100%) invert(66%) sepia(10%) saturate(447%) hue-rotate(179deg) brightness(89%) contrast(86%);
+        }
+        .doc-modal {
+            width: min(880px, calc(100vw - 32px));
+            max-height: min(760px, calc(100vh - 32px));
+            border: 0;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.24);
+            color: #37352F;
+        }
+        .doc-modal::backdrop { background: rgba(31,45,61,0.42); backdrop-filter: blur(4px); }
+        .doc-modal-inner {
+            max-height: min(760px, calc(100vh - 32px));
+            overflow-y: auto;
+            background: white;
+        }
+        .doc-modal-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .doc-content h3 { margin-top: 24px; margin-bottom: 10px; font-size: 17px; font-weight: 600; }
+        .doc-content p, .doc-content li { color: #4B5563; font-size: 14px; line-height: 1.65; }
+        .doc-content ul { margin: 8px 0 14px; padding-left: 18px; list-style: disc; }
+        @keyframes wordReveal {
+            from { transform: translateY(110%); opacity: 0; }
+            to   { transform: translateY(0);   opacity: 1; }
+        }
+    </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WPRVBVDXD3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WPRVBVDXD3');
+  gtag('config', 'GT-KFLHWCGT');
+</script>
+</head>
+<body class="bg-white font-sans overflow-x-hidden w-full">
+
+    <!-- Promo banner -->
+    <a href="#waitlist" data-waitlist class="bg-surface border-b border-gray-200 text-center py-2 px-4 btn-text text-gray-600 text-xs sm:text-sm flex items-center justify-center gap-2 hover:text-amber transition-colors">
+        <i class="ph ph-sparkle text-amber"></i> Group lesson waitlist is open — 3 spots left
+    </a>
+
+    <!-- Sticky nav -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full transition-all duration-200">
+        <div class="flex items-center gap-8">
+            <a href="/en/" class="font-semibold text-[18px] tracking-tight touch-target flex items-center gap-2">
+                <i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Larisa Kalugina
+            </a>
+            <div class="hidden lg:flex gap-6 btn-text text-gray-500">
+                <a href="#about" class="hover:text-notion_text transition-colors">About</a>
+                <a href="#languages" class="hover:text-notion_text transition-colors">Languages</a>
+                <a href="#method" class="hover:text-notion_text transition-colors">Method</a>
+                <a href="#pricing" class="hover:text-notion_text transition-colors">Pricing</a>
+                <a href="#reviews" class="hover:text-notion_text transition-colors">Reviews</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="hidden lg:flex items-center gap-1 mr-2">
+                <a href="https://www.tiktok.com/@godutch_ru?_r=1&_t=ZS-96Krkxs4ReP" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-tiktok-logo"></i></a>
+                <a href="https://www.youtube.com/@godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-youtube-logo"></i></a>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-telegram-logo"></i></a>
+            </div>
+            <!-- Language switcher -->
+            <div class="hidden lg:flex items-center gap-1 text-sm font-medium mr-1">
+                <a href="/" class="px-2 py-1 rounded-[6px] text-gray-400 hover:text-amber transition-colors">RU</a>
+                <span class="text-gray-200">|</span>
+                <span class="px-2 py-1 rounded-[6px] text-amber font-semibold">EN</span>
+            </div>
+            <button id="mob-menu-btn" class="lg:hidden touch-target w-10 h-10 flex items-center justify-center rounded-[8px] hover:bg-gray-100 transition-colors" aria-label="Open menu" aria-expanded="false">
+                <i class="ph ph-list text-[22px] text-notion_text" id="mob-menu-icon"></i>
+            </button>
+            <a href="#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-4 py-2 rounded-[8px] transition-colors duration-150 h-[40px] flex items-center justify-center gap-2 shadow-sm">
+                <i class="ph ph-calendar-plus text-[16px]"></i> <span class="hidden sm:inline">Free Lesson</span><span class="sm:hidden">Book</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mob-menu" class="hidden fixed left-0 right-0 bottom-0 z-40 bg-white flex flex-col overflow-hidden">
+        <nav class="flex flex-col px-5 py-4 flex-1 overflow-y-auto">
+            <a href="#about"     class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">About <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#languages" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Languages <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#method"    class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Method <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#pricing"   class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Pricing <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="#reviews"   class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Reviews <i class="ph ph-caret-right text-gray-400"></i></a>
+            <div class="flex items-center gap-2 py-4 border-b border-gray-100">
+                <a href="/" class="text-gray-400 hover:text-amber transition-colors text-sm font-medium px-2 py-1">RU</a>
+                <span class="text-gray-200">|</span>
+                <span class="text-amber font-semibold text-sm px-2 py-1">EN</span>
+            </div>
+        </nav>
+        <div class="px-5 py-6 border-t border-gray-100">
+            <a href="#contact" class="mob-nav-link bg-amber hover:bg-amber-hover text-white font-medium text-base px-6 rounded-[8px] h-[52px] flex items-center justify-center gap-2 shadow-sm w-full">
+                <i class="ph ph-calendar-plus"></i> Book a free lesson
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="bg-navy py-10 sm:py-24 lg:py-[120px] px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center justify-center text-center w-full">
+        <div class="hero-bg-pattern absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+            <div class="nl-icon hidden sm:block" style="left:5%;top:8%;width:150px;--icon-opacity:0.19;--float-speed:9s;--float-delay:-1s;--rotate-a:-8deg;--rotate-b:-3deg;--drift-x:12px;--drift-y:-18px;">
+                <img src="../dutch-svgrepo-com.svg" alt="">
+            </div>
+            <div class="nl-icon hidden sm:block" style="right:7%;top:8%;width:150px;--icon-opacity:0.2;--float-speed:10s;--float-delay:-4s;--rotate-a:4deg;--rotate-b:-4deg;--drift-x:-14px;--drift-y:-20px;">
+                <img src="../windmill-illustration-1-svgrepo-com.svg" alt="">
+            </div>
+            <div class="nl-icon hidden lg:block" style="left:4%;bottom:12%;width:145px;--icon-opacity:0.18;--float-speed:11s;--float-delay:-2s;--rotate-a:3deg;--rotate-b:8deg;--drift-x:18px;--drift-y:-12px;">
+                <img src="../bike-svgrepo-com.svg" alt="">
+            </div>
+            <div class="nl-icon is-orange hidden lg:block" style="right:5%;bottom:12%;width:118px;--icon-opacity:0.25;--float-speed:9.5s;--float-delay:-5s;--rotate-a:-7deg;--rotate-b:-2deg;--drift-x:-16px;--drift-y:-16px;">
+                <img src="../crown-svgrepo-com.svg" alt="">
+            </div>
+            <div class="nl-icon is-orange hidden md:block" style="left:18%;top:48%;width:92px;--icon-opacity:0.2;--float-speed:12s;--float-delay:-7s;--rotate-a:-12deg;--rotate-b:-5deg;--drift-x:10px;--drift-y:-14px;">
+                <img src="../stroopwafel-solid-svgrepo-com.svg" alt="">
+            </div>
+            <div class="nl-icon hidden md:block" style="right:20%;top:42%;width:88px;--icon-opacity:0.16;--float-speed:10.5s;--float-delay:-3s;--rotate-a:9deg;--rotate-b:2deg;--drift-x:-10px;--drift-y:-22px;">
+                <img src="../tulip-svgrepo-com.svg" alt="">
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl w-full fade-in-up">
+            <h1 class="h1-hero text-white mb-6 drop-shadow-lg">Start speaking Dutch the way you always wanted</h1>
+            <p class="text-base sm:text-lg lg:text-[18px] text-white/80 font-normal mb-10 max-w-2xl mx-auto drop-shadow-sm">A personalised programme without rote memorisation. Clear structure, conversation practice and measurable results for relocation, work and study.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto mx-auto relative z-20">
+                <a href="#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] transition-colors duration-150 w-full sm:w-auto h-[48px] flex items-center justify-center gap-2 touch-target">
+                    Start for free <i class="ph ph-arrow-right text-[16px]"></i>
+                </a>
+                <a href="#method" class="border border-white/30 hover:bg-white/10 text-white btn-text px-6 py-3 rounded-[8px] transition-colors duration-150 w-full sm:w-auto h-[48px] flex items-center justify-center gap-2 touch-target">
+                    <i class="ph ph-info text-[16px]"></i> How it works
+                </a>
+            </div>
+        </div>
+
+        <!-- Learning ecosystem -->
+        <div class="relative z-10 mt-12 sm:mt-16 lg:mt-20 bg-white rounded-[12px] shadow-mockup p-4 sm:p-6 lg:p-8 max-w-4xl w-full text-left fade-in-up border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
+                <div class="flex gap-1.5 items-center">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                </div>
+                <div class="text-gray-400 btn-text text-xs sm:text-sm flex items-center gap-1.5">
+                    <i class="ph ph-graph"></i> Learning ecosystem
+                </div>
+            </div>
+            <div class="absolute pointer-events-none" style="left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(199,125,58,0.12) 0%,transparent 70%);border-radius:50%;"></div>
+            <div class="flex items-center justify-between gap-2 sm:gap-5 relative">
+                <!-- Left column -->
+                <div class="flex flex-col gap-2.5 flex-1 min-w-0">
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="../zoom.svg" alt="Zoom" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Zoom</div>
+                            <div class="text-[10px] text-gray-400">video lesson</div>
+                        </div>
+                        <i class="ph ph-arrow-right text-gray-400 text-[11px] ml-auto shrink-0 opacity-40"></i>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="../NPO_Start_logo.svg" alt="NPO Start" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">NPO Start</div>
+                            <div class="text-[10px] text-gray-400">live speech</div>
+                        </div>
+                        <i class="ph ph-arrow-right text-gray-400 text-[11px] ml-auto shrink-0 opacity-40"></i>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1.5 shrink-0">
+                            <img src="../boom.svg" alt="Boom.nl" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Boom.nl</div>
+                            <div class="text-[10px] text-gray-400">textbooks</div>
+                        </div>
+                        <i class="ph ph-arrow-right text-gray-400 text-[11px] ml-auto shrink-0 opacity-40"></i>
+                    </div>
+                </div>
+                <!-- Center hub -->
+                <div class="hidden sm:flex flex-col items-center gap-2 shrink-0">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex flex-col items-center justify-center shadow-lg" style="background-color:#1F2D3D;">
+                        <i class="ph ph-brain text-[22px] sm:text-[24px]" style="color:#C77D3A;"></i>
+                    </div>
+                    <span class="text-[10px] text-gray-400 font-medium text-center leading-tight">one<br>lesson</span>
+                </div>
+                <!-- Right column -->
+                <div class="flex flex-col gap-2.5 flex-1 min-w-0">
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <i class="ph ph-arrow-left text-gray-400 text-[11px] shrink-0 opacity-40"></i>
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="../google-drive.svg" alt="Google Drive" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Google Drive</div>
+                            <div class="text-[10px] text-gray-400">materials</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <i class="ph ph-arrow-left text-gray-400 text-[11px] shrink-0 opacity-40"></i>
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="../telegram.svg" alt="Telegram" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">Telegram</div>
+                            <div class="text-[10px] text-gray-400">homework & support</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-[8px] px-2.5 py-2">
+                        <i class="ph ph-arrow-left text-gray-400 text-[11px] shrink-0 opacity-40"></i>
+                        <div class="w-8 h-8 rounded-[6px] bg-white border border-gray-100 flex items-center justify-center p-1 shrink-0">
+                            <img src="../youtube.svg" alt="YouTube" class="w-full h-full object-contain">
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[13px] font-semibold text-notion_text leading-tight truncate">YouTube</div>
+                            <div class="text-[10px] text-gray-400">lesson videos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-0 lg:-mt-10 relative z-20 fade-in-up w-full">
+        <div class="bg-surface rounded-[12px] p-6 sm:p-10 lg:p-[64px] flex flex-col sm:flex-row justify-between items-center gap-8 text-center border border-gray-100 shadow-sm">
+            <div class="w-full sm:flex-1">
+                <div class="text-4xl sm:text-5xl font-semibold text-notion_text mb-2 tabular-nums"><span class="count-up" data-target="150">0</span>+</div>
+                <div class="body-text text-gray-500 text-sm sm:text-base flex justify-center items-center gap-2"><i class="ph ph-users"></i> students</div>
+            </div>
+            <div class="w-full h-px bg-gray-200 sm:w-px sm:h-16 hidden sm:block shrink-0"></div>
+            <div class="w-full sm:flex-1 border-t border-gray-200 pt-6 sm:border-t-0 sm:pt-0">
+                <div class="text-4xl sm:text-5xl font-semibold text-notion_text mb-2 tabular-nums"><span class="count-up" data-target="5">0</span> mo.</div>
+                <div class="body-text text-gray-500 text-sm sm:text-base flex justify-center items-center gap-2"><i class="ph ph-rocket-launch"></i> from A2 to confident B1</div>
+            </div>
+            <div class="w-full h-px bg-gray-200 sm:w-px sm:h-16 hidden sm:block shrink-0"></div>
+            <div class="w-full sm:flex-1 border-t border-gray-200 pt-6 sm:border-t-0 sm:pt-0">
+                <div class="text-4xl sm:text-5xl font-semibold text-notion_text mb-2 tabular-nums"><span class="count-up" data-target="98">0</span>%</div>
+                <div class="body-text text-gray-500 text-sm sm:text-base flex justify-center items-center gap-2"><i class="ph ph-certificate"></i> pass rate Inburgeringsexamen / NT2</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 border-b border-gray-100 fade-in-up text-center w-full">
+        <p class="btn-text text-gray-400 mb-8 sm:mb-10 text-xs sm:text-sm uppercase tracking-wider flex justify-center items-center gap-2"><i class="ph ph-buildings"></i> Our students study and work at</p>
+        <div class="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 px-2 sm:px-4 grayscale opacity-50">
+            <img src="../University_of_Amsterdam_logo.svg" alt="Universiteit van Amsterdam" loading="lazy" class="h-5 sm:h-7 w-auto max-w-[110px] sm:max-w-none">
+            <img src="../Logo_Erasmus_Universiteit_Rotterdam.svg" alt="Erasmus Universiteit Rotterdam" loading="lazy" class="h-5 sm:h-7 w-auto max-w-[110px] sm:max-w-none">
+            <img src="../ASML_Holding_N.V._logo.svg" alt="ASML" loading="lazy" class="h-4 sm:h-6 w-auto max-w-[70px] sm:max-w-none">
+            <img src="../Nebius_logo.svg" alt="Nebius" loading="lazy" class="h-4 sm:h-5 w-auto max-w-[70px] sm:max-w-none">
+            <img src="../PHG_BIG.svg" alt="Philips" loading="lazy" class="h-4 sm:h-6 w-auto max-w-[70px] sm:max-w-none">
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div class="w-full max-w-[260px] sm:max-w-sm md:max-w-none mx-auto md:mx-0 relative">
+                <div class="absolute inset-0 bg-amber/5 rounded-[12px] transform translate-x-3 translate-y-3 -z-10"></div>
+                <img src="../Work Picture.PNG" alt="Larisa Kalugina — Dutch language tutor online" loading="lazy" class="rounded-[12px] object-cover w-full aspect-square bg-gray-100 shadow-sm border border-gray-100">
+            </div>
+            <div class="text-left">
+                <h2 class="h2-section mb-6 flex items-center gap-3">Your tutor</h2>
+                <div class="body-text text-gray-600 space-y-4 mb-8 text-sm sm:text-base">
+                    <p>I have been teaching languages since 2010 and help students not just learn Dutch, but use it confidently in everyday life, work, study and communication in the Netherlands.</p>
+                    <p>My connection with the Netherlands began long before I started teaching. For more than 15 years I worked as an international journalist, travelled to the Netherlands frequently, conducted interviews for business publications and saw first-hand how the language sounds in a real professional setting. I later lived in the Netherlands for 5 years, so I understand not only the language but life in the country itself: conversations with neighbours, letters from the Gemeente, paperwork, work, daily routines and cultural nuances.</p>
+                    <p>My approach combines communicative methodology and the lexical approach. This helps students gradually start thinking in the language rather than translating every word in their head. We study grammar through context too — clearly and practically.</p>
+                    <p>My legal background helps me explain administrative and business language: letters, contracts, documents, KvK and official formulations. And if you need Business English or IELTS preparation, I work with those as well.</p>
+                </div>
+                <div class="flex flex-wrap gap-2.5 mb-6 justify-center">
+                    <span class="bg-lavender text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-calendar-check text-amber"></i> 16 years teaching</span>
+                    <span class="bg-mint text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-house text-amber"></i> 5 years in the Netherlands</span>
+                    <span class="bg-sky text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-chats-circle text-amber"></i> Real Dutch</span>
+                    <span class="bg-peach text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-seal-check text-amber"></i> Business English & IELTS</span>
+                </div>
+                <div class="flex justify-center">
+                    <a href="https://profi.ru/profile/KaluginaLV2/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-surface text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[40px] inline-flex items-center gap-2">
+                        Profile on Profi.ru <i class="ph ph-arrow-square-out"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <h2 class="h2-section mb-10 sm:mb-12 text-center">What I teach</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            <div class="bg-mint p-6 sm:p-10 lg:p-[48px] rounded-[12px] hover-lift border border-gray-100/50 flex flex-col h-full">
+                <h3 class="text-2xl sm:text-[24px] font-semibold mb-6 flex items-center gap-3">
+                    <i class="ph ph-windmill text-3xl text-amber"></i> Dutch
+                </h3>
+                <ul class="space-y-4 mb-10 body-text text-gray-700 text-sm sm:text-base flex-grow">
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Levels from A0 to B2+</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Inburgeringsexamen and Staatsexamen NT2 (I, II) preparation</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Conversational course for daily life (huisarts, gemeente, school)</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Expat course: fast start in IT and corporate environments</li>
+                </ul>
+                <a href="#contact" class="inline-block border border-gray-300 hover:bg-white/50 text-notion_text btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] flex items-center justify-center w-full sm:w-auto touch-target gap-2">Learn more <i class="ph ph-caret-right"></i></a>
+            </div>
+            <div class="bg-peach p-6 sm:p-10 lg:p-[48px] rounded-[12px] hover-lift border border-gray-100/50 flex flex-col h-full">
+                <h3 class="text-2xl sm:text-[24px] font-semibold mb-6 flex items-center gap-3">
+                    <i class="ph ph-bridge text-3xl text-amber"></i> English
+                </h3>
+                <ul class="space-y-4 mb-10 body-text text-gray-700 text-sm sm:text-base flex-grow">
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Any level: from beginner to advanced</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> International exam preparation (IELTS, Cambridge)</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Business communication, presentations and interviews</li>
+                    <li class="flex items-start gap-3"><i class="ph ph-check-circle text-amber mt-1 text-lg shrink-0"></i> Breaking the language barrier (Speaking Intensive)</li>
+                </ul>
+                <a href="#contact" class="inline-block border border-gray-300 hover:bg-white/50 text-notion_text btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] flex items-center justify-center w-full sm:w-auto touch-target gap-2">Learn more <i class="ph ph-caret-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section id="method" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <h2 class="h2-section mb-10 sm:mb-12 text-center">How lessons work</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-rose p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-crosshair text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Personal plan</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">The programme is built around your goals, timeline and current level.</p>
+            </div>
+            <div class="bg-lavender p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-chats-circle text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Real situations</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">No outdated textbook dialogues. We work on what you'll actually use today.</p>
+            </div>
+            <div class="bg-sky p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-pencil-line text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">Feedback</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">After every lesson you get homework, extra materials and personal recommendations.</p>
+            </div>
+            <div class="bg-yellow_bg p-6 rounded-[12px] hover-lift border border-gray-100/50">
+                <div class="w-10 h-10 bg-white rounded-[8px] flex items-center justify-center mb-5 shadow-sm text-amber"><i class="ph ph-notebook text-2xl"></i></div>
+                <h4 class="font-semibold text-lg mb-2.5 tracking-tight">All materials</h4>
+                <p class="body-text text-gray-600 text-sm sm:text-[15px]">Notes, audio and a library of 100+ textbooks always at hand on Google Drive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yellow CTA banner -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 fade-in-up w-full">
+        <div class="bg-[#FFD966] p-6 sm:p-10 lg:p-[64px] rounded-[12px] flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12 border border-[#F4CA44] shadow-sm relative overflow-hidden">
+            <i class="ph ph-star text-9xl absolute -right-10 -bottom-10 text-white opacity-20 pointer-events-none"></i>
+            <div class="max-w-2xl text-center lg:text-left flex flex-col items-center lg:items-start grow relative z-10">
+                <h2 class="h2-section mb-5 text-[#37352F]">First lesson is free — let's see if we're a good fit</h2>
+                <p class="body-text text-[#37352F]/80 mb-8 max-w-xl text-sm sm:text-base">In the trial lesson (30 min) we'll assess your level, discuss your goals and sketch a preliminary learning plan.</p>
+                <a href="#contact" class="inline-block bg-amber hover:bg-amber-hover text-white btn-text px-8 py-4 rounded-[8px] transition-colors duration-150 h-[52px] flex items-center justify-center w-full sm:w-auto touch-target gap-2 shadow-sm">Book for free <i class="ph ph-paper-plane-right"></i></a>
+            </div>
+            <div class="hidden lg:block w-full max-w-xs bg-white p-4 rounded-[12px] shadow-mockup transform rotate-2 border border-gray-100 shrink-0 relative z-10">
+                <div class="flex items-center gap-3.5 mb-4 pb-4 border-b border-gray-100">
+                    <div class="w-10 h-10 bg-amber/15 rounded-[8px] flex items-center justify-center text-amber text-xl"><i class="ph ph-video-camera"></i></div>
+                    <div>
+                        <div class="font-semibold text-[15px]">Intro meeting</div>
+                        <div class="text-[13px] text-gray-500 flex items-center gap-1"><i class="ph ph-monitor-play"></i> Zoom</div>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-[13px] text-gray-600"><i class="ph ph-clock text-amber"></i> 30 minutes</div>
+                    <div class="flex items-center gap-2 text-[13px] text-gray-600"><i class="ph ph-currency-circle-dollar text-amber"></i> Free when you book via this site</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-16 sm:py-24 fade-in-up bg-surface mt-12 w-full overflow-hidden border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="h2-section mb-8 text-center">Student results</h2>
+            <div class="max-w-3xl mx-auto mb-10 sm:mb-12 bg-white border border-gray-200 rounded-[12px] px-5 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+                <div class="flex flex-col items-center text-center w-full sm:w-auto gap-1">
+                    <div class="flex items-center justify-center gap-1 text-amber text-sm mb-1">
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="font-semibold text-notion_text text-base sm:text-lg leading-tight">50+ reviews on Profi.ru</p>
+                    <p class="text-[13px] sm:text-sm text-gray-500">You can check real student reviews on the tutor's profile.</p>
+                </div>
+                <a href="https://profi.ru/profile/KaluginaLV2/reviews/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-gray-50 text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[40px] flex items-center justify-center gap-2 shrink-0 w-full sm:w-auto">
+                    View profile <i class="ph ph-arrow-square-out"></i>
+                </a>
+            </div>
+            <div class="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory no-scrollbar cursor-grab px-2 lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0 lg:cursor-default lg:px-0 lg:gap-6" id="carousel">
+                <div class="w-[calc(100vw-3rem)] sm:w-auto sm:min-w-[360px] lg:min-w-0 lg:w-auto bg-white border border-gray-200 p-6 sm:p-8 lg:p-8 rounded-[12px] snap-center hover-lift flex flex-col shrink-0 lg:shrink">
+                    <i class="ph ph-quotes text-amber text-4xl mb-4 opacity-50"></i>
+                    <p class="body-text text-gray-700 mb-8 text-sm sm:text-base grow">My child had been attending a Dutch school for almost a year but was afraid to speak. Larisa got him talking within a couple of lessons — now he feels confident at school, communicates freely and gets great marks.</p>
+                    <div class="border-t border-gray-100 pt-5 mt-auto flex items-center gap-3">
+                        <div class="review-avatar" aria-hidden="true"><img src="../female-avatar-svgrepo-com.svg" alt=""></div>
+                        <div>
+                            <div class="font-semibold text-base leading-tight">Olga</div>
+                            <div class="text-[13px] text-gray-500 mt-0.5">Goal: child's school adaptation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[calc(100vw-3rem)] sm:w-auto sm:min-w-[360px] lg:min-w-0 lg:w-auto bg-white border border-gray-200 p-6 sm:p-8 lg:p-8 rounded-[12px] snap-center hover-lift flex flex-col shrink-0 lg:shrink">
+                    <i class="ph ph-quotes text-amber text-4xl mb-4 opacity-50"></i>
+                    <p class="body-text text-gray-700 mb-8 text-sm sm:text-base grow">I had a decent passive vocabulary but couldn't make myself speak. The lessons finally turned that knowledge into real conversation — it's now so much easier to talk with colleagues, in cafés, shops and everyday life.</p>
+                    <div class="border-t border-gray-100 pt-5 mt-auto flex items-center gap-3">
+                        <div class="review-avatar" aria-hidden="true"><img src="../big-male-avatar-svgrepo-com.svg" alt=""></div>
+                        <div>
+                            <div class="font-semibold text-base leading-tight">Evgeny</div>
+                            <div class="text-[13px] text-gray-500 mt-0.5">Goal: conversational Dutch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[calc(100vw-3rem)] sm:w-auto sm:min-w-[360px] lg:min-w-0 lg:w-auto bg-white border border-gray-200 p-6 sm:p-8 lg:p-8 rounded-[12px] snap-center hover-lift flex flex-col shrink-0 lg:shrink">
+                    <i class="ph ph-quotes text-amber text-4xl mb-4 opacity-50"></i>
+                    <p class="body-text text-gray-700 mb-8 text-sm sm:text-base grow">I urgently needed to improve my speaking and writing for IELTS. Larisa quickly identified the weak spots, gave me a clear strategy and lots of practice. Result — the score I needed and real confidence on exam day.</p>
+                    <div class="border-t border-gray-100 pt-5 mt-auto flex items-center gap-3">
+                        <div class="review-avatar" aria-hidden="true"><img src="../female-avatar-svgrepo-com.svg" alt=""></div>
+                        <div>
+                            <div class="font-semibold text-base leading-tight">Elizaveta</div>
+                            <div class="text-[13px] text-gray-500 mt-0.5">Goal: IELTS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-400 text-xs mt-2 md:hidden flex items-center justify-center gap-1">
+                Scroll right <i class="ph ph-arrow-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <h2 class="h2-section mb-6 text-center">Lesson prices</h2>
+        <div class="flex justify-center mb-10 sm:mb-12">
+            <div class="bg-surface p-1 rounded-[8px] inline-flex items-center border border-gray-200">
+                <button id="btn-eur" class="currency-btn currency-active px-5 py-2 rounded-[6px] text-sm font-medium border flex items-center gap-2">
+                    <i class="ph ph-currency-eur text-lg"></i> Euro
+                </button>
+                <button id="btn-rub" class="currency-btn currency-inactive px-5 py-2 rounded-[6px] text-sm font-medium border flex items-center gap-2">
+                    <span class="text-lg leading-none">₽</span> Roubles
+                </button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8 items-start mb-16">
+            <!-- Single lesson -->
+            <div class="bg-white border border-gray-200 p-7 sm:p-8 rounded-[12px] hover-lift flex flex-col h-full order-2 md:order-1 relative">
+                <h3 class="font-medium text-lg sm:text-[20px] mb-2 tracking-tight">Single lesson</h3>
+                <div class="price-display">
+                    <span class="price-val" data-eur="€30" data-rub="2 800 ₽">€30</span>
+                    <span class="price-meta">
+                        <span class="currency-code" data-eur="EUR" data-rub="RUB">EUR</span>
+                        <span>/ hour</span>
+                    </span>
+                </div>
+                <ul class="space-y-4 mb-10 text-[14px] text-gray-600 flex-grow">
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Prepayment only to hold your slot</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Flexible schedule</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Access to Google Drive (100+ textbooks)</li>
+                </ul>
+                <a href="#contact" class="block text-center border border-gray-300 hover:bg-gray-50 text-notion_text btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target">Choose</a>
+            </div>
+            <!-- 10-lesson pack -->
+            <div class="bg-white border-2 border-amber p-7 sm:p-8 rounded-[12px] shadow-sm relative flex flex-col h-full md:scale-105 z-10 order-1 md:order-2">
+                <div class="absolute -top-3.5 right-6 bg-amber text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                    <i class="ph ph-percent"></i> Best value
+                </div>
+                <h3 class="font-medium text-lg sm:text-[20px] mb-2 tracking-tight">10-lesson pack</h3>
+                <div class="price-display">
+                    <span class="price-val" data-eur="€270" data-rub="25 200 ₽">€270</span>
+                    <span class="price-meta">
+                        <span class="currency-code" data-eur="EUR" data-rub="RUB">EUR</span>
+                        <span>/ pack</span>
+                    </span>
+                </div>
+                <ul class="space-y-4 mb-10 text-[14px] text-gray-600 flex-grow">
+                    <li class="flex items-start gap-2.5 font-medium text-notion_text"><i class="ph ph-piggy-bank text-amber text-lg shrink-0 mt-0.5"></i> 10% off — you save the price of one full lesson</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Fixed slots in the schedule</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Access to Google Drive (100+ textbooks)</li>
+                </ul>
+                <a href="#contact" class="block text-center bg-amber hover:bg-amber-hover text-white btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target shadow-sm">Choose pack</a>
+            </div>
+            <!-- Group -->
+            <div class="bg-white border border-gray-200 p-7 sm:p-8 rounded-[12px] hover-lift flex flex-col h-full order-3 md:order-3">
+                <h3 class="font-medium text-lg sm:text-[20px] mb-2 tracking-tight">Group (Waitlist)</h3>
+                <div class="price-display">
+                    <span class="price-val" data-eur="€112" data-rub="9 600 ₽">€112</span>
+                    <span class="price-meta">
+                        <span class="currency-code" data-eur="EUR" data-rub="RUB">EUR</span>
+                        <span>/ 8 lessons</span>
+                    </span>
+                </div>
+                <ul class="space-y-4 mb-10 text-[14px] text-gray-600 flex-grow">
+                    <li class="flex items-start gap-2.5 font-medium text-notion_text"><i class="ph ph-users-three text-amber text-lg shrink-0 mt-0.5"></i> Mini-groups of 4 students</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Interactive course based on Nederlands in Gang</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Starts when the group is full</li>
+                    <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Access to Google Drive (100+ textbooks)</li>
+                </ul>
+                <a href="#waitlist" data-waitlist class="block text-center border border-gray-300 hover:bg-gray-50 text-notion_text btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target">Join waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 fade-in-up w-full">
+        <h2 class="h2-section mb-10 text-center">FAQ</h2>
+        <div class="space-y-3">
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-clock text-amber text-lg"></i> How long is a lesson?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">A standard lesson lasts 60 minutes. For intensive exam preparation, 90-minute sessions are possible; the price is agreed individually.</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-laptop text-amber text-lg"></i> Are lessons online or in person?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">All lessons take place online via Zoom. This allows us to use interactive whiteboards, record sessions for review and study at any convenient time from anywhere in the world.</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-calendar-x text-amber text-lg"></i> How do I cancel or reschedule a lesson?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Cancellation or rescheduling without losing payment is possible no later than 24 hours before the lesson starts. Cancellations with less than 24 hours' notice are charged in full.</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-credit-card text-amber text-lg"></i> How can I pay?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Payment is accepted by direct bank transfer to an IBAN (European account) and via SBP (for Russian bank cards).</p>
+            </details>
+            <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
+                <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center touch-target">
+                    <span class="flex items-center gap-3"><i class="ph ph-book-open text-amber text-lg"></i> Do I need to buy textbooks?</span>
+                    <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg"></i>
+                </summary>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">No purchases needed. All notes, audio, tests and homework are provided digitally via Google Drive. A purchase is only necessary if you personally prefer a physical book, or if your specific goal requires specialist material not yet in my library.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 fade-in-up w-full">
+        <div class="bg-surface rounded-[12px] p-8 sm:p-12 lg:p-[96px] text-center border border-gray-100 shadow-sm relative overflow-hidden">
+            <h2 class="h2-section mb-5 relative z-10">Ready to get started?</h2>
+            <p class="body-text text-gray-600 mb-10 max-w-lg mx-auto text-sm sm:text-base relative z-10">Leave a request and I'll get back to you within the day to find a convenient time for your free intro lesson.</p>
+
+            <div data-fs-success class="hidden max-w-md mx-auto mb-4 rounded-[8px] border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 text-left relative z-10">
+                Thank you! Your request has been sent — I'll be in touch within the day.
+            </div>
+            <div data-fs-error class="hidden max-w-md mx-auto mb-4 rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 text-left relative z-10">
+                Could not send your request. Please write directly: <a href="mailto:info@godutch.ru" class="underline hover:text-red-800">info@godutch.ru</a>
+            </div>
+
+            <form id="contact-form" action="https://formspree.io/f/xzdoqzwv" method="POST" class="max-w-md mx-auto flex flex-col gap-4 text-left w-full relative z-10">
+                <input type="hidden" name="_subject" value="New request Go Dutch EN">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-user text-gray-400 text-lg"></i></div>
+                    <input type="text" name="name" placeholder="Your name" required data-fs-field class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                </div>
+                <div class="relative">
+                    <div class="absolute top-0 left-0 h-[48px] pl-3.5 flex items-center pointer-events-none"><i class="ph ph-telegram-logo text-gray-400 text-lg"></i></div>
+                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                    <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">You can enter your @telegram, email or phone number.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-translate text-gray-400 text-lg"></i></div>
+                    <select name="language" required data-fs-field class="w-full pl-10 pr-10 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm text-gray-600 appearance-none transition-shadow shadow-inner bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"%3E%3Cpath stroke="%23a1a1aa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m6 8 4 4 4-4"/%3E%3C/svg%3E')] bg-[length:20px_20px] bg-[right_12px_center] bg-no-repeat">
+                        <option value="" disabled selected>Which language?</option>
+                        <option value="Dutch">Dutch</option>
+                        <option value="English">English</option>
+                    </select>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-target text-gray-400 text-lg"></i></div>
+                    <input type="text" name="goal" placeholder="Your goal (relocation, exam...)" data-fs-field class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                </div>
+                <button type="submit" data-fs-submit-btn class="w-full bg-amber hover:bg-amber-hover disabled:bg-amber/60 disabled:cursor-wait text-white btn-text py-3 rounded-[8px] transition-colors mt-3 h-[52px] flex items-center justify-center touch-target shadow-sm gap-2">
+                    Send request <i class="ph ph-paper-plane-right"></i>
+                </button>
+            </form>
+            <div class="mt-6 flex flex-col items-center gap-3 relative z-10">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://t.me/larisa_tutor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-amber transition-colors font-medium">
+                        <i class="ph ph-telegram-logo text-amber"></i> Message on Telegram
+                    </a>
+                    <span class="text-gray-300 hidden sm:inline self-center">·</span>
+                    <a href="mailto:info@godutch.ru" class="group inline-flex flex-col items-center gap-0.5 transition-colors font-medium">
+                        <span class="inline-flex items-center gap-2 text-sm text-gray-600 group-hover:text-amber transition-colors">
+                            <i class="ph ph-envelope text-amber"></i> Send email
+                        </span>
+                        <span class="text-[11px] text-gray-400 group-hover:text-amber transition-colors tracking-wide">info@godutch.ru</span>
+                    </a>
+                </div>
+                <p class="text-[12px] text-gray-400 leading-relaxed flex items-center gap-1.5">
+                    <i class="ph ph-lock-key"></i> Your data is protected
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-gray-200 py-12 sm:py-16 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 sm:gap-y-10 text-left">
+            <div class="col-span-1 sm:col-span-2 lg:col-span-1">
+                <div class="font-semibold text-[18px] mb-4 tracking-tight flex items-center gap-2"><i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Larisa Kalugina</div>
+                <p class="text-[14px] text-gray-500 mb-5 leading-relaxed max-w-xs">Individual Dutch and English lessons for life, work and study.</p>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" class="text-[14px] text-gray-500 font-medium flex items-center gap-2 hover:text-amber transition-colors">
+                    <i class="ph ph-telegram-logo text-lg"></i> @godutch_ru
+                </a>
+            </div>
+            <div class="pl-0 sm:pl-8 lg:pl-0">
+                <h4 class="font-semibold text-[14px] mb-5 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-translate"></i> Languages</h4>
+                <ul class="space-y-3.5 text-[14px] text-gray-600">
+                    <li><a href="#languages" class="hover:text-amber transition-colors py-1 block">Dutch from scratch</a></li>
+                    <li><a href="#languages" class="hover:text-amber transition-colors py-1 block">NT2 exam prep</a></li>
+                    <li><a href="#languages" class="hover:text-amber transition-colors py-1 block">Conversational English</a></li>
+                    <li><a href="#languages" class="hover:text-amber transition-colors py-1 block">IELTS / Business</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-[14px] mb-5 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-link"></i> Useful</h4>
+                <ul class="space-y-3.5 text-[14px] text-gray-600">
+                    <li><a href="#about" class="hover:text-amber transition-colors py-1 block">About</a></li>
+                    <li><a href="#method" class="hover:text-amber transition-colors py-1 block">Method</a></li>
+                    <li><a href="#pricing" class="hover:text-amber transition-colors py-1 block">Pricing</a></li>
+                    <li><a href="#reviews" class="hover:text-amber transition-colors py-1 block">Reviews</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-[14px] mb-5 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-file-text"></i> Legal</h4>
+                <ul class="space-y-3.5 text-[14px] text-gray-600">
+                    <li><button type="button" data-doc-open="offer-modal" class="hover:text-amber transition-colors py-1 block text-left">Service agreement</button></li>
+                    <li><button type="button" data-doc-open="privacy-modal" class="hover:text-amber transition-colors py-1 block text-left">Privacy policy</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 mt-6 pt-8 flex flex-col sm:flex-row justify-between items-center text-[13px] text-gray-400 gap-4">
+            <div>© 2026 Larisa Kalugina. All rights reserved.</div>
+            <div class="flex items-center gap-4 text-lg">
+                <a href="https://www.tiktok.com/@godutch_ru?_r=1&_t=ZS-96Krkxs4ReP" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-amber transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                <a href="https://www.youtube.com/@godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="hover:text-amber transition-colors"><i class="ph ph-youtube-logo"></i></a>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="hover:text-amber transition-colors"><i class="ph ph-telegram-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service agreement modal -->
+    <dialog id="offer-modal" class="doc-modal">
+        <div class="doc-modal-inner">
+            <div class="doc-modal-header flex items-center justify-between gap-4 px-5 sm:px-8 py-4">
+                <h2 class="font-semibold text-lg sm:text-xl tracking-tight">Service agreement</h2>
+                <button type="button" data-doc-close class="w-10 h-10 rounded-[8px] border border-gray-200 hover:bg-gray-50 flex items-center justify-center text-gray-500 transition-colors" aria-label="Close">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="doc-content px-5 sm:px-8 py-6 sm:py-8">
+                <h2 class="font-semibold text-xl sm:text-2xl tracking-tight mb-6">PUBLIC OFFER AGREEMENT for information and consulting services</h2>
+                <h3>1. General provisions</h3>
+                <p>1.1. This document constitutes a public offer to enter into an agreement for information and consulting services with any interested individual (the "Client"). The service provider is referred to as the "Tutor".</p>
+                <p>1.2. Full and unconditional acceptance of this offer is effected by the Client paying for services or submitting a request on this website.</p>
+                <p>1.3. The Tutor is not an educational institution and does not issue state-recognised diplomas or certificates. Services are purely of an information and consulting nature (private tutoring).</p>
+                <h3>2. Subject of the agreement</h3>
+                <p>2.1. The Tutor undertakes to provide the Client with individual or group online language lessons, and the Client undertakes to accept and pay for those services.</p>
+                <p>2.2. Schedule, format and pricing are set out on the website and are confirmed by the parties via messenger or email.</p>
+                <h3>3. Rights and obligations</h3>
+                <p>3.1. The Tutor undertakes to: conduct lessons at the agreed time via an online platform; provide the Client with access to necessary learning materials for the duration of the course.</p>
+                <p>3.2. The Client undertakes to: pay for services on time; ensure a stable internet connection and functioning equipment; complete assignments and follow the Tutor's recommendations.</p>
+                <h3>4. Cancellation and rescheduling</h3>
+                <p>4.1. Cancellation or rescheduling of an individual lesson without losing payment is possible no later than 24 hours before the agreed start time.</p>
+                <p>4.2. Cancellations made less than 24 hours before the lesson, or no-shows within 15 minutes of the start time, are charged in full and no refund is issued.</p>
+                <p>4.3. Lesson packs have a limited validity period. Unused lessons after the agreed deadline are forfeited.</p>
+                <h3>5. Payment and refunds</h3>
+                <p>5.1. Services are provided on a 100% prepayment basis (per lesson or per pack), unless otherwise agreed individually.</p>
+                <p>5.2. If the Client withdraws from a lesson pack, the Tutor will refund the balance after deducting the cost of completed lessons (at the single-lesson rate) and any actual expenses incurred.</p>
+                <h3>6. Liability and warranties</h3>
+                <p>6.1. The Tutor is not liable for technical issues on the Client's side (poor internet, broken microphone, etc.) that prevent a lesson from taking place.</p>
+                <p>6.2. The Tutor does not guarantee that the Client will pass any language examination, as results depend on the Client's individual abilities, effort and independent study.</p>
+                <p>6.3. Intellectual property: materials and lesson recordings provided by the Tutor are for the Client's personal use only. Copying, distributing or transferring them to third parties is prohibited.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Privacy policy modal -->
+    <dialog id="privacy-modal" class="doc-modal">
+        <div class="doc-modal-inner">
+            <div class="doc-modal-header flex items-center justify-between gap-4 px-5 sm:px-8 py-4">
+                <h2 class="font-semibold text-lg sm:text-xl tracking-tight">Privacy policy</h2>
+                <button type="button" data-doc-close class="w-10 h-10 rounded-[8px] border border-gray-200 hover:bg-gray-50 flex items-center justify-center text-gray-500 transition-colors" aria-label="Close">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="doc-content px-5 sm:px-8 py-6 sm:py-8">
+                <h2 class="font-semibold text-xl sm:text-2xl tracking-tight mb-6">PERSONAL DATA PROCESSING POLICY</h2>
+                <h3>1. General provisions</h3>
+                <p>1.1. By submitting a request on this website, the User gives unconditional consent to the processing of their personal data in accordance with this Policy.</p>
+                <h3>2. Data we collect</h3>
+                <p>2.1. The following personal data may be processed: name; contact details (phone number, messenger username, email address); any other data voluntarily submitted via the contact form.</p>
+                <h3>3. Purposes of processing</h3>
+                <p>3.1. Personal data is collected solely to: contact the User to clarify details and schedule lessons; provide access to services, information and learning materials; send organisational notifications (lesson links, reminders).</p>
+                <h3>4. Storage and transfer</h3>
+                <p>4.1. Personal data is never transferred to third parties, except where required by applicable law.</p>
+                <p>4.2. The User may withdraw consent at any time by contacting us via available communication channels with the note "Withdrawal of personal data processing consent".</p>
+                <h3>5. Final provisions</h3>
+                <p>5.1. The User may request clarification on any matter relating to the processing of their data by contacting us by email or messenger.</p>
+                <p>5.2. This Policy is effective indefinitely until replaced by a new version. The current version is published on this website.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="https://unpkg.com/libphonenumber-js@1/bundle/libphonenumber-js.min.js"></script>
+
+    <script>
+        // Hero H1 — staggered word reveal
+        (function () {
+            var h1 = document.querySelector('.h1-hero');
+            if (!h1) return;
+            var words = h1.textContent.trim().split(/\s+/);
+            h1.innerHTML = words.map(function (word, i) {
+                return '<span style="display:inline-block;overflow:hidden;vertical-align:bottom">' +
+                    '<span style="display:inline-block;animation:wordReveal 580ms cubic-bezier(0.16,1,0.3,1) both;animation-delay:' +
+                    (100 + i * 65) + 'ms">' + word + '</span></span>';
+            }).join(' ');
+        })();
+
+        // Fade-in-up on scroll
+        const observerOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.count-up').forEach(counter => {
+                        if (!counter.classList.contains('counted')) runCounter(counter);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Count-up animation
+        function runCounter(counterEl) {
+            const target = +counterEl.getAttribute('data-target');
+            let count = 0;
+            const duration = 1500;
+            const increment = target / (duration / 16);
+            const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                    counterEl.innerText = Math.ceil(count);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counterEl.innerText = target;
+                    counterEl.classList.add('counted');
+                }
+            };
+            updateCount();
+        }
+
+        // Count-up gated on first scroll
+        let _userScrolled = false;
+        const _countObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && _userScrolled) {
+                    entry.target.querySelectorAll('.count-up').forEach(counter => {
+                        if (!counter.classList.contains('counted')) runCounter(counter);
+                    });
+                    _countObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.count-up').forEach(el => _countObs.observe(el.closest('section') || el));
+        window.addEventListener('scroll', function() { _userScrolled = true; }, { once: true });
+
+        // Currency switcher (EUR / RUB)
+        const btnEur = document.getElementById('btn-eur');
+        const btnRub = document.getElementById('btn-rub');
+        const priceVals = document.querySelectorAll('.price-val');
+        const currencyCodes = document.querySelectorAll('.currency-code');
+        if(btnEur && btnRub) {
+            const setCurrency = (currency) => {
+                const isEur = currency === 'eur';
+                btnEur.classList.toggle('currency-active', isEur);
+                btnEur.classList.toggle('currency-inactive', !isEur);
+                btnRub.classList.toggle('currency-active', !isEur);
+                btnRub.classList.toggle('currency-inactive', isEur);
+                priceVals.forEach(el => el.classList.add('is-changing'));
+                window.setTimeout(() => {
+                    priceVals.forEach(el => {
+                        el.innerText = el.getAttribute(`data-${currency}`);
+                        el.classList.remove('is-changing');
+                    });
+                    currencyCodes.forEach(el => el.innerText = el.getAttribute(`data-${currency}`));
+                }, 140);
+            };
+            btnEur.addEventListener('click', () => setCurrency('eur'));
+            btnRub.addEventListener('click', () => setCurrency('rub'));
+        }
+
+        // Document modals
+        document.querySelectorAll('[data-doc-open]').forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = document.getElementById(button.getAttribute('data-doc-open'));
+                if (modal) modal.showModal();
+            });
+        });
+        document.querySelectorAll('.doc-modal').forEach(modal => {
+            modal.querySelectorAll('[data-doc-close]').forEach(button => {
+                button.addEventListener('click', () => modal.close());
+            });
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+        });
+
+        // Contact form (Formspree)
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const successMessage = document.querySelector('[data-fs-success]');
+            const errorMessage = document.querySelector('[data-fs-error]');
+            const submitButton = contactForm.querySelector('[data-fs-submit-btn]');
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitButton.disabled = true;
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        successMessage.classList.remove('hidden');
+                        contactForm.reset();
+                    } else {
+                        errorMessage.classList.remove('hidden');
+                        submitButton.disabled = false;
+                    }
+                } catch {
+                    errorMessage.classList.remove('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        // Phone formatting
+        const contactField = document.getElementById('contact-field');
+        if (contactField && window.libphonenumber) {
+            const { parsePhoneNumberFromString } = window.libphonenumber;
+            const groupDigits = (digits, groups) => {
+                let result = '', pos = 0;
+                groups.forEach(size => {
+                    if (pos < digits.length) {
+                        result += (result ? ' ' : '') + digits.slice(pos, pos + size);
+                        pos += size;
+                    }
+                });
+                return result;
+            };
+            contactField.addEventListener('input', function () {
+                const raw = this.value;
+                if (!raw.startsWith('+') && !raw.startsWith('8')) return;
+                const digits = raw.replace(/\D/g, '');
+                if (digits.length < 7) return;
+                let formatted = '';
+                const cc = digits.slice(0, 2);
+                if (cc === '31') { const local = digits.slice(2, 11); formatted = `+31 ${groupDigits(local, [1, 4, 4])}`.trim(); }
+                else if (cc === '32') { const local = digits.slice(2, 11); formatted = `+32 ${groupDigits(local, [3, 2, 2, 2])}`.trim(); }
+                else if (digits[0] === '1') { const local = digits.slice(1, 11); formatted = `+1 ${groupDigits(local, [3, 3, 4])}`.trim(); }
+                else if (cc === '79' || cc === '78' || digits[0] === '7' || digits[0] === '8') {
+                    const local = digits.startsWith('8') ? digits.slice(1, 11) : digits.slice(1, 11);
+                    formatted = groupDigits(local.slice(0, 10), [3, 3, 2, 2]);
+                    if (formatted) formatted = (digits[0] === '8' ? '8' : '+7') + ' ' + formatted;
+                }
+                if (formatted) this.value = formatted;
+            });
+        }
+
+        // Mobile menu
+        const mobBtn  = document.getElementById('mob-menu-btn');
+        const mobMenu = document.getElementById('mob-menu');
+        const mobIcon = document.getElementById('mob-menu-icon');
+        const _mainNav = document.querySelector('nav[class*="sticky"]');
+        if (mobBtn && mobMenu) {
+            function closeMobMenu() {
+                mobMenu.classList.add('hidden');
+                mobIcon.className = 'ph ph-list text-[22px] text-notion_text';
+                mobBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            mobBtn.addEventListener('click', () => {
+                const isOpen = !mobMenu.classList.contains('hidden');
+                if (isOpen) { closeMobMenu(); return; }
+                if (_mainNav) {
+                    mobMenu.style.top = Math.round(_mainNav.getBoundingClientRect().bottom) + 'px';
+                }
+                mobMenu.classList.remove('hidden');
+                mobIcon.className = 'ph ph-x text-[22px] text-notion_text';
+                mobBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            });
+            document.querySelectorAll('.mob-nav-link').forEach(l => l.addEventListener('click', closeMobMenu));
+            window.addEventListener('resize', () => { if (window.innerWidth >= 1024) closeMobMenu(); });
+        }
+
+        // Carousel auto-scroll
+        (function initCarouselAutoScroll() {
+            const car = document.getElementById('carousel');
+            if (!car) return;
+            requestAnimationFrame(function () {
+                if (car.scrollWidth <= car.clientWidth + 4) return;
+                const cards = Array.from(car.children);
+                const INTERVAL = 3500;
+                const RESUME   = 2500;
+                let timer = null;
+                let resumeTimer = null;
+                function currentIndex() {
+                    const mid = car.scrollLeft + car.clientWidth / 2;
+                    let best = 0, minDist = Infinity;
+                    cards.forEach(function (c, i) {
+                        const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+                        if (d < minDist) { minDist = d; best = i; }
+                    });
+                    return best;
+                }
+                function goTo(idx) {
+                    const c = cards[idx];
+                    if (c) car.scrollTo({ left: c.offsetLeft, behavior: 'smooth' });
+                }
+                function advance() { goTo((currentIndex() + 1) % cards.length); }
+                function startAuto() { clearInterval(timer); timer = setInterval(advance, INTERVAL); }
+                function stopAuto() { clearInterval(timer); timer = null; }
+                function onStart() { stopAuto(); clearTimeout(resumeTimer); }
+                function onEnd()   { clearTimeout(resumeTimer); resumeTimer = setTimeout(startAuto, RESUME); }
+                car.addEventListener('touchstart', onStart, { passive: true });
+                car.addEventListener('touchend',   onEnd,   { passive: true });
+                car.addEventListener('mousedown',  onStart);
+                car.addEventListener('mouseup',    onEnd);
+                startAuto();
+            });
+        })();
+
+        // Carousel drag (desktop)
+        const carousel = document.getElementById('carousel');
+        let isDown = false, startX, scrollLeft;
+        if (carousel) {
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                carousel.classList.add('cursor-grabbing');
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+            carousel.addEventListener('mouseleave', () => { isDown = false; carousel.classList.remove('cursor-grabbing'); });
+            carousel.addEventListener('mouseup', () => { isDown = false; carousel.classList.remove('cursor-grabbing'); });
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // Waitlist prefill
+        (function () {
+            function prefillWaitlist() {
+                var goal = document.querySelector('input[name="goal"]');
+                if (goal && !goal.value) goal.value = 'Group lesson';
+            }
+            function scrollToContact() {
+                var sec = document.getElementById('contact');
+                if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            }
+            document.querySelectorAll('[data-waitlist]').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    prefillWaitlist();
+                    scrollToContact();
+                    history.replaceState(null, '', '#waitlist');
+                });
+            });
+            document.querySelectorAll('a[href="#contact"]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    var goal = document.querySelector('input[name="goal"]');
+                    if (goal) goal.value = '';
+                });
+            });
+            if (location.hash === '#waitlist') {
+                prefillWaitlist();
+                setTimeout(scrollToContact, 120);
+            }
+        })();
+    </script>
+<script src="../transitions.js" defer></script>
+<div id="cookie-banner" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;background:#fff;border:1px solid #E5E7EB;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:12px 18px;display:none;align-items:center;gap:12px;font-family:Inter,sans-serif;font-size:13px;color:#6B7280;opacity:0;transition:opacity 350ms ease;max-width:calc(100vw - 32px);white-space:nowrap">
+  <span>This site uses cookies</span>
+  <button id="cookie-accept" style="background:#C77D3A;color:#fff;border:none;padding:7px 15px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:Inter,sans-serif;flex-shrink:0;transition:background 150ms">Accept</button>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('cookie_ok')) return;
+  var b = document.getElementById('cookie-banner');
+  b.style.display = 'flex';
+  setTimeout(function(){ b.style.opacity = '1'; }, 600);
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('cookie_ok','1');
+    b.style.opacity = '0';
+    setTimeout(function(){ b.style.display = 'none'; }, 360);
+  });
+  document.getElementById('cookie-accept').addEventListener('mouseover', function(){ this.style.background='#A86528'; });
+  document.getElementById('cookie-accept').addEventListener('mouseout',  function(){ this.style.background='#C77D3A'; });
+})();
+</script>
+</body>
+</html>
