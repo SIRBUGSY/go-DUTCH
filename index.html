@@ -1407,6 +1407,12 @@
                     history.replaceState(null, '', '#waitlist');
                 });
             });
+            document.querySelectorAll('a[href="#contact"]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    var goal = document.querySelector('input[name="goal"]');
+                    if (goal) goal.value = '';
+                });
+            });
             if (location.hash === '#waitlist') {
                 prefillWaitlist();
                 setTimeout(scrollToContact, 120);
