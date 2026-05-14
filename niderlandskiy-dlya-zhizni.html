@@ -85,5 +85,24 @@
     <p>© 2026 Лариса Калугина — <a href="/">Go Dutch</a> · Индивидуальные уроки нидерландского онлайн</p>
 </footer>
 <script src="transitions.js" defer></script>
+<div id="cookie-banner" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;background:#fff;border:1px solid #E5E7EB;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:12px 18px;display:none;align-items:center;gap:12px;font-family:Inter,sans-serif;font-size:13px;color:#6B7280;opacity:0;transition:opacity 350ms ease;max-width:calc(100vw - 32px);white-space:nowrap">
+  <span>Сайт использует файлы cookie</span>
+  <button id="cookie-accept" style="background:#C77D3A;color:#fff;border:none;padding:7px 15px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:Inter,sans-serif;flex-shrink:0;transition:background 150ms">Согласен</button>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('cookie_ok')) return;
+  var b = document.getElementById('cookie-banner');
+  b.style.display = 'flex';
+  setTimeout(function(){ b.style.opacity = '1'; }, 600);
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('cookie_ok','1');
+    b.style.opacity = '0';
+    setTimeout(function(){ b.style.display = 'none'; }, 360);
+  });
+  document.getElementById('cookie-accept').addEventListener('mouseover', function(){ this.style.background='#A86528'; });
+  document.getElementById('cookie-accept').addEventListener('mouseout',  function(){ this.style.background='#C77D3A'; });
+})();
+</script>
 </body>
 </html>
