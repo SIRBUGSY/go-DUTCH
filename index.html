@@ -257,6 +257,12 @@
             padding-left: 18px;
             list-style: disc;
         }
+
+        /* Hero H1 word reveal */
+        @keyframes wordReveal {
+            from { transform: translateY(110%); opacity: 0; }
+            to   { transform: translateY(0);   opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-white font-sans overflow-x-hidden w-full">
@@ -1000,6 +1006,18 @@
 
     <!-- Скрипты -->
     <script>
+        // Hero H1 — staggered word reveal
+        (function () {
+            var h1 = document.querySelector('.h1-hero');
+            if (!h1) return;
+            var words = h1.textContent.trim().split(/\s+/);
+            h1.innerHTML = words.map(function (word, i) {
+                return '<span style="display:inline-block;overflow:hidden;vertical-align:bottom">' +
+                    '<span style="display:inline-block;animation:wordReveal 580ms cubic-bezier(0.16,1,0.3,1) both;animation-delay:' +
+                    (100 + i * 65) + 'ms">' + word + '</span></span>';
+            }).join(' ');
+        })();
+
         // Анимация появления при скролле (Fade-in-up)
         const observerOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries, observer) => {
