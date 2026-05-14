@@ -275,9 +275,9 @@
 <body class="bg-white font-sans overflow-x-hidden w-full">
 
     <!-- 1. Промо-баннер -->
-    <div class="bg-surface border-b border-gray-200 text-center py-2 px-4 btn-text text-gray-600 text-xs sm:text-sm flex items-center justify-center gap-2">
+    <a href="#waitlist" data-waitlist class="bg-surface border-b border-gray-200 text-center py-2 px-4 btn-text text-gray-600 text-xs sm:text-sm flex items-center justify-center gap-2 hover:text-amber transition-colors">
         <i class="ph ph-sparkle text-amber"></i> Waitlist открыт для групповых занятий — осталось 3 места
-    </div>
+    </a>
 
     <!-- 2. Sticky-навигация -->
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full transition-all duration-200">
@@ -748,7 +748,7 @@
                     <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Старт при наборе группы</li>
                     <li class="flex items-start gap-2.5"><i class="ph ph-check text-amber text-lg shrink-0 mt-0.5"></i> Доступ к Google Drive (50+ учебников)</li>
                 </ul>
-                <a href="#contact" class="block text-center border border-gray-300 hover:bg-gray-50 text-notion_text btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target">Встать в waitlist</a>
+                <a href="#waitlist" data-waitlist class="block text-center border border-gray-300 hover:bg-gray-50 text-notion_text btn-text w-full py-2.5 rounded-[8px] transition-colors h-[44px] flex items-center justify-center touch-target">Встать в waitlist</a>
             </div>
         </div>
     </section>
@@ -1337,47 +1337,77 @@
             window.addEventListener('resize', () => { if (window.innerWidth >= 1024) closeMobMenu(); });
         }
 
-        // Бесконечная прокрутка отзывов на мобильном
+        // Авто-прокрутка карусели отзывов (когда карточки не помещаются)
         (function initCarouselAutoScroll() {
-            if (window.innerWidth >= 768) return;
             const car = document.getElementById('carousel');
             if (!car) return;
+            requestAnimationFrame(function () {
+                if (car.scrollWidth <= car.clientWidth + 4) return; // всё влезает — не нужно
 
-            // Убираем snap (мешает плавной прокрутке)
-            car.classList.remove('snap-x', 'snap-mandatory');
-            car.querySelectorAll('.snap-center, .snap-start').forEach(el => el.classList.remove('snap-center', 'snap-start'));
+                const cards = Array.from(car.children);
+                const INTERVAL = 3500;
+                const RESUME   = 2500;
+                let timer = null;
+                let resumeTimer = null;
 
-            // Скрываем подсказку "Прокрутите вправо"
-            const hint = document.querySelector('#reviews .md\\:hidden');
-            if (hint) hint.style.display = 'none';
-
-            requestAnimationFrame(() => {
-                const origWidth = car.scrollWidth;
-                // Клонируем карточки для бесшовного зацикливания
-                Array.from(car.children).forEach(c => car.appendChild(c.cloneNode(true)));
-
-                let paused = false;
-                let resumeTimer;
-                const SPEED = 0.5;
-
-                function tick() {
-                    if (!paused) {
-                        car.scrollLeft += SPEED;
-                        if (car.scrollLeft >= origWidth) car.scrollLeft -= origWidth;
-                    }
-                    requestAnimationFrame(tick);
+                function currentIndex() {
+                    const mid = car.scrollLeft + car.clientWidth / 2;
+                    let best = 0, minDist = Infinity;
+                    cards.forEach(function (c, i) {
+                        const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+                        if (d < minDist) { minDist = d; best = i; }
+                    });
+                    return best;
                 }
 
-                car.addEventListener('touchstart', () => {
-                    paused = true;
-                    clearTimeout(resumeTimer);
-                }, { passive: true });
-                car.addEventListener('touchend', () => {
-                    resumeTimer = setTimeout(() => { paused = false; }, 1500);
-                }, { passive: true });
+                function goTo(idx) {
+                    const c = cards[idx];
+                    if (c) car.scrollTo({ left: c.offsetLeft, behavior: 'smooth' });
+                }
 
-                requestAnimationFrame(tick);
+                function advance() { goTo((currentIndex() + 1) % cards.length); }
+
+                function startAuto() {
+                    clearInterval(timer);
+                    timer = setInterval(advance, INTERVAL);
+                }
+
+                function stopAuto() { clearInterval(timer); timer = null; }
+
+                function onStart() { stopAuto(); clearTimeout(resumeTimer); }
+                function onEnd()   { clearTimeout(resumeTimer); resumeTimer = setTimeout(startAuto, RESUME); }
+
+                car.addEventListener('touchstart', onStart, { passive: true });
+                car.addEventListener('touchend',   onEnd,   { passive: true });
+                car.addEventListener('mousedown',  onStart);
+                car.addEventListener('mouseup',    onEnd);
+
+                startAuto();
             });
+        })();
+
+        // Waitlist prefill
+        (function () {
+            function prefillWaitlist() {
+                var goal = document.querySelector('input[name="goal"]');
+                if (goal && !goal.value) goal.value = 'Групповое занятие';
+            }
+            function scrollToContact() {
+                var sec = document.getElementById('contact');
+                if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            }
+            document.querySelectorAll('[data-waitlist]').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    prefillWaitlist();
+                    scrollToContact();
+                    history.replaceState(null, '', '#waitlist');
+                });
+            });
+            if (location.hash === '#waitlist') {
+                prefillWaitlist();
+                setTimeout(scrollToContact, 120);
+            }
         })();
     </script>
 <script src="transitions.js" defer></script>
