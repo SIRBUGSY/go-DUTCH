@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест уровня нидерландского за 10 минут | go DUTCH</title>
+    <meta name="description" content="Адаптивный онлайн-тест go DUTCH поможет за 10 минут определить ориентировочный уровень нидерландского A0-B2 и получить понятный диагностический профиль.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://godutch.ru/test-niderlandskogo.html">
+    <link rel="canonical" href="https://godutch.ru/test-niderlandskogo.html">
+    <meta property="og:title" content="Тест уровня нидерландского за 10 минут">
+    <meta property="og:description" content="Проверьте грамматику, лексику и чтение. Результат A0-B2 сразу на экране, без регистрации.">
+    <meta property="og:image" content="https://godutch.ru/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Тест уровня нидерландского за 10 минут">
+    <meta name="twitter:image" content="https://godutch.ru/og-image.jpg">
+    <link rel="alternate" hreflang="ru" href="https://godutch.ru/test-niderlandskogo.html">
+    <link rel="alternate" hreflang="x-default" href="https://godutch.ru/test-niderlandskogo.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="transitions.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { DEFAULT: '#C77D3A', hover: '#A86528', light: '#E8B97A' },
+                        navy: '#1F2D3D',
+                        surface: '#F7F7F5',
+                        mint: '#EBF5ED',
+                        peach: '#FCEFE8',
+                        rose: '#FBECEF',
+                        lavender: '#F1EBF5',
+                        sky: '#E8F3F8',
+                        notion_text: '#37352F'
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    boxShadow: {
+                        mockup: '0 24px 48px -8px rgba(15,15,15,0.25)',
+                        soft: '0 18px 45px -28px rgba(31,45,61,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body { color: #37352F; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; }
+        .touch-target { min-height: 44px; min-width: 44px; }
+        .btn-text { font-size: 14px; font-weight: 500; }
+        .h1-hero {
+            font-weight: 600;
+            line-height: 1.08;
+            letter-spacing: -0.6px;
+            font-size: clamp(34px, 10vw, 76px);
+        }
+        .h2-section {
+            font-weight: 600;
+            line-height: 1.14;
+            letter-spacing: -0.5px;
+            font-size: clamp(28px, 7vw, 52px);
+        }
+        .quiz-card {
+            border: 1px solid rgba(31,45,61,0.1);
+            box-shadow: 0 20px 60px -42px rgba(31,45,61,0.55);
+        }
+        .answer-btn {
+            transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+        }
+        .answer-btn:hover { border-color: rgba(199,125,58,0.45); background: #FFFBF7; }
+        .answer-btn:active { transform: scale(0.992); }
+        .answer-btn.is-selected {
+            border-color: #C77D3A;
+            background: #FCEFE8;
+            box-shadow: inset 0 0 0 1px rgba(199,125,58,0.25);
+        }
+        .fade-panel {
+            opacity: 1;
+            transform: translateY(0);
+            animation: panelIn 220ms ease-out both;
+        }
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .bg-grid {
+            background-image: radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-panel { animation: none; }
+            .answer-btn { transition: none; }
+        }
+        @media (max-width: 360px) {
+            .xs-tight { padding-left: 14px; padding-right: 14px; }
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WPRVBVDXD3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WPRVBVDXD3');
+      gtag('config', 'GT-KFLHWCGT');
+    </script>
+</head>
+<body class="bg-white font-sans overflow-x-hidden w-full">
+    <a href="index.html#waitlist" class="bg-surface border-b border-gray-200 text-center py-2 px-4 btn-text text-gray-600 text-xs sm:text-sm flex items-center justify-center gap-2 hover:text-amber transition-colors">
+        <i class="ph ph-sparkle text-amber"></i> Waitlist открыт для групповых занятий - осталось 3 места
+    </a>
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full">
+        <div class="flex items-center gap-8 min-w-0">
+            <a href="index.html" class="font-semibold text-[18px] tracking-tight touch-target flex items-center gap-2 shrink-0">
+                <i class="ph ph-chalkboard-teacher text-amber text-xl"></i> <span class="truncate">Лариса Калугина</span>
+            </a>
+            <div class="hidden lg:flex gap-6 btn-text text-gray-500">
+                <a href="index.html#about" class="hover:text-notion_text transition-colors">О репетиторе</a>
+                <a href="index.html#languages" class="hover:text-notion_text transition-colors">Языки</a>
+                <a href="test-niderlandskogo.html" class="text-amber font-semibold">Тест уровня</a>
+                <a href="index.html#method" class="hover:text-notion_text transition-colors">Методика</a>
+                <a href="index.html#pricing" class="hover:text-notion_text transition-colors">Цены</a>
+                <a href="index.html#reviews" class="hover:text-notion_text transition-colors">Отзывы</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+            <div class="hidden lg:flex items-center gap-1 mr-2">
+                <a href="https://www.tiktok.com/@godutch_ru?_r=1&_t=ZS-96Krkxs4ReP" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-tiktok-logo"></i></a>
+                <a href="https://www.youtube.com/@godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-youtube-logo"></i></a>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-telegram-logo"></i></a>
+            </div>
+            <a href="index.html#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-4 py-2 rounded-[8px] transition-colors h-[44px] flex items-center justify-center gap-2 shadow-sm">
+                <i class="ph ph-calendar-plus text-[16px]"></i> <span class="hidden sm:inline">Пробный урок</span>
+            </a>
+        </div>
+    </nav>
+
+    <header class="bg-navy text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid opacity-70" aria-hidden="true"></div>
+        <div class="absolute -left-20 top-20 h-56 w-56 rounded-full bg-amber/20 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute right-[-80px] bottom-[-80px] h-64 w-64 rounded-full bg-sky/15 blur-3xl" aria-hidden="true"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 grid lg:grid-cols-[1.02fr_0.98fr] gap-10 lg:gap-14 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm text-white/85 mb-6">
+                    <i class="ph ph-chart-line-up text-amber-light"></i> Адаптивная диагностика A0-B2
+                </div>
+                <h1 class="h1-hero max-w-4xl mb-5">Тест уровня нидерландского за 10 минут</h1>
+                <p class="text-[16px] sm:text-lg leading-relaxed text-white/78 max-w-2xl mb-8">Проверьте грамматику, лексику и чтение. Тест подстраивается под ответы и сразу показывает ориентировочный уровень, сильные зоны и следующий шаг.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="#quiz" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] flex items-center justify-center gap-2">
+                        Начать тест <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a href="index.html#contact" class="border border-white/25 hover:bg-white/10 text-white btn-text px-6 py-3 rounded-[8px] h-[48px] flex items-center justify-center gap-2">
+                        <i class="ph ph-chat-circle-text"></i> Сразу на разбор
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white text-notion_text rounded-[12px] p-4 sm:p-6 shadow-mockup border border-white/20">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-5">
+                    <div class="flex gap-1.5">
+                        <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    </div>
+                    <span class="text-xs sm:text-sm text-gray-400 flex items-center gap-1.5"><i class="ph ph-brain"></i> go DUTCH Test</span>
+                </div>
+                <div class="grid gap-3">
+                    <div class="flex items-center gap-3 rounded-[8px] border border-gray-100 bg-gray-50 p-3">
+                        <div class="w-10 h-10 rounded-[8px] bg-peach text-amber flex items-center justify-center shrink-0"><i class="ph ph-timer text-xl"></i></div>
+                        <div>
+                            <p class="font-semibold">8-10 минут</p>
+                            <p class="text-sm text-gray-500">до 18 вопросов, один вопрос на экран</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 rounded-[8px] border border-gray-100 bg-gray-50 p-3">
+                        <div class="w-10 h-10 rounded-[8px] bg-mint text-emerald-700 flex items-center justify-center shrink-0"><i class="ph ph-sliders-horizontal text-xl"></i></div>
+                        <div>
+                            <p class="font-semibold">Адаптивная сложность</p>
+                            <p class="text-sm text-gray-500">вопросы усложняются или упрощаются по ходу</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 rounded-[8px] border border-gray-100 bg-gray-50 p-3">
+                        <div class="w-10 h-10 rounded-[8px] bg-sky text-sky-700 flex items-center justify-center shrink-0"><i class="ph ph-file-text text-xl"></i></div>
+                        <div>
+                            <p class="font-semibold">Диагностический профиль</p>
+                            <p class="text-sm text-gray-500">уровень, уверенность результата и план первых уроков</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="quiz" class="py-10 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div id="quiz-app" class="quiz-card bg-white rounded-[12px] overflow-hidden">
+                    <div class="bg-surface border-b border-gray-100 px-4 sm:px-6 py-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+                            <div>
+                                <p id="step-kicker" class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Старт</p>
+                                <p id="step-title" class="text-lg sm:text-xl font-semibold text-notion_text">Готовы начать?</p>
+                            </div>
+                            <div id="quiz-meta" class="flex flex-wrap gap-2 text-xs text-gray-500"></div>
+                        </div>
+                        <div class="h-2 rounded-full bg-gray-200 overflow-hidden">
+                            <div id="progress-bar" class="h-full w-0 bg-amber rounded-full transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <div id="screen" class="p-4 sm:p-6 lg:p-8 min-h-[420px]">
+                        <div class="grid lg:grid-cols-[1fr_0.8fr] gap-8 items-center">
+                            <div>
+                                <h2 class="h2-section mb-4">Умная диагностика без регистрации</h2>
+                                <p class="text-gray-600 text-[16px] sm:text-lg leading-relaxed mb-5">Сначала будет два вопроса о вашем опыте, затем тест подберет задания по грамматике, лексике и чтению. После ответа правильный вариант не показывается, чтобы результат был чище.</p>
+                                <div class="grid sm:grid-cols-3 gap-3 mb-7">
+                                    <div class="rounded-[10px] bg-peach p-4">
+                                        <i class="ph ph-brain text-amber text-2xl"></i>
+                                        <p class="font-semibold mt-2">Адаптивно</p>
+                                    </div>
+                                    <div class="rounded-[10px] bg-mint p-4">
+                                        <i class="ph ph-chart-pie-slice text-emerald-700 text-2xl"></i>
+                                        <p class="font-semibold mt-2">По навыкам</p>
+                                    </div>
+                                    <div class="rounded-[10px] bg-sky p-4">
+                                        <i class="ph ph-target text-sky-700 text-2xl"></i>
+                                        <p class="font-semibold mt-2">С планом</p>
+                                    </div>
+                                </div>
+                                <button type="button" id="static-start-test" class="w-full sm:w-auto bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">
+                                    Начать тест <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="rounded-[12px] border border-gray-100 bg-surface p-5">
+                                <p class="text-xs uppercase tracking-wider font-semibold text-gray-400 mb-4">Что будет в результате</p>
+                                <ul class="space-y-3 text-gray-600">
+                                    <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Ориентировочный уровень CEFR: A0, A1, A2, B1 или B2.</span></li>
+                                    <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Уверенность результата: низкая, средняя или высокая.</span></li>
+                                    <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Профиль по грамматике, лексике и чтению.</span></li>
+                                    <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Что делать на первых 3-4 уроках.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs sm:text-sm text-gray-400 mt-5 leading-relaxed max-w-2xl mx-auto">Результат является предварительной диагностикой, а не официальной сертификацией CEFR. Он помогает понять стартовую точку и выбрать траекторию занятий.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface border-t border-gray-200 py-10 sm:py-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left">
+            <div>
+                <div class="font-semibold text-[18px] mb-4 tracking-tight flex items-center gap-2"><i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Лариса Калугина</div>
+                <p class="text-[14px] text-gray-500 leading-relaxed max-w-xs">Индивидуальные уроки нидерландского и английского языков для жизни, работы и учебы.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-link"></i> Полезное</h4>
+                <ul class="space-y-2 text-[14px] text-gray-600">
+                    <li><a href="index.html#about" class="hover:text-amber transition-colors py-2 block">О репетиторе</a></li>
+                    <li><a href="index.html#pricing" class="hover:text-amber transition-colors py-2 block">Стоимость</a></li>
+                    <li><a href="test-niderlandskogo.html" class="hover:text-amber transition-colors py-2 block">Тест уровня</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-telegram-logo"></i> Контакт</h4>
+                <a href="https://t.me/godutch_ru" target="_blank" rel="noopener noreferrer" class="text-[14px] text-gray-500 font-medium inline-flex min-h-[44px] items-center gap-2 hover:text-amber transition-colors">
+                    <i class="ph ph-telegram-logo text-lg"></i> @godutch_ru
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 mt-8 pt-6 text-[12px] text-gray-400">
+            © 2026 Лариса Калугина. Все права защищены.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/libphonenumber-js@1.11.7/bundle/libphonenumber-min.js" defer></script>
+    <script src="transitions.js" defer></script>
+    <script>
+    const LEVELS = ['A0', 'A1', 'A2', 'B1', 'B2'];
+    const SKILL_LABELS = { grammar: 'Грамматика', vocab: 'Лексика', reading: 'Чтение' };
+    const MAX_QUESTIONS = 18;
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdoqzwv';
+    const STORAGE_KEY = 'godutch-level-test-v1';
+    const CERTIFICATE_BRAND = {
+        site: 'godutch.ru',
+        teacher: 'Лариса Калугина',
+        telegram: '@godutch_ru',
+        youtube: 'youtube.com/@godutch_ru',
+        tiktok: 'tiktok.com/@godutch_ru'
+    };
+
+    const SELF_ASSESSMENT = [
+        {
+            id: 'experience',
+            title: 'Сколько нидерландского уже было в вашей жизни?',
+            note: 'Это поможет тесту начать с адекватной сложности.',
+            options: [
+                { label: 'Почти с нуля', value: 'A0', hint: 'Знаю отдельные слова или только планирую начать.' },
+                { label: 'База A1', value: 'A1', hint: 'Могу представиться, читать простые фразы.' },
+                { label: 'Примерно A2', value: 'A2', hint: 'Понимаю бытовые темы, но говорю с трудом.' },
+                { label: 'Уже был B1+', value: 'B1', hint: 'Читаю письма, могу объяснить мнение, хочу точнее.' }
+            ]
+        },
+        {
+            id: 'goal',
+            title: 'Для чего вам нужен нидерландский сейчас?',
+            note: 'После результата я покажу более точную рекомендацию.',
+            options: [
+                { label: 'Жизнь и быт в Нидерландах', value: 'Жизнь и быт' },
+                { label: 'Inburgeringsexamen / Nt2', value: 'Inburgeringsexamen / Nt2' },
+                { label: 'Работа, документы, Gemeente', value: 'Работа и документы' },
+                { label: 'Школа, дети, учеба', value: 'Школа и учеба' }
+            ]
+        }
+    ];
+
+    const QUESTION_BANK = [
+        { id: 'a0-g-01', level: 'A0', skill: 'grammar', prompt: 'Выберите правильный вариант:', context: 'Ik ___ Larisa.', options: ['ben', 'is', 'heb', 'zijn'], answer: 0 },
+        { id: 'a0-g-02', level: 'A0', skill: 'grammar', prompt: 'Какой порядок слов звучит естественно?', context: 'Я живу в Амстердаме.', options: ['Ik woon in Amsterdam.', 'Woon ik in Amsterdam.', 'Ik in Amsterdam woon.', 'Amsterdam woon ik in.'], answer: 0 },
+        { id: 'a0-g-03', level: 'A0', skill: 'grammar', prompt: 'Выберите правильный артикль:', context: '___ huis', options: ['de', 'het', 'een de', 'hij'], answer: 1 },
+        { id: 'a0-v-01', level: 'A0', skill: 'vocab', prompt: 'Что значит "goedemorgen"?', options: ['Доброе утро', 'До свидания', 'Спасибо', 'Извините'], answer: 0 },
+        { id: 'a0-v-02', level: 'A0', skill: 'vocab', prompt: 'Как сказать "спасибо"?', options: ['alsjeblieft', 'dank je', 'sorry', 'tot ziens'], answer: 1 },
+        { id: 'a0-v-03', level: 'A0', skill: 'vocab', prompt: 'Какой вариант означает "я"?', options: ['jij', 'wij', 'ik', 'zij'], answer: 2 },
+        { id: 'a0-r-01', level: 'A0', skill: 'reading', prompt: 'Прочитайте: "Ik kom uit Rusland." Что это значит?', options: ['Я из России', 'Я живу в России', 'Я еду в Россию', 'Я говорю по-русски'], answer: 0 },
+        { id: 'a0-r-02', level: 'A0', skill: 'reading', prompt: 'Прочитайте: "De les begint om negen uur." Когда начинается урок?', options: ['в 7:00', 'в 8:00', 'в 9:00', 'в 10:00'], answer: 2 },
+        { id: 'a0-r-03', level: 'A0', skill: 'reading', prompt: 'Прочитайте: "Mijn naam is Anna." Что сообщает человек?', options: ['возраст', 'имя', 'адрес', 'профессию'], answer: 1 },
+
+        { id: 'a1-g-01', level: 'A1', skill: 'grammar', prompt: 'Выберите правильную форму:', context: 'Wij ___ Nederlands.', options: ['spreekt', 'spreken', 'spreek', 'spreekt niet'], answer: 1 },
+        { id: 'a1-g-02', level: 'A1', skill: 'grammar', prompt: 'Как задать вопрос?', context: 'Jij werkt vandaag.', options: ['Werk jij vandaag?', 'Jij werkt vandaag?', 'Vandaag jij werkt?', 'Werkt vandaag jij?'], answer: 0 },
+        { id: 'a1-g-03', level: 'A1', skill: 'grammar', prompt: 'Выберите правильный вариант отрицания:', context: 'Ik heb ___ auto.', options: ['niet', 'geen', 'nee', 'niets'], answer: 1 },
+        { id: 'a1-v-01', level: 'A1', skill: 'vocab', prompt: 'Что значит "boodschappen doen"?', options: ['делать покупки', 'делать домашку', 'идти на работу', 'готовить ужин'], answer: 0 },
+        { id: 'a1-v-02', level: 'A1', skill: 'vocab', prompt: 'Какое слово подходит к теме "здоровье"?', options: ['rekening', 'afspraak', 'koorts', 'woning'], answer: 2 },
+        { id: 'a1-v-03', level: 'A1', skill: 'vocab', prompt: 'Что означает "links"?', options: ['право', 'лево', 'прямо', 'рядом'], answer: 1 },
+        { id: 'a1-r-01', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "De winkel is vandaag gesloten." Что верно?', options: ['магазин открыт', 'магазин сегодня закрыт', 'магазин далеко', 'магазин новый'], answer: 1 },
+        { id: 'a1-r-02', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "U kunt hier pinnen." Что можно сделать?', options: ['оплатить картой', 'записаться к врачу', 'взять номерок', 'получить посылку'], answer: 0 },
+        { id: 'a1-r-03', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "Neem lijn 5 naar het station." Что нужно сделать?', options: ['взять автобус/трамвай 5 до станции', 'выйти на пятой остановке', 'купить пять билетов', 'подождать пять минут'], answer: 0 },
+
+        { id: 'a2-g-01', level: 'A2', skill: 'grammar', prompt: 'Выберите правильный perfectum:', context: 'Gisteren ___ ik naar de dokter ___.', options: ['ben / gaan', 'heb / gegaan', 'ben / gegaan', 'ga / gegaan'], answer: 2 },
+        { id: 'a2-g-02', level: 'A2', skill: 'grammar', prompt: 'Как правильно поставить отделяемый глагол?', context: 'Ik bel mijn collega morgen ___.', options: ['op', 'aan', 'uit', 'mee'], answer: 0 },
+        { id: 'a2-g-03', level: 'A2', skill: 'grammar', prompt: 'Выберите правильную конструкцию с omdat:', context: 'Ik blijf thuis, omdat...', options: ['ik ziek ben', 'ben ik ziek', 'ik ben ziek', 'ziek ik ben'], answer: 0 },
+        { id: 'a2-v-01', level: 'A2', skill: 'vocab', prompt: 'Что ближе всего к "een afspraak verzetten"?', options: ['назначить встречу', 'перенести встречу', 'отменить договор', 'оплатить счет'], answer: 1 },
+        { id: 'a2-v-02', level: 'A2', skill: 'vocab', prompt: 'Что значит "huurtoeslag"?', options: ['пособие на аренду', 'налог на машину', 'школьные каникулы', 'медицинская страховка'], answer: 0 },
+        { id: 'a2-v-03', level: 'A2', skill: 'vocab', prompt: 'Какое слово обычно связано с Gemeente?', options: ['paspoort', 'boodschap', 'recept', 'vakantie'], answer: 0 },
+        { id: 'a2-r-01', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "Uw aanvraag is ontvangen. Binnen vijf werkdagen krijgt u bericht." Что произойдет?', options: ['заявку отклонили', 'ответ придет в течение пяти рабочих дней', 'нужно прийти сегодня', 'нужно оплатить штраф'], answer: 1 },
+        { id: 'a2-r-02', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "Bij verhindering graag 24 uur van tevoren afmelden." Что просят сделать?', options: ['сообщить об отмене за 24 часа', 'прийти на 24 минуты раньше', 'оплатить за 24 часа', 'заполнить форму 24 раза'], answer: 0 },
+        { id: 'a2-r-03', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "De monteur komt tussen 12.00 en 14.00 uur." Что важно?', options: ['мастер придет утром', 'мастер придет между 12 и 14', 'мастер отменил визит', 'нужно позвонить после 14'], answer: 1 },
+
+        { id: 'b1-g-01', level: 'B1', skill: 'grammar', prompt: 'Выберите наиболее естественный вариант:', context: 'Als ik meer tijd had, ___ ik vaker Nederlands oefenen.', options: ['zal', 'zou', 'ben', 'heb'], answer: 1 },
+        { id: 'b1-g-02', level: 'B1', skill: 'grammar', prompt: 'Какой вариант правильно соединяет две мысли?', context: 'Ik wil solliciteren. Ik moet mijn cv verbeteren.', options: ['Ik wil solliciteren, daarom moet ik mijn cv verbeteren.', 'Ik wil solliciteren, omdat moet ik mijn cv verbeteren.', 'Daarom ik moet mijn cv verbeteren.', 'Ik wil solliciteren, want moet mijn cv verbeteren.'], answer: 0 },
+        { id: 'b1-g-03', level: 'B1', skill: 'grammar', prompt: 'Выберите правильное место глагола в придаточном предложении:', context: 'Ik weet niet of...', options: ['hij morgen kan komen', 'kan hij morgen komen', 'hij kan morgen komen', 'morgen kan hij komen'], answer: 0 },
+        { id: 'b1-v-01', level: 'B1', skill: 'vocab', prompt: 'Что значит "een misverstand voorkomen"?', options: ['исправить ошибку', 'предотвратить недопонимание', 'ускорить процесс', 'запросить документ'], answer: 1 },
+        { id: 'b1-v-02', level: 'B1', skill: 'vocab', prompt: 'Какое слово лучше всего подходит для официального письма?', context: '___ ontvang ik graag uw reactie.', options: ['Hoi', 'Alvast bedankt,', 'Doei,', 'Lekker,'], answer: 1 },
+        { id: 'b1-v-03', level: 'B1', skill: 'vocab', prompt: 'Что означает "voorwaarden"?', options: ['условия', 'сроки', 'иски', 'подписи'], answer: 0 },
+        { id: 'b1-r-01', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "Wij verzoeken u het formulier uiterlijk vrijdag in te dienen." Что нужно сделать?', options: ['подать форму не позднее пятницы', 'запросить форму в пятницу', 'исправить форму после пятницы', 'принести форму лично'], answer: 0 },
+        { id: 'b1-r-02', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "Hoewel de afspraak bevestigd was, bleek de locatie gewijzigd." Что произошло?', options: ['встречу отменили', 'место встречи изменилось, хотя встреча была подтверждена', 'время встречи перенесли', 'подтверждение не пришло'], answer: 1 },
+        { id: 'b1-r-03', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "De werkgever verwacht dat kandidaten zelfstandig kunnen werken." Что ожидают?', options: ['готовность работать ночью', 'самостоятельность', 'водительские права', 'опыт продаж'], answer: 1 },
+
+        { id: 'b2-g-01', level: 'B2', skill: 'grammar', prompt: 'Выберите вариант с наиболее точной формулировкой:', context: 'Er wordt verwacht dat de aanvraag...', options: ['op tijd wordt ingediend', 'op tijd indient', 'wordt op tijd indienen', 'ingediend op tijd wordt'], answer: 0 },
+        { id: 'b2-g-02', level: 'B2', skill: 'grammar', prompt: 'Какой вариант лучше передает уступку?', context: '___ de regels ingewikkeld zijn, is de procedure haalbaar.', options: ['Omdat', 'Hoewel', 'Daardoor', 'Zodat'], answer: 1 },
+        { id: 'b2-g-03', level: 'B2', skill: 'grammar', prompt: 'Выберите естественный вариант с "er":', context: 'Ik reken ___ niet op dat alles vanzelf goed komt.', options: ['er', 'het', 'daar', 'hem'], answer: 0 },
+        { id: 'b2-v-01', level: 'B2', skill: 'vocab', prompt: 'Что ближе всего к "de doorslag geven"?', options: ['решить исход дела', 'дать объяснение', 'сделать исключение', 'отложить решение'], answer: 0 },
+        { id: 'b2-v-02', level: 'B2', skill: 'vocab', prompt: 'Какой вариант звучит наиболее нейтрально-делово?', context: 'Ik wil laten weten dat ik het niet eens ben met de beslissing.', options: ['Ik maak bezwaar tegen de beslissing.', 'Ik vind dit echt stom.', 'Jullie hebben geen gelijk.', 'Dat slaat nergens op.'], answer: 0 },
+        { id: 'b2-v-03', level: 'B2', skill: 'vocab', prompt: 'Что означает "in aanmerking komen voor"?', options: ['иметь право/подходить для', 'сомневаться в', 'отказываться от', 'зависеть от'], answer: 0 },
+        { id: 'b2-r-01', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "Indien de vereiste documenten ontbreken, kan de behandeling van uw dossier vertraging oplopen." Что следует из текста?', options: ['без документов рассмотрение может задержаться', 'документы больше не нужны', 'дело уже закрыто', 'задержка невозможна'], answer: 0 },
+        { id: 'b2-r-02', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "De regeling is niet van toepassing op aanvragers die korter dan zes maanden ingeschreven staan." Кто не подпадает под правило?', options: ['те, кто зарегистрирован меньше шести месяцев', 'все заявители старше шести месяцев', 'только работающие заявители', 'те, кто уже получил ответ'], answer: 0 },
+        { id: 'b2-r-03', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "De auteur nuanceert zijn standpunt door zowel voordelen als beperkingen te benoemen." Что делает автор?', options: ['смягчает позицию, называя плюсы и ограничения', 'полностью отказывается от позиции', 'повторяет только преимущества', 'критикует читателя'], answer: 0 },
+
+        { id: 'a0-g-04', level: 'A0', skill: 'grammar', prompt: 'Выберите правильное местоимение:', context: '___ woon in Utrecht.', options: ['Ik', 'Jij', 'Hij', 'Wij'], answer: 0 },
+        { id: 'a0-g-05', level: 'A0', skill: 'grammar', prompt: 'Выберите правильную форму:', context: 'Zij ___ Anna.', options: ['ben', 'bent', 'is', 'zijn'], answer: 2 },
+        { id: 'a0-v-04', level: 'A0', skill: 'vocab', prompt: 'Что значит "water"?', options: ['вода', 'работа', 'дом', 'улица'], answer: 0 },
+        { id: 'a0-v-05', level: 'A0', skill: 'vocab', prompt: 'Как сказать "до свидания"?', options: ['tot ziens', 'goedkoop', 'vandaag', 'waarom'], answer: 0 },
+        { id: 'a0-r-04', level: 'A0', skill: 'reading', prompt: 'Прочитайте: "Ik heb een fiets." Что есть у человека?', options: ['машина', 'велосипед', 'дом', 'собака'], answer: 1 },
+        { id: 'a0-r-05', level: 'A0', skill: 'reading', prompt: 'Прочитайте: "De school is dichtbij." Что сказано о школе?', options: ['она далеко', 'она рядом', 'она закрыта', 'она новая'], answer: 1 },
+
+        { id: 'a1-g-04', level: 'A1', skill: 'grammar', prompt: 'Выберите правильную форму глагола:', context: 'Hij ___ koffie.', options: ['drink', 'drinkt', 'drinken', 'gedronken'], answer: 1 },
+        { id: 'a1-g-05', level: 'A1', skill: 'grammar', prompt: 'Выберите правильный вопрос:', context: 'Она живет в Роттердаме?', options: ['Woont zij in Rotterdam?', 'Zij woont in Rotterdam?', 'Wonen zij in Rotterdam?', 'In Rotterdam zij woont?'], answer: 0 },
+        { id: 'a1-g-06', level: 'A1', skill: 'grammar', prompt: 'Выберите правильный вариант:', context: 'Ik ga ___ supermarkt.', options: ['naar de', 'op de', 'in het', 'van de'], answer: 0 },
+        { id: 'a1-v-04', level: 'A1', skill: 'vocab', prompt: 'Что значит "huisarts"?', options: ['семейный врач', 'учитель', 'арендодатель', 'сосед'], answer: 0 },
+        { id: 'a1-v-05', level: 'A1', skill: 'vocab', prompt: 'Что означает "rekening"?', options: ['счет', 'урок', 'улица', 'вопрос'], answer: 0 },
+        { id: 'a1-v-06', level: 'A1', skill: 'vocab', prompt: 'Какое слово относится к транспорту?', options: ['tram', 'kaas', 'brief', 'toets'], answer: 0 },
+        { id: 'a1-r-04', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "De afspraak is om half drie." Во сколько встреча?', options: ['в 2:30', 'в 3:30', 'в 1:30', 'в 12:30'], answer: 0 },
+        { id: 'a1-r-05', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "Bel ons morgen terug." Что нужно сделать?', options: ['перезвонить завтра', 'прийти завтра', 'написать сегодня', 'подождать звонка'], answer: 0 },
+        { id: 'a1-r-06', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "Uw kind is ziek gemeld." Что произошло?', options: ['ребенка отметили заболевшим', 'ребенок получил оценку', 'ребенка записали в кружок', 'ребенок опоздал'], answer: 0 },
+        { id: 'a1-r-07', level: 'A1', skill: 'reading', prompt: 'Прочитайте: "De trein vertrekt vanaf spoor 4." Откуда отправляется поезд?', options: ['с платформы 4', 'в 4 часа', 'через 4 минуты', 'из вагона 4'], answer: 0 },
+
+        { id: 'a2-g-04', level: 'A2', skill: 'grammar', prompt: 'Выберите правильный вариант с модальным глаголом:', context: 'Ik ___ morgen vroeg opstaan.', options: ['moet', 'moeten', 'moest', 'gemoet'], answer: 0 },
+        { id: 'a2-g-05', level: 'A2', skill: 'grammar', prompt: 'Выберите правильный perfectum:', context: 'We ___ de formulieren online ___.', options: ['hebben / ingevuld', 'zijn / ingevuld', 'hebben / invullen', 'vullen / in'], answer: 0 },
+        { id: 'a2-g-06', level: 'A2', skill: 'grammar', prompt: 'Выберите правильное придаточное предложение:', context: 'Ik kom later, omdat...', options: ['de bus vertraging heeft', 'heeft de bus vertraging', 'de bus heeft vertraging', 'vertraging de bus heeft'], answer: 0 },
+        { id: 'a2-g-07', level: 'A2', skill: 'grammar', prompt: 'Выберите правильный вариант:', context: 'Morgen ___ ik mijn huur betalen.', options: ['moet', 'heb', 'ben', 'wordt'], answer: 0 },
+        { id: 'a2-v-04', level: 'A2', skill: 'vocab', prompt: 'Что значит "inschrijven"?', options: ['зарегистрироваться', 'отменить', 'переехать', 'пожаловаться'], answer: 0 },
+        { id: 'a2-v-05', level: 'A2', skill: 'vocab', prompt: 'Что значит "op tijd"?', options: ['вовремя', 'слишком поздно', 'временно', 'по очереди'], answer: 0 },
+        { id: 'a2-v-06', level: 'A2', skill: 'vocab', prompt: 'Что ближе всего к "een klacht indienen"?', options: ['подать жалобу', 'получить скидку', 'заполнить расписание', 'назначить урок'], answer: 0 },
+        { id: 'a2-v-07', level: 'A2', skill: 'vocab', prompt: 'Что означает "bewijs"?', options: ['доказательство/подтверждение', 'аренда', 'перерыв', 'сосед'], answer: 0 },
+        { id: 'a2-r-04', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "Uw pakket is bij de buren afgeleverd." Что произошло?', options: ['посылку доставили соседям', 'посылку потеряли', 'посылку вернули отправителю', 'посылку нужно оплатить'], answer: 0 },
+        { id: 'a2-r-05', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "De les gaat vandaag niet door wegens ziekte van de docent." Что случилось?', options: ['урок отменен из-за болезни преподавателя', 'урок перенесли в другое здание', 'ученик заболел', 'урок начинается раньше'], answer: 0 },
+        { id: 'a2-r-06', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "U hoeft geen afspraak te maken; u kunt gewoon langskomen." Что можно сделать?', options: ['прийти без записи', 'обязательно записаться', 'только позвонить', 'отправить письмо'], answer: 0 },
+        { id: 'a2-r-07', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "De betaling is mislukt. Probeer het later opnieuw." Что произошло?', options: ['оплата не прошла', 'оплата прошла успешно', 'счет закрыт', 'деньги вернули'], answer: 0 },
+        { id: 'a2-r-08', level: 'A2', skill: 'reading', prompt: 'Прочитайте: "Neem uw identiteitsbewijs mee naar de afspraak." Что нужно взять?', options: ['документ, удостоверяющий личность', 'медицинскую страховку', 'договор аренды', 'учебник'], answer: 0 },
+
+        { id: 'b1-g-04', level: 'B1', skill: 'grammar', prompt: 'Выберите правильный вариант с "toen":', context: '___ ik in Groningen woonde, fietste ik elke dag.', options: ['Toen', 'Als', 'Omdat', 'Dus'], answer: 0 },
+        { id: 'b1-g-05', level: 'B1', skill: 'grammar', prompt: 'Выберите наиболее естественный вариант:', context: 'Ik heb geen tijd, ___ ik morgen een examen heb.', options: ['omdat', 'daarom', 'want ik', 'hoewel'], answer: 0 },
+        { id: 'b1-g-06', level: 'B1', skill: 'grammar', prompt: 'Как правильно продолжить?', context: 'Het is belangrijk dat je...', options: ['op tijd komt', 'komt op tijd', 'op tijd kom je', 'jij komt op tijd'], answer: 0 },
+        { id: 'b1-g-07', level: 'B1', skill: 'grammar', prompt: 'Выберите правильную форму:', context: 'De brief ___ gisteren verstuurd.', options: ['is', 'heeft', 'wordt', 'gaat'], answer: 0 },
+        { id: 'b1-v-04', level: 'B1', skill: 'vocab', prompt: 'Что значит "uitstellen"?', options: ['отложить', 'подписать', 'подтвердить', 'обсудить'], answer: 0 },
+        { id: 'b1-v-05', level: 'B1', skill: 'vocab', prompt: 'Что означает "toelichting"?', options: ['пояснение', 'назначение', 'штраф', 'срок действия'], answer: 0 },
+        { id: 'b1-v-06', level: 'B1', skill: 'vocab', prompt: 'Что ближе всего к "beschikbaar"?', options: ['доступный/свободный', 'обязательный', 'временный', 'официальный'], answer: 0 },
+        { id: 'b1-v-07', level: 'B1', skill: 'vocab', prompt: 'Какое слово лучше для делового письма?', context: 'Kunt u dit document ___?', options: ['bevestigen', 'bellen', 'doen', 'lekker maken'], answer: 0 },
+        { id: 'b1-r-04', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "Omdat de levering vertraagd is, ontvangt u tijdelijk een vervangend product." Что произошло?', options: ['доставка задержалась, поэтому временно дадут замену', 'товар отменили навсегда', 'покупатель отказался от заказа', 'замена оказалась неисправной'], answer: 0 },
+        { id: 'b1-r-05', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "De school adviseert ouders om het gesprek met de mentor voor vrijdag in te plannen." Что советует школа?', options: ['запланировать разговор с наставником до пятницы', 'отменить встречу с наставником', 'прийти всем родителям в пятницу', 'написать жалобу наставнику'], answer: 0 },
+        { id: 'b1-r-06', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "Na controle bleek dat er een fout in het adres stond." Что выяснилось?', options: ['в адресе была ошибка', 'проверка еще не началась', 'адрес подтвердили', 'письмо отправили повторно'], answer: 0 },
+        { id: 'b1-r-07', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "De gemeente heeft uw bezwaar ontvangen, maar vraagt om aanvullende informatie." Что происходит?', options: ['жалобу получили, но просят доп. информацию', 'жалобу отклонили окончательно', 'информации достаточно', 'нужно прийти без записи'], answer: 0 },
+        { id: 'b1-r-08', level: 'B1', skill: 'reading', prompt: 'Прочитайте: "Hoewel de kandidaat weinig ervaring had, maakte hij een overtuigende indruk." Какой вывод?', options: ['опыта было мало, но впечатление было убедительным', 'кандидат не пришел', 'опыта было много, но впечатление плохое', 'решение уже принято'], answer: 0 },
+
+        { id: 'b2-g-04', level: 'B2', skill: 'grammar', prompt: 'Выберите наиболее точную конструкцию:', context: 'De beslissing kan pas worden genomen nadat...', options: ['alle documenten zijn gecontroleerd', 'zijn alle documenten gecontroleerd', 'alle documenten gecontroleerd zijn geworden', 'gecontroleerd alle documenten zijn'], answer: 0 },
+        { id: 'b2-g-05', level: 'B2', skill: 'grammar', prompt: 'Выберите естественное продолжение:', context: 'Niet alleen de kosten, maar ook de voorwaarden...', options: ['spelen een rol', 'speelt een rol', 'een rol spelen', 'rol spelen een'], answer: 0 },
+        { id: 'b2-g-06', level: 'B2', skill: 'grammar', prompt: 'Какой вариант звучит наиболее формально и правильно?', context: 'Wij verzoeken u...', options: ['de ontbrekende gegevens aan te leveren', 'u levert de gegevens ontbrekend', 'aanleveren de ontbrekende gegevens', 'dat u levert gegevens'], answer: 0 },
+        { id: 'b2-g-07', level: 'B2', skill: 'grammar', prompt: 'Выберите правильную конструкцию с "desondanks":', context: 'De aanvraag was onvolledig. ___ werd zij in behandeling genomen.', options: ['Desondanks', 'Omdat', 'Zodat', 'Tenzij'], answer: 0 },
+        { id: 'b2-v-04', level: 'B2', skill: 'vocab', prompt: 'Что значит "naar aanleiding van"?', options: ['в связи с / по поводу', 'несмотря на', 'вместо', 'при условии'], answer: 0 },
+        { id: 'b2-v-05', level: 'B2', skill: 'vocab', prompt: 'Что означает "onderbouwen"?', options: ['обосновать', 'прекратить', 'ускорить', 'перевести деньги'], answer: 0 },
+        { id: 'b2-v-06', level: 'B2', skill: 'vocab', prompt: 'Что ближе всего к "vooralsnog"?', options: ['пока что', 'обязательно', 'раньше срока', 'наоборот'], answer: 0 },
+        { id: 'b2-v-07', level: 'B2', skill: 'vocab', prompt: 'Как лучше перевести "de afweging"?', options: ['взвешивание факторов / оценка', 'отказ', 'приглашение', 'нарушение'], answer: 0 },
+        { id: 'b2-r-04', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "Hoewel de aanvraag tijdig is ingediend, ontbreekt een essentieel bewijsstuk, waardoor de beoordeling wordt opgeschort." Что произошло?', options: ['заявку подали вовремя, но без важного документа, поэтому оценку приостановили', 'заявку подали поздно и сразу отклонили', 'документы приняли без проверки', 'оценку завершили быстрее обычного'], answer: 0 },
+        { id: 'b2-r-05', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "De werkgever benadrukt dat flexibiliteit gewenst is, maar dat structureel overwerken niet de bedoeling is." Что имеется в виду?', options: ['гибкость желательна, но постоянные переработки не предполагаются', 'переработки обязательны каждый день', 'гибкость не нужна', 'работа только временная'], answer: 0 },
+        { id: 'b2-r-06', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "De commissie erkent de bezwaren, maar acht de voorgestelde oplossing onvoldoende uitvoerbaar." Какой вывод?', options: ['возражения признали, но решение сочли недостаточно осуществимым', 'возражения полностью отвергли', 'решение уже внедрили', 'комиссия не изучала вопрос'], answer: 0 },
+        { id: 'b2-r-07', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "Pas nadat de huurder meerdere herinneringen had ontvangen, werd de betalingsregeling getroffen." Что произошло сначала?', options: ['арендатор получил несколько напоминаний', 'сразу договорились о рассрочке', 'аренду отменили', 'долг списали'], answer: 0 },
+        { id: 'b2-r-08', level: 'B2', skill: 'reading', prompt: 'Прочитайте: "De tekst suggereert dat taalvaardigheid niet alleen een praktische, maar ook een sociale voorwaarde voor integratie is." Что утверждает текст?', options: ['язык важен не только практически, но и социально для интеграции', 'язык нужен только для экзамена', 'интеграция не связана с общением', 'социальные связи важнее языка'], answer: 0 }
+    ];
+
+    const state = {
+        screen: 'start',
+        selfIndex: 0,
+        self: {},
+        currentLevelIndex: 1,
+        question: null,
+        questionNumber: 0,
+        selected: null,
+        answers: [],
+        usedIds: new Set(),
+        streakCorrect: 0,
+        missesByLevel: {},
+        skillCursor: 0,
+        result: null
+    };
+
+    const screenEl = document.getElementById('screen');
+    const progressBar = document.getElementById('progress-bar');
+    const stepTitle = document.getElementById('step-title');
+    const stepKicker = document.getElementById('step-kicker');
+    const quizMeta = document.getElementById('quiz-meta');
+
+    function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, function (char) {
+            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[char];
+        });
+    }
+
+    function levelIndex(level) {
+        return LEVELS.indexOf(level);
+    }
+
+    function hashString(value) {
+        let hash = 2166136261;
+        for (let i = 0; i < value.length; i += 1) {
+            hash ^= value.charCodeAt(i);
+            hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+        }
+        return hash >>> 0;
+    }
+
+    function prepareQuestion(question, ordinal) {
+        const choices = question.options.map(function (text, index) {
+            return { text: text, originalIndex: index };
+        }).sort(function (a, b) {
+            return hashString(question.id + ':' + ordinal + ':' + a.text) - hashString(question.id + ':' + ordinal + ':' + b.text);
+        });
+        return Object.assign({}, question, {
+            options: choices.map(function (choice) { return choice.text; }),
+            answer: choices.findIndex(function (choice) { return choice.originalIndex === question.answer; })
+        });
+    }
+
+    function randomFrom(items) {
+        if (!items.length) return null;
+        return items[Math.floor(Math.random() * items.length)];
+    }
+
+    function leastCoveredSkill() {
+        const totals = { grammar: 0, vocab: 0, reading: 0 };
+        state.answers.forEach(function (answer) {
+            totals[answer.skill] += 1;
+        });
+        const ordered = ['grammar', 'vocab', 'reading'].sort(function (a, b) {
+            if (totals[a] !== totals[b]) return totals[a] - totals[b];
+            return (state.skillCursor + ['grammar', 'vocab', 'reading'].indexOf(a)) % 3 - (state.skillCursor + ['grammar', 'vocab', 'reading'].indexOf(b)) % 3;
+        });
+        return ordered[0];
+    }
+
+    function saveProgress() {
+        if (state.screen === 'result') return;
+        try {
+            window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+                screen: state.screen,
+                selfIndex: state.selfIndex,
+                self: state.self,
+                currentLevelIndex: state.currentLevelIndex,
+                questionId: state.question ? state.question.id : null,
+                questionNumber: state.questionNumber,
+                answers: state.answers,
+                usedIds: Array.from(state.usedIds),
+                streakCorrect: state.streakCorrect,
+                missesByLevel: state.missesByLevel,
+                skillCursor: state.skillCursor
+            }));
+        } catch (error) {}
+    }
+
+    function loadProgress() {
+        try {
+            const raw = window.sessionStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function clearProgress() {
+        try { window.sessionStorage.removeItem(STORAGE_KEY); } catch (error) {}
+    }
+
+    function restoreProgress(saved) {
+        if (!saved) return false;
+        state.screen = saved.screen || 'self';
+        state.selfIndex = saved.selfIndex || 0;
+        state.self = saved.self || {};
+        state.currentLevelIndex = typeof saved.currentLevelIndex === 'number' ? saved.currentLevelIndex : 1;
+        state.questionNumber = saved.questionNumber || 0;
+        state.answers = Array.isArray(saved.answers) ? saved.answers : [];
+        state.usedIds = new Set(Array.isArray(saved.usedIds) ? saved.usedIds : []);
+        state.streakCorrect = saved.streakCorrect || 0;
+        state.missesByLevel = saved.missesByLevel || {};
+        state.skillCursor = saved.skillCursor || 0;
+        state.question = saved.questionId ? QUESTION_BANK.find(function (q) { return q.id === saved.questionId; }) : null;
+        if (state.question) state.question = prepareQuestion(state.question, state.questionNumber || 1);
+        if (state.screen === 'question' && state.question) renderQuestion();
+        else if (state.screen === 'self') renderSelfAssessment();
+        else renderStart();
+        return true;
+    }
+
+    function setHeader(kicker, title, progress, metaItems) {
+        stepKicker.textContent = kicker;
+        stepTitle.textContent = title;
+        progressBar.style.width = Math.max(0, Math.min(100, progress)) + '%';
+        quizMeta.innerHTML = (metaItems || []).map(function (item) {
+            return `<span class="inline-flex items-center gap-1 rounded-full bg-white border border-gray-200 px-2.5 py-1"><i class="ph ${item.icon} text-amber"></i>${escapeHtml(item.text)}</span>`;
+        }).join('');
+    }
+
+    function renderStart() {
+        state.screen = 'start';
+        const saved = loadProgress();
+        const canResume = saved && (saved.questionNumber > 0 || saved.self && (saved.self.experience || saved.self.goal));
+        setHeader('Старт', 'Готовы начать?', 0, [
+            { icon: 'ph-timer', text: '8-10 минут' },
+            { icon: 'ph-list-checks', text: 'A0-B2' },
+            { icon: 'ph-eye', text: 'ответы не показываются во время теста' }
+        ]);
+        screenEl.innerHTML = `
+            <div class="fade-panel grid lg:grid-cols-[1fr_0.8fr] gap-8 items-center">
+                <div>
+                    <h2 class="h2-section mb-4">Умная диагностика без регистрации</h2>
+                    <p class="text-gray-600 text-[16px] sm:text-lg leading-relaxed mb-5">Сначала будет два вопроса о вашем опыте, затем тест подберет задания по грамматике, лексике и чтению. После ответа правильный вариант не показывается, чтобы результат был чище.</p>
+                    <div class="grid sm:grid-cols-3 gap-3 mb-7">
+                        <div class="rounded-[10px] bg-peach p-4">
+                            <i class="ph ph-brain text-amber text-2xl"></i>
+                            <p class="font-semibold mt-2">Адаптивно</p>
+                        </div>
+                        <div class="rounded-[10px] bg-mint p-4">
+                            <i class="ph ph-chart-pie-slice text-emerald-700 text-2xl"></i>
+                            <p class="font-semibold mt-2">По навыкам</p>
+                        </div>
+                        <div class="rounded-[10px] bg-sky p-4">
+                            <i class="ph ph-target text-sky-700 text-2xl"></i>
+                            <p class="font-semibold mt-2">С планом</p>
+                        </div>
+                    </div>
+                    <button type="button" id="start-test" class="w-full sm:w-auto bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">
+                        Начать тест <i class="ph ph-arrow-right"></i>
+                    </button>
+                    ${canResume ? `
+                        <button type="button" id="resume-test" class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-3 border border-gray-300 hover:border-amber hover:text-amber text-notion_text btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">
+                            <i class="ph ph-clock-counter-clockwise"></i> Продолжить
+                        </button>
+                    ` : ''}
+                </div>
+                <div class="rounded-[12px] border border-gray-100 bg-surface p-5">
+                    <p class="text-xs uppercase tracking-wider font-semibold text-gray-400 mb-4">Что будет в результате</p>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Ориентировочный уровень CEFR: A0, A1, A2, B1 или B2.</span></li>
+                        <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Уверенность результата: низкая, средняя или высокая.</span></li>
+                        <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Профиль по грамматике, лексике и чтению.</span></li>
+                        <li class="flex gap-3"><i class="ph ph-check text-amber mt-1"></i><span>Что делать на первых 3-4 уроках.</span></li>
+                    </ul>
+                </div>
+            </div>
+        `;
+        document.getElementById('start-test').addEventListener('click', function () {
+            state.screen = 'self';
+            state.selfIndex = 0;
+            state.self = {};
+            clearProgress();
+            renderSelfAssessment();
+        });
+        const resume = document.getElementById('resume-test');
+        if (resume) resume.addEventListener('click', function () { restoreProgress(saved); });
+    }
+
+    function renderSelfAssessment() {
+        const item = SELF_ASSESSMENT[state.selfIndex];
+        setHeader('Настройка теста', item.title, state.selfIndex === 0 ? 6 : 12, [
+            { icon: 'ph-sliders-horizontal', text: `${state.selfIndex + 1} из ${SELF_ASSESSMENT.length}` }
+        ]);
+        screenEl.innerHTML = `
+            <div class="fade-panel">
+                <p class="text-gray-500 text-[15px] sm:text-base mb-5">${escapeHtml(item.note)}</p>
+                <div class="grid gap-3">
+                    ${item.options.map(function (option, index) {
+                        return `
+                            <button type="button" class="self-option answer-btn text-left rounded-[10px] border border-gray-200 p-4 sm:p-5 min-h-[64px]" data-index="${index}">
+                                <span class="font-semibold text-[16px] sm:text-lg">${escapeHtml(option.label)}</span>
+                                ${option.hint ? `<span class="block text-sm text-gray-500 mt-1 leading-relaxed">${escapeHtml(option.hint)}</span>` : ''}
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+        document.querySelectorAll('.self-option').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const option = item.options[Number(button.dataset.index)];
+                state.self[item.id] = option.value;
+                state.screen = 'self';
+                if (item.id === 'experience') {
+                    state.currentLevelIndex = Math.max(0, Math.min(4, levelIndex(option.value)));
+                }
+                if (state.selfIndex < SELF_ASSESSMENT.length - 1) {
+                    state.selfIndex += 1;
+                    saveProgress();
+                    renderSelfAssessment();
+                } else {
+                    saveProgress();
+                    startQuestions();
+                }
+            });
+        });
+    }
+
+    function startQuestions() {
+        state.questionNumber = 0;
+        state.answers = [];
+        state.usedIds = new Set();
+        state.streakCorrect = 0;
+        state.missesByLevel = {};
+        state.skillCursor = 0;
+        state.result = null;
+        state.screen = 'question';
+        saveProgress();
+        pickNextQuestion();
+    }
+
+    function chooseQuestion() {
+        const preferredSkill = leastCoveredSkill();
+        const preferredLevel = LEVELS[state.currentLevelIndex];
+        const unused = QUESTION_BANK.filter(function (q) { return !state.usedIds.has(q.id); });
+        let pool = unused.filter(function (q) { return q.level === preferredLevel && q.skill === preferredSkill; });
+        if (!pool.length) pool = unused.filter(function (q) { return q.level === preferredLevel; });
+        if (!pool.length) {
+            pool = unused.filter(function (q) {
+                return Math.abs(levelIndex(q.level) - state.currentLevelIndex) <= 1 && q.skill === preferredSkill;
+            });
+        }
+        if (!pool.length) pool = unused;
+        return randomFrom(pool);
+    }
+
+    function pickNextQuestion() {
+        if (state.questionNumber >= MAX_QUESTIONS) {
+            showResult();
+            return;
+        }
+        const next = chooseQuestion();
+        if (!next) {
+            showResult();
+            return;
+        }
+        state.question = prepareQuestion(next, state.questionNumber + 1);
+        state.selected = null;
+        state.questionNumber += 1;
+        state.usedIds.add(next.id);
+        state.skillCursor += 1;
+        state.screen = 'question';
+        saveProgress();
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        const q = state.question;
+        const progress = 12 + (state.questionNumber / MAX_QUESTIONS) * 76;
+        setHeader('Вопрос ' + state.questionNumber + ' из ' + MAX_QUESTIONS, q.prompt, progress, [
+            { icon: 'ph-chart-line', text: q.level },
+            { icon: q.skill === 'grammar' ? 'ph-text-aa' : q.skill === 'vocab' ? 'ph-cards' : 'ph-book-open-text', text: SKILL_LABELS[q.skill] }
+        ]);
+        screenEl.innerHTML = `
+            <div class="fade-panel">
+                ${q.context ? `<div class="rounded-[10px] bg-surface border border-gray-100 p-4 sm:p-5 text-[20px] sm:text-2xl font-semibold leading-relaxed mb-5">${escapeHtml(q.context)}</div>` : ''}
+                <div class="grid gap-3" role="radiogroup" aria-label="Варианты ответа">
+                    ${q.options.map(function (option, index) {
+                        return `
+                            <button type="button" class="answer-option answer-btn text-left rounded-[10px] border border-gray-200 px-4 py-4 sm:px-5 min-h-[56px] text-[16px] sm:text-lg leading-relaxed" data-index="${index}" role="radio" aria-checked="false">
+                                <span class="inline-flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-gray-100 text-gray-500 text-sm flex items-center justify-center shrink-0">${String.fromCharCode(65 + index)}</span>
+                                    <span>${escapeHtml(option)}</span>
+                                </span>
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mt-7">
+                    <button type="button" id="restart-test" class="text-gray-500 hover:text-amber btn-text h-[44px] px-4 rounded-[8px] inline-flex items-center justify-center gap-2">
+                        <i class="ph ph-arrow-counter-clockwise"></i> Начать заново
+                    </button>
+                    <button type="button" id="confirm-answer" disabled class="bg-gray-200 text-gray-400 btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2 disabled:cursor-not-allowed">
+                        Далее <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        document.querySelectorAll('.answer-option').forEach(function (button) {
+            button.addEventListener('click', function () {
+                state.selected = Number(button.dataset.index);
+                document.querySelectorAll('.answer-option').forEach(function (btn) {
+                    btn.classList.remove('is-selected');
+                    btn.setAttribute('aria-checked', 'false');
+                });
+                button.classList.add('is-selected');
+                button.setAttribute('aria-checked', 'true');
+                const confirm = document.getElementById('confirm-answer');
+                confirm.disabled = false;
+                confirm.className = 'bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2';
+            });
+        });
+        document.getElementById('confirm-answer').addEventListener('click', submitAnswer);
+        document.getElementById('restart-test').addEventListener('click', function () {
+            clearProgress();
+            renderStart();
+        });
+    }
+
+    function submitAnswer() {
+        if (state.selected === null) return;
+        const q = state.question;
+        const correct = state.selected === q.answer;
+        state.answers.push({
+            id: q.id,
+            level: q.level,
+            skill: q.skill,
+            correct: correct,
+            selected: q.options[state.selected],
+            expected: q.options[q.answer]
+        });
+        if (correct) {
+            state.streakCorrect += 1;
+            if (state.streakCorrect >= 2 && state.currentLevelIndex < LEVELS.length - 1) {
+                state.currentLevelIndex += 1;
+                state.streakCorrect = 0;
+            }
+        } else {
+            state.streakCorrect = 0;
+            state.missesByLevel[q.level] = (state.missesByLevel[q.level] || 0) + 1;
+            if (state.missesByLevel[q.level] >= 2 && state.currentLevelIndex > 0) {
+                state.currentLevelIndex -= 1;
+            }
+        }
+        window.setTimeout(pickNextQuestion, 120);
+    }
+
+    function calculateResult() {
+        const answers = state.answers;
+        const perSkill = { grammar: { ok: 0, total: 0 }, vocab: { ok: 0, total: 0 }, reading: { ok: 0, total: 0 } };
+        const perLevel = {};
+        let weightedOk = 0;
+        let weightedTotal = 0;
+        answers.forEach(function (answer) {
+            const weight = levelIndex(answer.level) + 1;
+            weightedTotal += weight;
+            if (answer.correct) weightedOk += weight;
+            perSkill[answer.skill].total += 1;
+            if (answer.correct) perSkill[answer.skill].ok += 1;
+            perLevel[answer.level] = perLevel[answer.level] || { ok: 0, total: 0 };
+            perLevel[answer.level].total += 1;
+            if (answer.correct) perLevel[answer.level].ok += 1;
+        });
+        const weightedPercent = weightedTotal ? weightedOk / weightedTotal : 0;
+        let scoreLevel = 'A0';
+        if (weightedPercent >= 0.79) scoreLevel = 'B2';
+        else if (weightedPercent >= 0.62) scoreLevel = 'B1';
+        else if (weightedPercent >= 0.45) scoreLevel = 'A2';
+        else if (weightedPercent >= 0.26) scoreLevel = 'A1';
+
+        let highestEvidence = 'A0';
+        LEVELS.forEach(function (level) {
+            const stat = perLevel[level];
+            if (stat && stat.total >= 2 && stat.ok / stat.total >= 0.6) highestEvidence = level;
+        });
+        const cappedIndex = Math.min(levelIndex(scoreLevel), Math.min(levelIndex(highestEvidence) + 1, 4));
+        const level = LEVELS[Math.max(0, cappedIndex)];
+        const coveredSkills = Object.values(perSkill).filter(function (s) { return s.total > 0; }).length;
+        const confidence = answers.length >= 16 && coveredSkills === 3 ? 'high' : answers.length >= 10 ? 'medium' : 'low';
+        const profile = {};
+        Object.keys(perSkill).forEach(function (skill) {
+            const stat = perSkill[skill];
+            const pct = stat.total ? stat.ok / stat.total : 0;
+            profile[skill] = {
+                percent: Math.round(pct * 100),
+                status: pct >= 0.7 ? 'сильная зона' : pct >= 0.45 ? 'рабочая зона' : 'зона роста'
+            };
+        });
+        return { level, confidence, profile, weightedPercent: Math.round(weightedPercent * 100), answers };
+    }
+
+    function recommendationFor(level, goal, weakestSkill) {
+        const map = {
+            A0: 'Начать с A1 foundation: произношение, базовые фразы, порядок слов и словарь для бытовых ситуаций.',
+            A1: 'Закрепить A1 и быстро выйти на A2: вопросы, отрицание, perfectum и фразы для магазина, врача, Gemeente.',
+            A2: 'Готовиться к Inburgeringsexamen / Nt2 на практических сценариях: письма, аудирование, бытовые диалоги и грамматика в контексте.',
+            B1: 'Усилить B1: сложный порядок слов, официальные письма, аргументация и уверенное speaking без перевода в голове.',
+            B2: 'Довести точность до B2: нюансы формулировок, деловой стиль, длинные тексты, экзаменационные стратегии и natural Dutch.'
+        };
+        const goalText = goal ? ` С учетом цели "${goal}" стоит привязать задания к реальным ситуациям ученика.` : '';
+        const weakText = weakestSkill ? ` Первая зона внимания: ${SKILL_LABELS[weakestSkill].toLowerCase()}.` : '';
+        return map[level] + weakText + goalText;
+    }
+
+    function confidenceLabel(value) {
+        return { low: 'низкая', medium: 'средняя', high: 'высокая' }[value] || 'средняя';
+    }
+
+    function weakestSkill(profile) {
+        return Object.keys(profile).sort(function (a, b) { return profile[a].percent - profile[b].percent; })[0];
+    }
+
+    function strengthsFor(level) {
+        const copy = {
+            A0: 'Вы уже узнаете отдельные слова и базовые структуры. Это хороший старт для быстрой сборки фундамента.',
+            A1: 'Вы ориентируетесь в простых фразах и бытовой лексике, можете двигаться к устойчивому A2.',
+            A2: 'Вы понимаете типовые бытовые ситуации и уже можете решать практические задачи с языковой поддержкой.',
+            B1: 'Вы видите логику сложных предложений и можете работать с письмами, задачами и аргументацией.',
+            B2: 'Вы уверенно справляетесь со сложной лексикой и официальными формулировками, дальше важна точность и стиль.'
+        };
+        return copy[level];
+    }
+
+    function blockerFor(skill) {
+        const copy = {
+            grammar: 'Сейчас больше всего мешает грамматика: порядок слов, придаточные предложения или формы глаголов.',
+            vocab: 'Сейчас больше всего ограничивает словарь: нужно больше готовых фраз и устойчивых речевых блоков.',
+            reading: 'Сейчас зона роста - чтение: важно быстрее понимать письма, инструкции и официальные сообщения.'
+        };
+        return copy[skill];
+    }
+
+    function answersSummary(result) {
+        return result.answers.map(function (a, i) {
+            return `${i + 1}. ${a.id} (${a.level}/${a.skill}) - ${a.correct ? 'correct' : 'wrong'}`;
+        }).join('; ');
+    }
+
+    function profileSummary(result) {
+        return Object.keys(result.profile).map(function (skill) {
+            const item = result.profile[skill];
+            return `${SKILL_LABELS[skill]}: ${item.status} (${item.percent}%)`;
+        }).join(' | ');
+    }
+
+    function showResult() {
+        const result = calculateResult();
+        state.result = result;
+        state.screen = 'result';
+        clearProgress();
+        const weak = weakestSkill(result.profile);
+        const recommendation = recommendationFor(result.level, state.self.goal, weak);
+        setHeader('Результат', 'Диагностический профиль готов', 100, [
+            { icon: 'ph-medal', text: result.level },
+            { icon: 'ph-gauge', text: 'уверенность: ' + confidenceLabel(result.confidence) }
+        ]);
+        screenEl.innerHTML = `
+            <div class="fade-panel grid lg:grid-cols-[1fr_0.88fr] gap-8">
+                <div>
+                    <div class="rounded-[12px] bg-navy text-white p-5 sm:p-6 mb-5">
+                        <p class="text-white/60 text-sm mb-2">Ваш ориентировочный уровень</p>
+                        <div class="flex items-end gap-3 mb-4">
+                            <span class="text-[56px] sm:text-[72px] leading-none font-semibold">${result.level}</span>
+                            <span class="pb-2 text-white/70">CEFR</span>
+                        </div>
+                        <div class="h-2 bg-white/15 rounded-full overflow-hidden">
+                            <div class="h-full bg-amber rounded-full" style="width:${Math.max(8, result.weightedPercent)}%"></div>
+                        </div>
+                        <p class="text-sm text-white/65 mt-3">Уверенность результата: ${confidenceLabel(result.confidence)}. Ответов: ${result.answers.length}.</p>
+                    </div>
+                    <div class="grid sm:grid-cols-3 gap-3 mb-5">
+                        ${Object.keys(result.profile).map(function (skill) {
+                            const item = result.profile[skill];
+                            return `
+                                <div class="rounded-[10px] border border-gray-100 bg-surface p-4">
+                                    <p class="font-semibold">${SKILL_LABELS[skill]}</p>
+                                    <p class="text-2xl font-semibold mt-2">${item.percent}%</p>
+                                    <p class="text-sm text-gray-500 mt-1">${item.status}</p>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    <button type="button" id="retake-test" class="text-gray-500 hover:text-amber btn-text h-[44px] px-4 rounded-[8px] inline-flex items-center justify-center gap-2">
+                        <i class="ph ph-arrow-counter-clockwise"></i> Пройти заново
+                    </button>
+                    <div class="rounded-[12px] border border-gray-100 bg-white p-4 sm:p-5 mt-5 hidden">
+                        <div id="certificate-print" class="rounded-[12px] bg-surface border border-gray-100 p-5 sm:p-6 mb-4 overflow-hidden hidden">
+                            <div class="relative rounded-[10px] bg-white border border-gray-200 p-5 sm:p-7 min-h-[360px]">
+                                <div class="absolute -right-16 -top-16 w-40 h-40 rounded-full bg-peach"></div>
+                                <div class="absolute -left-14 -bottom-14 w-36 h-36 rounded-full bg-sky"></div>
+                                <div class="relative z-10">
+                                    <div class="flex items-start justify-between gap-4 mb-8">
+                                        <div class="flex items-center gap-2 font-semibold text-[18px]"><i class="ph ph-chalkboard-teacher text-amber text-xl"></i> go DUTCH</div>
+                                        <div class="text-right text-xs text-gray-400 leading-relaxed">
+                                            <div>${CERTIFICATE_BRAND.site}</div>
+                                            <div>${CERTIFICATE_BRAND.telegram}</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs uppercase tracking-[0.22em] text-amber font-semibold mb-3">Диагностический сертификат</p>
+                                    <h3 class="text-[26px] sm:text-[34px] leading-tight font-semibold mb-3">Ориентировочный уровень нидерландского</h3>
+                                    <div class="flex items-end gap-4 mb-6">
+                                        <span class="text-[72px] sm:text-[92px] leading-none font-semibold text-navy">${result.level}</span>
+                                        <span class="pb-4 text-gray-500">CEFR</span>
+                                    </div>
+                                    <div class="grid sm:grid-cols-3 gap-3 mb-7">
+                                        ${Object.keys(result.profile).map(function (skill) {
+                                            const item = result.profile[skill];
+                                            return `<div class="rounded-[8px] bg-surface border border-gray-100 p-3"><p class="text-xs text-gray-400 mb-1">${SKILL_LABELS[skill]}</p><p class="font-semibold">${item.status} · ${item.percent}%</p></div>`;
+                                        }).join('')}
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pt-5 border-t border-gray-100">
+                                        <div>
+                                            <p class="text-sm text-gray-400 mb-1">Выдано</p>
+                                            <p class="font-semibold">${CERTIFICATE_BRAND.teacher}</p>
+                                            <p class="text-sm text-gray-500">${new Date().toLocaleDateString('ru-RU')}</p>
+                                        </div>
+                                        <div class="text-sm text-gray-500 leading-relaxed sm:text-right">
+                                            <p>${CERTIFICATE_BRAND.youtube}</p>
+                                            <p>${CERTIFICATE_BRAND.tiktok}</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-[11px] text-gray-400 leading-relaxed mt-5">Сертификат отражает предварительную онлайн-диагностику и не является официальной сертификацией CEFR.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            <button type="button" id="download-certificate-png" class="h-[48px] rounded-[8px] bg-amber hover:bg-amber-hover text-white btn-text inline-flex items-center justify-center gap-2">
+                                <i class="ph ph-image"></i> Скачать PNG
+                            </button>
+                            <button type="button" id="download-certificate-pdf" class="h-[48px] rounded-[8px] border border-gray-300 hover:border-amber hover:text-amber btn-text inline-flex items-center justify-center gap-2">
+                                <i class="ph ph-file-pdf"></i> Скачать PDF
+                            </button>
+                            <button type="button" id="share-certificate" class="h-[48px] rounded-[8px] border border-gray-300 hover:border-amber hover:text-amber btn-text inline-flex items-center justify-center gap-2">
+                                <i class="ph ph-share-network"></i> Поделиться
+                            </button>
+                        </div>
+                        <p id="certificate-status" class="hidden text-sm rounded-[8px] px-4 py-3 mt-3"></p>
+                    </div>
+                </div>
+                <div>
+                    <div class="rounded-[12px] border border-gray-100 p-5 sm:p-6 mb-5">
+                        <h3 class="text-xl font-semibold mb-4">Что показывает тест</h3>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <div>
+                                <p class="font-semibold text-notion_text mb-1">Что уже получается</p>
+                                <p>${strengthsFor(result.level)}</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-notion_text mb-1">Что мешает перейти дальше</p>
+                                <p>${blockerFor(weak)}</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-notion_text mb-1">Что делать на первых 3-4 уроках</p>
+                                <p>${escapeHtml(recommendation)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="result-form" action="${FORMSPREE_ENDPOINT}" method="POST" class="rounded-[12px] border border-gray-100 bg-surface p-5 sm:p-6">
+                        <h3 class="text-xl font-semibold mb-2">Получить разбор результата</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5">Оставьте контакт, и я посмотрю результат в контексте вашей цели. Сам результат уже ваш, форма необязательная.</p>
+                        <input type="hidden" name="_subject" value="Результат теста go DUTCH">
+                        <input type="hidden" name="test_level" value="${result.level}">
+                        <input type="hidden" name="test_confidence" value="${confidenceLabel(result.confidence)}">
+                        <input type="hidden" name="test_profile" value="${escapeHtml(profileSummary(result))}">
+                        <input type="hidden" name="test_answers_summary" value="${escapeHtml(answersSummary(result))}">
+                        <input type="hidden" name="goal" value="${escapeHtml(state.self.goal || '')}">
+                        <div class="grid gap-3">
+                            <label class="block">
+                                <span class="sr-only">Ваше имя</span>
+                                <div class="relative">
+                                    <i class="ph ph-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+                                    <input name="name" type="text" required placeholder="Ваше имя" class="w-full h-[52px] rounded-[8px] border border-gray-300 bg-white pl-12 pr-4 text-[16px] outline-none focus:border-amber focus:ring-2 focus:ring-amber/15">
+                                </div>
+                            </label>
+                            <label class="block">
+                                <span class="sr-only">Telegram, WhatsApp или Email</span>
+                                <div class="relative">
+                                    <i class="ph ph-paper-plane-tilt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+                                    <input id="result-contact" name="contact" type="text" required autocomplete="email tel" inputmode="text" placeholder="Telegram / WhatsApp / Email" class="w-full h-[52px] rounded-[8px] border border-gray-300 bg-white pl-12 pr-4 text-[16px] outline-none focus:border-amber focus:ring-2 focus:ring-amber/15">
+                                </div>
+                                <span id="result-contact-error" class="hidden text-sm text-red-500 mt-2"></span>
+                            </label>
+                            <button type="submit" id="result-submit" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[52px] inline-flex items-center justify-center gap-2">
+                                Получить разбор <i class="ph ph-paper-plane-tilt"></i>
+                            </button>
+                            <p id="result-form-status" class="hidden text-sm rounded-[8px] px-4 py-3"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        document.getElementById('retake-test').addEventListener('click', renderStart);
+        initResultForm();
+    }
+
+    function normalizePhoneCandidate(value) {
+        const trimmed = value.trim();
+        if (!/^[+0-9 ()-]{7,22}$/.test(trimmed)) return null;
+        return trimmed.replace(/[^\d+]/g, '');
+    }
+
+    function validateContact(value) {
+        const contact = value.trim();
+        if (!contact) return { ok: false, message: 'Укажите Telegram, email или номер телефона.' };
+        if (/^@[a-zA-Z0-9_]{5,32}$/.test(contact)) return { ok: true, type: 'telegram' };
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) return { ok: true, type: 'email' };
+        const phone = normalizePhoneCandidate(contact);
+        if (phone && window.libphonenumber) {
+            try {
+                const parsed = window.libphonenumber.parsePhoneNumber(phone);
+                if (parsed && parsed.isValid()) return { ok: true, type: 'phone', formatted: parsed.formatInternational() };
+            } catch (error) {}
+        }
+        if (phone && /^\+?\d{9,15}$/.test(phone)) return { ok: true, type: 'phone' };
+        return { ok: false, message: 'Проверьте контакт: можно указать @telegram, email или номер телефона.' };
+    }
+
+    function formatContactInput(input) {
+        const raw = input.value.trim();
+        if (!raw || raw.includes('@') || /[a-zA-Zа-яА-Я]/.test(raw)) return;
+        const phone = normalizePhoneCandidate(raw);
+        if (!phone || !window.libphonenumber) return;
+        try {
+            const parsed = window.libphonenumber.parsePhoneNumber(phone);
+            if (parsed && parsed.isPossible()) input.value = parsed.formatInternational();
+        } catch (error) {}
+    }
+
+    function initResultForm() {
+        const form = document.getElementById('result-form');
+        const input = document.getElementById('result-contact');
+        const error = document.getElementById('result-contact-error');
+        const status = document.getElementById('result-form-status');
+        const submit = document.getElementById('result-submit');
+        if (!form || !input) return;
+        input.addEventListener('blur', function () { formatContactInput(input); });
+        input.addEventListener('input', function () {
+            error.classList.add('hidden');
+            input.classList.remove('border-red-400', 'focus:border-red-400');
+        });
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            formatContactInput(input);
+            const validation = validateContact(input.value);
+            if (!validation.ok) {
+                error.textContent = validation.message;
+                error.classList.remove('hidden');
+                input.classList.add('border-red-400', 'focus:border-red-400');
+                input.focus();
+                return;
+            }
+            submit.disabled = true;
+            submit.textContent = 'Отправляю...';
+            status.className = 'hidden text-sm rounded-[8px] px-4 py-3';
+            const data = new FormData(form);
+            if (validation.formatted) data.set('contact', validation.formatted);
+            fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                body: data,
+                headers: { Accept: 'application/json' }
+            }).then(function (response) {
+                if (!response.ok) throw new Error('Formspree error');
+                status.textContent = 'Спасибо! Результат отправлен, я свяжусь с вами в течение дня.';
+                status.className = 'text-sm rounded-[8px] px-4 py-3 bg-mint text-emerald-800';
+                form.reset();
+            }).catch(function () {
+                status.textContent = 'Не получилось отправить форму. Напишите мне в Telegram: @godutch_ru.';
+                status.className = 'text-sm rounded-[8px] px-4 py-3 bg-rose text-red-700';
+            }).finally(function () {
+                submit.disabled = false;
+                submit.innerHTML = 'Получить разбор <i class="ph ph-paper-plane-tilt"></i>';
+            });
+        });
+    }
+
+    function renderStartFallback() {
+        setHeader('Старт', 'Готовы начать?', 0, []);
+        screenEl.innerHTML = `
+            <div class="grid gap-5">
+                <h2 class="h2-section">Умная диагностика без регистрации</h2>
+                <p class="text-gray-600 text-[16px] sm:text-lg leading-relaxed">Тест проверяет грамматику, лексику и чтение, а затем показывает ориентировочный уровень A0-B2.</p>
+                <button type="button" id="fallback-start-test" class="w-full sm:w-auto bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">
+                    Начать тест <i class="ph ph-arrow-right"></i>
+                </button>
+            </div>
+        `;
+        const fallbackStart = document.getElementById('fallback-start-test');
+        if (fallbackStart) {
+            fallbackStart.addEventListener('click', function () {
+                clearProgress();
+                state.screen = 'self';
+                state.selfIndex = 0;
+                state.self = {};
+                renderSelfAssessment();
+            });
+        }
+    }
+
+    try {
+        renderStart();
+        if (!screenEl.innerHTML.trim()) renderStartFallback();
+    } catch (error) {
+        clearProgress();
+        renderStartFallback();
+    }
+    </script>
+</body>
+</html>
