@@ -63,7 +63,9 @@
         }
     </script>
     <style>
+        html { overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
         body { color: #37352F; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; }
         .h1-hero {
             font-weight: 600;
             line-height: 1.12;
@@ -237,6 +239,32 @@
             from { transform: translateY(110%); opacity: 0; }
             to   { transform: translateY(0);   opacity: 1; }
         }
+        @media (max-width: 639px) {
+            .h1-hero { font-size: 30px; line-height: 1.12; }
+            .h2-section { font-size: 26px; line-height: 1.18; }
+            .body-text { line-height: 1.62; }
+            .fade-in-up { transform: translateY(12px); }
+            .hover-lift:hover { box-shadow: none; transform: none; }
+            .price-display { gap: 8px; margin-bottom: 20px; padding-bottom: 16px; }
+            .price-val { font-size: 38px; }
+            .doc-modal { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); }
+            .doc-modal-inner { max-height: calc(100dvh - 20px); }
+            #cookie-banner { width: calc(100vw - 32px); justify-content: space-between; white-space: normal !important; }
+        }
+        @media (max-width: 380px) {
+            .site-nav { padding-left: 12px; padding-right: 12px; }
+            .site-brand { font-size: 16px; gap: 6px; }
+            .mobile-nav-cta { width: 44px; padding-left: 0; padding-right: 0; }
+            .mobile-nav-cta .cta-label { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WPRVBVDXD3"></script>
 <script>
@@ -255,9 +283,9 @@
     </a>
 
     <!-- Sticky nav -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full transition-all duration-200">
-        <div class="flex items-center gap-8">
-            <a href="/en/" class="font-semibold text-[18px] tracking-tight touch-target flex items-center gap-2">
+    <nav class="site-nav sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full transition-all duration-200">
+        <div class="flex items-center gap-8 min-w-0">
+            <a href="/en/" class="site-brand font-semibold text-[18px] tracking-tight touch-target flex items-center gap-2 shrink-0">
                 <i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Larisa Kalugina
             </a>
             <div class="hidden lg:flex gap-6 btn-text text-gray-500">
@@ -268,7 +296,7 @@
                 <a href="#reviews" class="hover:text-notion_text transition-colors">Reviews</a>
             </div>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 shrink-0">
             <div class="hidden lg:flex items-center gap-1 mr-2">
                 <a href="https://www.tiktok.com/@godutch_ru?_r=1&_t=ZS-96Krkxs4ReP" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-tiktok-logo"></i></a>
                 <a href="https://www.youtube.com/@godutch_ru" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-youtube-logo"></i></a>
@@ -283,8 +311,8 @@
             <button id="mob-menu-btn" class="lg:hidden touch-target w-10 h-10 flex items-center justify-center rounded-[8px] hover:bg-gray-100 transition-colors" aria-label="Open menu" aria-expanded="false">
                 <i class="ph ph-list text-[22px] text-notion_text" id="mob-menu-icon"></i>
             </button>
-            <a href="#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-4 py-2 rounded-[8px] transition-colors duration-150 h-[40px] flex items-center justify-center gap-2 shadow-sm">
-                <i class="ph ph-calendar-plus text-[16px]"></i> <span class="hidden sm:inline">Free Lesson</span><span class="sm:hidden">Book</span>
+            <a href="#contact" class="mobile-nav-cta bg-amber hover:bg-amber-hover text-white btn-text px-4 py-2 rounded-[8px] transition-colors duration-150 h-[44px] flex items-center justify-center gap-2 shadow-sm">
+                <i class="ph ph-calendar-plus text-[16px]"></i> <span class="cta-label hidden sm:inline">Free Lesson</span><span class="cta-label sm:hidden">Book</span>
             </a>
         </div>
     </nav>
@@ -474,7 +502,10 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div class="w-full max-w-[260px] sm:max-w-sm md:max-w-none mx-auto md:mx-0 relative">
                 <div class="absolute inset-0 bg-amber/5 rounded-[12px] transform translate-x-3 translate-y-3 -z-10"></div>
-                <img src="../Work Picture.PNG" alt="Larisa Kalugina — Dutch language tutor online" loading="lazy" class="rounded-[12px] object-cover w-full aspect-square bg-gray-100 shadow-sm border border-gray-100">
+                <picture>
+                    <source type="image/webp" srcset="../work-picture-520.webp 520w, ../work-picture-900.webp 900w" sizes="(max-width: 640px) 220px, (max-width: 768px) 384px, 50vw">
+                    <img src="../Work Picture.PNG" alt="Larisa Kalugina — Dutch language tutor online" width="1122" height="1402" loading="lazy" decoding="async" class="rounded-[12px] object-cover w-full aspect-square bg-gray-100 shadow-sm border border-gray-100">
+                </picture>
             </div>
             <div class="text-left">
                 <h2 class="h2-section mb-6 flex items-center gap-3">Your tutor</h2>
@@ -491,7 +522,7 @@
                     <span class="bg-peach text-gray-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border border-gray-100 flex items-center gap-1.5"><i class="ph ph-seal-check text-amber"></i> Business English & IELTS</span>
                 </div>
                 <div class="flex justify-center">
-                    <a href="https://profi.ru/profile/KaluginaLV2/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-surface text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[40px] inline-flex items-center gap-2">
+                    <a href="https://profi.ru/profile/KaluginaLV2/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-surface text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[44px] min-w-[260px] inline-flex items-center justify-center gap-2">
                         Profile on Profi.ru <i class="ph ph-arrow-square-out"></i>
                     </a>
                 </div>
@@ -598,7 +629,7 @@
                     <p class="font-semibold text-notion_text text-base sm:text-lg leading-tight">50+ reviews on Profi.ru</p>
                     <p class="text-[13px] sm:text-sm text-gray-500">You can check real student reviews on the tutor's profile.</p>
                 </div>
-                <a href="https://profi.ru/profile/KaluginaLV2/reviews/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-gray-50 text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[40px] flex items-center justify-center gap-2 shrink-0 w-full sm:w-auto">
+                <a href="https://profi.ru/profile/KaluginaLV2/reviews/" target="_blank" rel="noopener noreferrer" class="border border-gray-300 hover:bg-gray-50 text-notion_text btn-text px-5 py-2 rounded-[8px] transition-colors h-[44px] flex items-center justify-center gap-2 shrink-0 w-full sm:w-auto">
                     View profile <i class="ph ph-arrow-square-out"></i>
                 </a>
             </div>
@@ -778,7 +809,7 @@
                 </div>
                 <div class="relative">
                     <div class="absolute top-0 left-0 h-[48px] pl-3.5 flex items-center pointer-events-none"><i class="ph ph-telegram-logo text-gray-400 text-lg"></i></div>
-                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required autocomplete="email" inputmode="text" data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
                     <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">You can enter your @telegram, email or phone number.</p>
                 </div>
                 <div class="relative">
