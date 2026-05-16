@@ -204,7 +204,7 @@
         <!-- Stats -->
         <div class="flex justify-center gap-8 sm:gap-12 mt-8">
             <div class="text-center">
-                <div class="text-white font-semibold text-2xl sm:text-3xl" id="stat-total">28</div>
+                <div class="text-white font-semibold text-2xl sm:text-3xl" id="stat-total">20</div>
                 <div class="text-white/50 text-xs sm:text-sm mt-0.5">ресурсов</div>
             </div>
             <div class="w-px bg-white/10"></div>
@@ -331,21 +331,14 @@
 <!-- ═══ DATA + LOGIC ═══ -->
 <script>
 const RESOURCES = [
-    { id:'duo', name:'DUO — Inburgering', url:'https://www.duo.nl/particulier/inburgering/', description:'Официальная информация об инбургеринге: экзамены, сроки, требования, льготы от правительства Нидерландов.', tags:['нидерландский','экзамены','официальное','бесплатно'], level:'A2', icon:'🏛️' },
     { id:'inburgeren', name:'Inburgeren.nl', url:'https://www.inburgeren.nl/', description:'Правительственный портал для подготовки к Inburgeringsexamen: материалы и пробные тесты по всем пяти модулям.', tags:['нидерландский','экзамены','официальное','бесплатно'], level:'A2', icon:'📋' },
     { id:'nt2', name:'NT2.nl', url:'https://www.nt2.nl/', description:'Учебные материалы и упражнения для подготовки к экзаменам NT2 Programma I и II. Уровни B1–B2.', tags:['нидерландский','экзамены','грамматика','бесплатно'], level:'B1', icon:'🎓' },
     { id:'ind', name:'IND — Иммиграционная служба', url:'https://ind.nl/', description:'Официальный сайт Иммиграционной службы Нидерландов: виды, ВНЖ, гражданство и языковые требования.', tags:['нидерландский','официальное','бесплатно'], level:'Все уровни', icon:'🛂' },
-    { id:'taalverhaal', name:'Taalverhaal.nl', url:'https://taalverhaal.nl/', description:'Подробная грамматика нидерландского с примерами и упражнениями — от артиклей до сложных предложений.', tags:['нидерландский','грамматика','бесплатно'], level:'A0–B2', icon:'📖' },
     { id:'woorden', name:'Woorden.org', url:'https://www.woorden.org/', description:'Бесплатный нидерландский словарь с примерами употребления, синонимами и произношением.', tags:['нидерландский','словари','бесплатно'], level:'Все уровни', icon:'📚' },
-    { id:'vandale', name:'Van Dale Online', url:'https://www.vandale.nl/', description:'Авторитетный нидерландский словарь — стандарт для носителей языка. Платная подписка, есть бесплатный поиск.', tags:['нидерландский','словари','платно'], level:'Все уровни', icon:'📕' },
     { id:'forvo', name:'Forvo — Произношение', url:'https://forvo.com/languages/nl/', description:'База аудиозаписей произношения нидерландских слов от носителей. Незаменимо для отработки фонетики.', tags:['нидерландский','словари','аудио','бесплатно'], level:'A0–B2', icon:'🔊' },
     { id:'npostart', name:'NPO Start', url:'https://npo.nl/start', description:'Голландское телевидение онлайн: новости, сериалы, документалки. Реальная живая речь для тренировки аудирования.', tags:['нидерландский','аудио','бесплатно'], level:'A2–B2', icon:'📺' },
-    { id:'dutchwithbart', name:'Dutch with Bart de Pau', url:'https://www.youtube.com/@learndutchnl', description:'Один из лучших YouTube-каналов: видеоуроки по грамматике, произношению и лексике от A0 до B1.', tags:['нидерландский','youtube','грамматика','бесплатно'], level:'A0–B1', icon:'▶️' },
-    { id:'dutchwithkim', name:'Learn Dutch with Kim', url:'https://www.youtube.com/@LearnDutchwithKim', description:'Лёгкий формат для начинающих: базовые фразы, разговорные ситуации и знакомство с языком.', tags:['нидерландский','youtube','бесплатно'], level:'A0–A2', icon:'▶️' },
     { id:'duolingo-nl', name:'Duolingo — Нидерландский', url:'https://www.duolingo.com/', description:'Игровое приложение для ежедневной практики. Хорошо для словарного запаса, но не заменяет системный курс.', tags:['нидерландский','приложения','бесплатно'], level:'A0–A2', icon:'🦉' },
     { id:'anki', name:'Anki — Умные карточки', url:'https://apps.ankiweb.net/', description:'Интервальное повторение для запоминания слов и фраз. Тысячи готовых колод по нидерландскому и английскому.', tags:['нидерландский','английский','приложения','бесплатно'], level:'Все уровни', icon:'🃏' },
-    { id:'dutchtelegram', name:'Telegram: Dutch Language', url:'https://t.me/dutchlanguage', description:'Telegram-канал с ежедневными словами, фразами и грамматическими подсказками по нидерландскому.', tags:['нидерландский','телеграм','бесплатно'], level:'A0–B2', icon:'✈️' },
-    { id:'speechling', name:'Speechling — Произношение', url:'https://speechling.com/dutch', description:'Тренировка произношения с обратной связью от носителей. Бесплатный базовый план с ограниченным доступом.', tags:['нидерландский','аудио','бесплатно'], level:'A1–B1', icon:'🎤' },
     { id:'gemeente', name:'Rijksoverheid.nl', url:'https://www.rijksoverheid.nl/', description:'Официальный сайт правительства Нидерландов. Реальный административный язык: письма, законы, инструкции и формулировки.', tags:['нидерландский','официальное','бесплатно'], level:'Все уровни', icon:'🏢' },
     { id:'ielts', name:'IELTS.org — Официальный сайт', url:'https://www.ielts.org/', description:'Официальный ресурс IELTS: форматы экзамена, пробные тесты, критерии оценки и список экзаменационных центров.', tags:['английский','экзамены','бесплатно'], level:'B1–C2', icon:'🎯' },
     { id:'cambridge', name:'Cambridge English — Экзамены', url:'https://www.cambridgeenglish.org/', description:'Официальный сайт Cambridge Assessment: B2 First, C1 Advanced, C2 Proficiency. Пробные тесты и материалы.', tags:['английский','экзамены','бесплатно'], level:'B1–C2', icon:'🏆' },
@@ -355,7 +348,6 @@ const RESOURCES = [
     { id:'linguee', name:'Linguee — Контекстный словарь', url:'https://www.linguee.com/', description:'Показывает реальные переводы из миллионов документов — для понимания устойчивых выражений.', tags:['английский','нидерландский','словари','бесплатно'], level:'Все уровни', icon:'🔍' },
     { id:'sixminute', name:'6 Minute English (BBC)', url:'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english', description:'Еженедельные шестиминутные подкасты от BBC на актуальные темы — для аудирования и словарного запаса.', tags:['английский','аудио','бесплатно'], level:'A2–B2', icon:'🎧' },
     { id:'ted', name:'TED Talks', url:'https://www.ted.com/', description:'Тысячи выступлений с субтитрами — реальная спонтанная речь для тренировки слуха на продвинутом уровне.', tags:['английский','аудио','youtube','бесплатно'], level:'B1–C2', icon:'🎙️' },
-    { id:'duolingo-en', name:'Duolingo — Английский', url:'https://www.duolingo.com/', description:'Мобильное приложение для ежедневной практики английского. Удобно для поддержания навыка и базовой лексики.', tags:['английский','приложения','бесплатно'], level:'A0–A2', icon:'🦉' },
     { id:'chatgpt', name:'ChatGPT — Языковая практика', url:'https://chatgpt.com/', description:'ИИ-ассистент для практики письменной речи, проверки текстов, объяснения грамматики и разбора ошибок.', tags:['нидерландский','английский','ии','бесплатно'], level:'Все уровни', icon:'🤖' },
     { id:'deepl', name:'DeepL — Переводчик', url:'https://www.deepl.com/', description:'Лучший ИИ-переводчик для нидерландского и английского: точно переводит с сохранением стиля и контекста.', tags:['нидерландский','английский','словари','ии','бесплатно'], level:'Все уровни', icon:'🌐' },
     { id:'languagetool', name:'LanguageTool — Проверка грамматики', url:'https://languagetool.org/', description:'ИИ-корректор текстов на нидерландском и английском. Находит грамматические ошибки и улучшает стиль.', tags:['нидерландский','английский','грамматика','ии','бесплатно'], level:'Все уровни', icon:'✍️' }
