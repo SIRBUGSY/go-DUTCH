@@ -361,7 +361,7 @@ function levelBadge(level) {
     else if (/^A0/.test(level) || /^A1/.test(level)) cls = 'bg-mint text-green-800';
     else if (/^A2/.test(level)) cls = 'bg-sky text-blue-800';
     else if (/^B/.test(level) || /^C/.test(level)) cls = 'bg-lavender text-purple-800';
-    return `<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${cls}">${level}</span>`;
+    return `<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${cls}">${level}</span>`;
 }
 
 function faviconURL(url) {
