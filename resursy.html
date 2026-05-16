@@ -223,8 +223,16 @@
 
 <!-- ═══ FILTER BAR ═══ -->
 <div id="filter-bar" class="sticky top-[64px] z-30 bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div class="flex gap-2 overflow-x-auto no-scrollbar pb-0.5" id="filter-pills">
+    <div class="relative">
+        <!-- Left gradient + arrow -->
+        <div id="pill-fade-left" class="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10 transition-opacity duration-200 opacity-0" style="background:linear-gradient(to right,#fff 40%,transparent)"></div>
+        <button id="pill-arrow-left" aria-label="Прокрутить влево"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-500 hover:text-amber hover:border-amber hover:shadow-md transition-all duration-150 opacity-0 pointer-events-none">
+            <i class="ph ph-caret-left text-[15px]"></i>
+        </button>
+
+        <!-- Pills -->
+        <div class="flex gap-2 overflow-x-auto no-scrollbar py-3 px-4 sm:px-6 lg:px-8" id="filter-pills">
             <button class="pill-btn active flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border border-transparent bg-amber text-white" data-filter="все"><i class="ph ph-squares-four text-[13px]"></i> Все</button>
             <button class="pill-btn flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 bg-surface text-gray-600" data-filter="нидерландский"><i class="ph ph-windmill text-[13px]"></i> Нидерландский</button>
             <button class="pill-btn flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 bg-surface text-gray-600" data-filter="английский"><i class="ph ph-globe text-[13px]"></i> Английский</button>
@@ -238,6 +246,13 @@
             <button class="pill-btn flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 bg-surface text-gray-600" data-filter="ии"><i class="ph ph-brain text-[13px]"></i> ИИ</button>
             <button class="pill-btn flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 bg-surface text-gray-600" data-filter="бесплатно"><i class="ph ph-check-circle text-[13px]"></i> Бесплатно</button>
         </div>
+
+        <!-- Right gradient + arrow -->
+        <div id="pill-fade-right" class="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10 transition-opacity duration-200" style="background:linear-gradient(to left,#fff 40%,transparent)"></div>
+        <button id="pill-arrow-right" aria-label="Прокрутить вправо"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-500 hover:text-amber hover:border-amber hover:shadow-md transition-all duration-150">
+            <i class="ph ph-caret-right text-[15px]"></i>
+        </button>
     </div>
 </div>
 
@@ -486,6 +501,36 @@ function resetAll() {
     document.getElementById('search-input').value = '';
     render();
 }
+
+// Scroll arrows
+(function () {
+    const pills     = document.getElementById('filter-pills');
+    const arrowL    = document.getElementById('pill-arrow-left');
+    const arrowR    = document.getElementById('pill-arrow-right');
+    const fadeL     = document.getElementById('pill-fade-left');
+    const fadeR     = document.getElementById('pill-fade-right');
+
+    function updateArrows() {
+        const sl  = pills.scrollLeft;
+        const max = pills.scrollWidth - pills.clientWidth;
+        const atStart = sl < 6;
+        const atEnd   = sl > max - 6;
+
+        arrowL.style.opacity       = atStart ? '0' : '1';
+        arrowL.style.pointerEvents = atStart ? 'none' : 'all';
+        fadeL.style.opacity        = atStart ? '0' : '1';
+
+        arrowR.style.opacity       = atEnd ? '0' : '1';
+        arrowR.style.pointerEvents = atEnd ? 'none' : 'all';
+        fadeR.style.opacity        = atEnd ? '0' : '1';
+    }
+
+    arrowL.addEventListener('click', () => pills.scrollBy({ left: -220, behavior: 'smooth' }));
+    arrowR.addEventListener('click', () => pills.scrollBy({ left: 220, behavior: 'smooth' }));
+    pills.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+})();
 
 // Filter pills
 document.getElementById('filter-pills').addEventListener('click', e => {
