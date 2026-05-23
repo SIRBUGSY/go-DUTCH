@@ -154,6 +154,23 @@
             transform: translateY(8px);
             filter: blur(2px);
         }
+
+        .calc-result-val {
+            transition: opacity 150ms ease, transform 150ms ease, filter 150ms ease;
+            will-change: opacity, transform, filter;
+            font-variant-numeric: tabular-nums;
+        }
+        .calc-result-val.is-changing {
+            opacity: 0;
+            transform: translateY(8px);
+            filter: blur(2px);
+        }
+        .calc-option-active {
+            background: #C77D3A !important;
+            color: #FFFFFF !important;
+            border-color: #C77D3A !important;
+            box-shadow: 0 10px 22px rgba(199, 125, 58, 0.18);
+        }
         .price-meta {
             display: flex;
             flex-direction: column;
@@ -278,7 +295,7 @@
         }
 
         @media (max-width: 639px) {
-            .h1-hero { font-size: 30px; line-height: 1.12; }
+            .h1-hero { font-size: 30px; line-height: 1.12; max-width: 13.5ch; margin-left: auto; margin-right: auto; }
             .h2-section { font-size: 26px; line-height: 1.18; }
             .body-text { line-height: 1.62; }
             .fade-in-up { transform: translateY(12px); }
@@ -287,7 +304,10 @@
             .price-val { font-size: 38px; }
             .doc-modal { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); }
             .doc-modal-inner { max-height: calc(100dvh - 20px); }
-            #cookie-banner { width: calc(100vw - 32px); justify-content: space-between; white-space: normal !important; }
+            .mobile-nav-cta { width: 44px; padding-left: 0; padding-right: 0; }
+            .mobile-nav-cta .cta-label { display: none !important; }
+            #cookie-banner { left: 16px !important; right: 16px !important; width: auto !important; max-width: none !important; transform: none !important; justify-content: space-between; white-space: normal !important; }
+            #cookie-banner span { min-width: 0; }
         }
 
         @media (max-width: 479px) {
@@ -296,6 +316,8 @@
             .ecosystem-title { font-size: 12px; }
             .ecosystem-subtitle { display: none; }
             .price-val { font-size: 36px; }
+            .mobile-nav-cta { width: 44px; padding-left: 0; padding-right: 0; }
+            .mobile-nav-cta .cta-label { display: none; }
         }
 
         @media (max-width: 380px) {
@@ -455,7 +477,7 @@
             <!-- Radial glow behind center -->
             <div class="absolute pointer-events-none" style="left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(199,125,58,0.12) 0%,transparent 70%);border-radius:50%;"></div>
 
-            <div class="flex items-center justify-between gap-2 sm:gap-5 relative">
+            <div class="grid grid-cols-1 sm:flex sm:items-center sm:justify-between gap-2 sm:gap-5 relative">
 
                 <!-- Left column -->
                 <div class="flex flex-col gap-2.5 flex-1 min-w-0">
@@ -753,7 +775,122 @@
         </div>
     </section>
 
-    <!-- 11. ЦЕНЫ И ПЕРЕКЛЮЧАТЕЛЬ -->
+    <!-- 11. Калькулятор пути к цели -->
+    <section id="goal-calculator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 fade-in-up w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-6 lg:gap-8 items-stretch">
+            <div class="bg-white border border-gray-200 rounded-[12px] p-5 sm:p-8 shadow-sm">
+                <div class="inline-flex items-center gap-2 rounded-full bg-peach px-3 py-1 text-[12px] font-semibold uppercase tracking-wider text-amber mb-4">
+                    <i class="ph ph-route"></i> Калькулятор пути
+                </div>
+                <h2 class="h2-section mb-3 text-[#37352F]">Посчитайте путь к цели</h2>
+                <p class="body-text text-gray-600 text-sm sm:text-base mb-7 max-w-2xl">Выберите язык, уровень и интенсивность — калькулятор покажет реалистичный маршрут по урокам, срокам и бюджету.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <label class="block">
+                        <span class="block text-[13px] font-medium text-gray-500 mb-2">Язык</span>
+                        <div class="relative">
+                            <i class="ph ph-translate absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+                            <select id="calc-language" class="w-full h-[48px] rounded-[8px] border border-gray-300 bg-white pl-10 pr-10 text-sm text-notion_text outline-none focus:border-amber focus:ring-1 focus:ring-amber appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 20 20%22%3E%3Cpath stroke=%22%23a1a1aa%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%221.5%22 d=%22m6 8 4 4 4-4%22/%3E%3C/svg%3E')] bg-[length:20px_20px] bg-[right_12px_center] bg-no-repeat">
+                                <option value="nl">Нидерландский</option>
+                                <option value="en">Английский</option>
+                            </select>
+                        </div>
+                    </label>
+
+                    <label class="block">
+                        <span class="block text-[13px] font-medium text-gray-500 mb-2">Текущий уровень</span>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button type="button" class="calc-level-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-level="A0">A0</button>
+                            <button type="button" class="calc-level-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-level="A1">A1</button>
+                            <button type="button" class="calc-level-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-level="A2">A2</button>
+                            <button type="button" class="calc-level-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-level="B1">B1</button>
+                        </div>
+                        <a href="/test-niderlandskogo/" class="mt-2 inline-flex min-h-[44px] items-center gap-2 text-[13px] font-medium text-amber hover:text-amber-hover transition-colors">
+                            Не знаю свой уровень <i class="ph ph-arrow-right"></i> пройти тест
+                        </a>
+                    </label>
+
+                    <label class="block">
+                        <span class="block text-[13px] font-medium text-gray-500 mb-2">Цель</span>
+                        <div class="relative">
+                            <i class="ph ph-target absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+                            <select id="calc-goal" class="w-full h-[48px] rounded-[8px] border border-gray-300 bg-white pl-10 pr-10 text-sm text-notion_text outline-none focus:border-amber focus:ring-1 focus:ring-amber appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 20 20%22%3E%3Cpath stroke=%22%23a1a1aa%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%221.5%22 d=%22m6 8 4 4 4-4%22/%3E%3C/svg%3E')] bg-[length:20px_20px] bg-[right_12px_center] bg-no-repeat"></select>
+                        </div>
+                    </label>
+
+                    <label class="block">
+                        <span class="block text-[13px] font-medium text-gray-500 mb-2">Интенсивность</span>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" class="calc-intensity-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-intensity="1">1/нед</button>
+                            <button type="button" class="calc-intensity-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-intensity="2">2/нед</button>
+                            <button type="button" class="calc-intensity-btn h-[48px] rounded-[8px] border border-gray-300 text-sm font-medium text-gray-600 transition-colors" data-intensity="3">3/нед</button>
+                        </div>
+                    </label>
+                </div>
+
+                <p class="mt-5 text-[12px] leading-relaxed text-gray-400">Это предварительный ориентир. Точный план зависит от домашней работы, регулярности и устной практики.</p>
+            </div>
+
+            <div class="bg-navy rounded-[12px] p-5 sm:p-8 text-white shadow-mockup relative overflow-hidden">
+                <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image:radial-gradient(circle,rgba(255,255,255,0.08) 1px,transparent 1px);background-size:28px 28px;"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between gap-4 mb-7">
+                        <div>
+                            <p class="text-white/45 text-[12px] uppercase tracking-wider font-semibold mb-1">Ваш маршрут</p>
+                            <h3 id="calc-result-title" class="text-[22px] sm:text-[26px] font-semibold leading-tight">A0 → Inburgering</h3>
+                        </div>
+                        <div class="w-12 h-12 rounded-[10px] bg-white/10 flex items-center justify-center text-amber text-2xl shrink-0">
+                            <i class="ph ph-compass-tool"></i>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                        <div class="rounded-[10px] bg-white/8 border border-white/10 p-4">
+                            <div class="text-white/50 text-xs mb-1">До цели</div>
+                            <div id="calc-months" class="calc-result-val text-[24px] font-semibold leading-tight">~9–11 мес.</div>
+                        </div>
+                        <div class="rounded-[10px] bg-white/8 border border-white/10 p-4">
+                            <div class="text-white/50 text-xs mb-1">Уроков потребуется</div>
+                            <div id="calc-lessons" class="calc-result-val text-[22px] font-semibold leading-tight">~70–90 уроков (7–9 пакетов)</div>
+                        </div>
+                        <div class="sm:col-span-2 rounded-[10px] bg-white/8 border border-white/10 p-4">
+                            <div class="text-white/50 text-xs mb-1">Первый шаг — пакет 10 уроков</div>
+                            <div class="calc-result-val text-[24px] font-semibold leading-tight">~25 200 ₽ / ~270 €</div>
+                            <p class="text-white/45 text-[12px] leading-relaxed mt-2">Со скидкой 10% — экономия стоимости одного урока</p>
+                        </div>
+                        <div class="sm:col-span-2 rounded-[10px] bg-white/8 border border-white/10 p-4">
+                            <div class="text-white/50 text-xs mb-1">Ориентир в месяц</div>
+                            <div id="calc-monthly-cost" class="calc-result-val text-[20px] font-semibold leading-tight">~22 400 ₽ в месяц при 2 уроках в неделю</div>
+                            <p id="calc-monthly-cost-eur" class="text-white/45 text-[12px] leading-relaxed mt-2">Примерно ~240 € в месяц. Маршрут можно корректировать после диагностики.</p>
+                            <details class="mt-3 text-white/45 text-[12px] leading-relaxed">
+                                <summary class="inline-flex cursor-pointer list-none items-center gap-1 text-white/60 hover:text-white transition-colors">
+                                    <i class="ph ph-info"></i> Полный ориентир маршрута
+                                </summary>
+                                <p id="calc-full-route-cost" class="mt-1">Полный маршрут: ~176 000–227 000 ₽ / ~1 890–2 430 €</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <p class="mb-5 text-[12px] leading-relaxed text-white/45 border-t border-white/10 pt-4">
+                        Расчёт основан на стандартах Совета Европы (CEFR) с поправкой для носителей русского языка. 40% времени — занятия, 60% — самостоятельная работа.
+                    </p>
+
+                    <div class="rounded-[10px] bg-white text-notion_text p-4 mb-5 border border-white/10">
+                        <div class="flex items-center gap-2 text-[14px] font-medium">
+                            <i class="ph ph-calendar-check text-amber text-lg"></i>
+                            <span>Ближайший старт: <span id="calc-start-month">июнь 2026</span></span>
+                        </div>
+                    </div>
+
+                    <button type="button" id="calc-cta" class="w-full h-[52px] rounded-[8px] bg-amber hover:bg-amber-hover text-white btn-text transition-colors flex items-center justify-center gap-2 shadow-sm">
+                        <span id="calc-cta-label">Записаться сейчас</span> <i class="ph ph-paper-plane-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. ЦЕНЫ И ПЕРЕКЛЮЧАТЕЛЬ -->
     <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 fade-in-up w-full">
         <h2 class="h2-section mb-6 text-center">Стоимость занятий</h2>
         
@@ -828,7 +965,7 @@
         </div>
     </section>
 
-    <!-- 12. FAQ -->
+    <!-- 13. FAQ -->
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 fade-in-up w-full">
         <h2 class="h2-section mb-10 text-center">Частые вопросы</h2>
         <div class="space-y-3">
@@ -872,7 +1009,7 @@
                     <span class="flex items-center gap-3 min-w-0"><i class="ph ph-trophy text-amber text-lg shrink-0"></i> Как быстро можно подготовиться к Inburgering?</span>
                     <i class="ph ph-caret-down text-gray-400 group-open:rotate-180 transition-transform text-lg shrink-0"></i>
                 </summary>
-                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Зависит от стартового уровня и интенсивности занятий. В среднем при 2 уроках в неделю путь от A0 до уровня Inburgering (A2) занимает 6–9 месяцев. При старте с A1–A2 подготовка к экзамену занимает 3–4 месяца.</p>
+                <p class="mt-4 body-text text-gray-600 text-sm sm:text-[15px] border-t border-gray-200 pt-4 leading-relaxed">Зависит от стартового уровня, регулярности и самостоятельной работы. По расчёту CEFR с поправкой для носителей русского языка при 2 уроках в неделю путь от A0 до уровня Inburgering (A2) обычно занимает около 8–11 месяцев. При старте с A1 подготовка часто занимает 5–6 месяцев, а при уже достигнутом A2 — примерно 5–7 месяцев на формат экзамена.</p>
             </details>
             <details class="group bg-surface rounded-[8px] px-5 py-4 cursor-pointer border border-gray-100 hover:border-gray-200 transition-colors">
                 <summary class="font-medium text-[15px] sm:text-base flex justify-between items-center gap-3 touch-target">
@@ -974,6 +1111,7 @@
                     <li><a href="#method" class="hover:text-amber transition-colors py-2 block">Методика</a></li>
                     <li><a href="/test-niderlandskogo/" class="hover:text-amber transition-colors py-2 block">Тест нидерландского</a></li>
                     <li><a href="/test-angliyskogo/" class="hover:text-amber transition-colors py-2 block">Тест английского</a></li>
+                    <li><a href="/resursy/" class="hover:text-amber transition-colors py-2 block">Ресурсы</a></li>
                     <li><a href="#pricing" class="hover:text-amber transition-colors py-2 block">Стоимость</a></li>
                     <li><a href="#reviews" class="hover:text-amber transition-colors py-2 block">Отзывы</a></li>
                 </ul>
@@ -1184,6 +1322,316 @@
             btnEur.addEventListener('click', () => setCurrency('eur'));
             btnRub.addEventListener('click', () => setCurrency('rub'));
         }
+
+
+        // Калькулятор пути к цели
+        (function () {
+            const languageEl = document.getElementById('calc-language');
+            if (!languageEl) return;
+
+            const goalEl = document.getElementById('calc-goal');
+            const levelButtons = Array.from(document.querySelectorAll('.calc-level-btn'));
+            const intensityButtons = Array.from(document.querySelectorAll('.calc-intensity-btn'));
+            const resultTitle = document.getElementById('calc-result-title');
+            const monthsEl = document.getElementById('calc-months');
+            const lessonsEl = document.getElementById('calc-lessons');
+            const monthlyCostEl = document.getElementById('calc-monthly-cost');
+            const monthlyCostEurEl = document.getElementById('calc-monthly-cost-eur');
+            const fullRouteCostEl = document.getElementById('calc-full-route-cost');
+            const startMonthEl = document.getElementById('calc-start-month');
+            const cta = document.getElementById('calc-cta');
+            const ctaLabel = document.getElementById('calc-cta-label');
+            const resultValues = [monthsEl, lessonsEl, monthlyCostEl, monthlyCostEurEl, fullRouteCostEl].filter(Boolean);
+
+            const levelOrder = ['A0', 'A1', 'A2', 'B1', 'B2'];
+            const cefrHours = {
+                'A0>A1': { min: 60, max: 80 },
+                'A1>A2': { min: 80, max: 100 },
+                'A2>B1': { min: 150, max: 200 },
+                'B1>B2': { min: 200, max: 250 }
+            };
+            const languageFactor = { nl: 1.2, en: 1 };
+            const teacherShare = 0.4;
+            const intensityProgress = { 1: 1, 2: 2, 3: 2.6 };
+            const languageLabels = { nl: 'Нидерландский', en: 'Английский' };
+            const languageCodes = { nl: 'NL', en: 'EN' };
+            const goals = {
+                nl: [
+                    { value: 'inburgering', label: 'Inburgering', target: 'A2' },
+                    { value: 'nt2-1', label: 'NT2 Programma I', target: 'B1' },
+                    { value: 'nt2-2', label: 'NT2 Programma II', target: 'B2' },
+                    { value: 'work', label: 'Работа / экспаты', target: 'B1' },
+                    { value: 'conversation', label: 'Разговорный', target: 'B1' },
+                    { value: 'self', label: 'Для себя', target: 'A2' }
+                ],
+                en: [
+                    { value: 'ielts', label: 'IELTS 6.0+ / Cambridge B2', target: 'B2' },
+                    { value: 'work', label: 'Работа / экспаты', target: 'B1' },
+                    { value: 'conversation', label: 'Разговорный', target: 'B1' },
+                    { value: 'self', label: 'Для себя', target: 'A2' }
+                ]
+            };
+            const state = { language: 'nl', level: 'A0', goal: 'inburgering', intensity: 2 };
+            let lastCalculation = null;
+
+            const numberFormatter = new Intl.NumberFormat('ru-RU');
+
+            function getGoalConfig() {
+                const availableGoals = goals[state.language];
+                return availableGoals.find(goal => goal.value === state.goal) || availableGoals[0];
+            }
+
+            function roundToPackage(value) {
+                return Math.ceil(value / 10) * 10;
+            }
+
+            function getMaintenanceRoute(current, goalConfig) {
+                if (goalConfig.value === 'inburgering') {
+                    if (levelOrder.indexOf(current) > levelOrder.indexOf('A2')) {
+                        return { lessonsMin: 8, lessonsMax: 12, hoursMin: 20, hoursMax: 30, maintenance: true };
+                    }
+                    return { lessonsMin: 15, lessonsMax: 25, hoursMin: 38, hoursMax: 63, maintenance: true };
+                }
+                return { lessonsMin: 10, lessonsMax: 20, hoursMin: 25, hoursMax: 50, maintenance: true };
+            }
+
+            function calculateRoute(current, goalConfig) {
+                const target = goalConfig.target;
+                const currentIndex = levelOrder.indexOf(current);
+                const targetIndex = levelOrder.indexOf(target);
+                const factor = languageFactor[state.language] || 1;
+
+                if (currentIndex >= targetIndex) {
+                    const route = getMaintenanceRoute(current, goalConfig);
+                    return {
+                        lessonsMin: roundToPackage(route.lessonsMin),
+                        lessonsMax: roundToPackage(route.lessonsMax),
+                        rawLessonsMin: route.lessonsMin,
+                        rawLessonsMax: route.lessonsMax,
+                        hoursMin: Math.round(route.hoursMin * factor),
+                        hoursMax: Math.round(route.hoursMax * factor),
+                        maintenance: true
+                    };
+                }
+
+                let hoursMin = 0;
+                let hoursMax = 0;
+                for (let i = currentIndex; i < targetIndex; i += 1) {
+                    const step = cefrHours[`${levelOrder[i]}>${levelOrder[i + 1]}`];
+                    if (!step) continue;
+                    hoursMin += step.min;
+                    hoursMax += step.max;
+                }
+
+                hoursMin = Math.round(hoursMin * factor);
+                hoursMax = Math.round(hoursMax * factor);
+
+                const rawLessonsMin = Math.ceil(hoursMin * teacherShare);
+                const rawLessonsMax = Math.ceil(hoursMax * teacherShare);
+                return {
+                    lessonsMin: roundToPackage(rawLessonsMin),
+                    lessonsMax: roundToPackage(rawLessonsMax),
+                    rawLessonsMin,
+                    rawLessonsMax,
+                    hoursMin,
+                    hoursMax,
+                    maintenance: false
+                };
+            }
+
+            function getStartDate() {
+                const date = new Date();
+                date.setMonth(date.getMonth() + 1);
+                return date;
+            }
+
+            function getStartMonthFull() {
+                return getStartDate().toLocaleString('ru-RU', { month: 'long', year: 'numeric' });
+            }
+
+            function getStartMonthShort() {
+                return getStartDate().toLocaleString('ru-RU', { month: 'long' });
+            }
+
+            function getMonthRange(route) {
+                const progressPerWeek = intensityProgress[state.intensity] || 1;
+                const minMonths = (route.lessonsMin / progressPerWeek) / 4.33;
+                const maxMonths = (route.lessonsMax / progressPerWeek) / 4.33;
+                const low = Math.max(1, Math.ceil(minMonths));
+                const high = Math.max(low, Math.ceil(maxMonths));
+                return low === high ? `~${low} мес.` : `~${low}–${high} мес.`;
+            }
+
+            function formatRange(min, max, suffix = '') {
+                if (min === max) return `~${numberFormatter.format(min)}${suffix}`;
+                return `~${numberFormatter.format(min)}–${numberFormatter.format(max)}${suffix}`;
+            }
+
+            function packagePhrase(count) {
+                if (count === 1) return 'пакет';
+                if (count >= 2 && count <= 4) return 'пакета';
+                return 'пакетов';
+            }
+
+            function getLessonsText(route) {
+                const packageMin = Math.ceil(route.lessonsMin / 10);
+                const packageMax = Math.ceil(route.lessonsMax / 10);
+                if (route.lessonsMin === route.lessonsMax) {
+                    return `~${route.lessonsMin} уроков (${packageMin} ${packagePhrase(packageMin)})`;
+                }
+                return `~${route.lessonsMin}–${route.lessonsMax} уроков (${packageMin}–${packageMax} пакетов)`;
+            }
+
+            function getFullRouteCost(route) {
+                const rubMin = Math.round((route.lessonsMin * 2520) / 1000) * 1000;
+                const rubMax = Math.round((route.lessonsMax * 2520) / 1000) * 1000;
+                const eurMin = route.lessonsMin * 27;
+                const eurMax = route.lessonsMax * 27;
+                return {
+                    rubMin,
+                    rubMax,
+                    eurMin,
+                    eurMax,
+                    text: `${formatRange(rubMin, rubMax, ' ₽')} / ${formatRange(eurMin, eurMax, ' €')}`
+                };
+            }
+
+            function monthlyIntensityPhrase(value) {
+                if (value === 1) return '1 уроке в неделю';
+                return `${value} уроках в неделю`;
+            }
+
+            function getMonthlyCost() {
+                const rub = state.intensity * 4 * 2800;
+                const eur = state.intensity * 4 * 30;
+                return {
+                    rub,
+                    eur,
+                    text: `~${numberFormatter.format(rub)} ₽ в месяц при ${monthlyIntensityPhrase(state.intensity)}`,
+                    eurText: `Примерно ~${numberFormatter.format(eur)} € в месяц. Маршрут можно корректировать после диагностики.`
+                };
+            }
+
+            function lessonPhrase(value) {
+                if (value === 1) return '1 урок/нед';
+                if (value === 2) return '2 урока/нед';
+                return '3 урока/нед';
+            }
+
+            function animateResultChange() {
+                resultValues.forEach(el => el.classList.add('is-changing'));
+                window.setTimeout(() => resultValues.forEach(el => el.classList.remove('is-changing')), 150);
+            }
+
+            function populateGoals() {
+                const currentGoals = goals[state.language];
+                const previousValue = state.goal;
+                goalEl.innerHTML = currentGoals.map(goal => `<option value="${goal.value}">${goal.label}</option>`).join('');
+                state.goal = currentGoals.some(goal => goal.value === previousValue) ? previousValue : currentGoals[0].value;
+                goalEl.value = state.goal;
+            }
+
+            function setActiveButtons() {
+                levelButtons.forEach(button => {
+                    button.classList.toggle('calc-option-active', button.dataset.level === state.level);
+                });
+                intensityButtons.forEach(button => {
+                    button.classList.toggle('calc-option-active', Number(button.dataset.intensity) === state.intensity);
+                });
+            }
+
+            function calculate() {
+                const goalConfig = getGoalConfig();
+                const targetLevel = goalConfig.target;
+                const route = calculateRoute(state.level, goalConfig);
+                const months = getMonthRange(route);
+                const lessons = getLessonsText(route);
+                const fullRouteCost = getFullRouteCost(route);
+                const monthlyCost = getMonthlyCost();
+                return {
+                    languageLabel: languageLabels[state.language],
+                    languageCode: languageCodes[state.language],
+                    goalLabel: goalConfig.label,
+                    targetLevel,
+                    maintenance: route.maintenance,
+                    lessons,
+                    lessonsMin: route.lessonsMin,
+                    lessonsMax: route.lessonsMax,
+                    rawLessonsMin: route.rawLessonsMin,
+                    rawLessonsMax: route.rawLessonsMax,
+                    hoursMin: route.hoursMin,
+                    hoursMax: route.hoursMax,
+                    months,
+                    fullRouteCost,
+                    monthlyCost,
+                    startFull: getStartMonthFull(),
+                    startShort: getStartMonthShort()
+                };
+            }
+
+            function render(shouldAnimate = true) {
+                if (shouldAnimate) animateResultChange();
+                populateGoals();
+                setActiveButtons();
+
+                const result = calculate();
+                lastCalculation = result;
+                const routeLabel = result.maintenance ? `${state.level}: укрепление уровня` : `${state.level} → ${result.goalLabel}`;
+
+                resultTitle.textContent = routeLabel;
+                monthsEl.textContent = result.months;
+                lessonsEl.textContent = result.lessons;
+                monthlyCostEl.textContent = result.monthlyCost.text;
+                monthlyCostEurEl.textContent = result.monthlyCost.eurText;
+                fullRouteCostEl.textContent = `Полный маршрут: ${result.fullRouteCost.text}`;
+                startMonthEl.textContent = result.startFull;
+                ctaLabel.textContent = 'Записаться сейчас';
+            }
+
+            languageEl.addEventListener('change', () => {
+                state.language = languageEl.value;
+                render();
+            });
+
+            goalEl.addEventListener('change', () => {
+                state.goal = goalEl.value;
+                render();
+            });
+
+            levelButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    state.level = button.dataset.level;
+                    render();
+                });
+            });
+
+            intensityButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    state.intensity = Number(button.dataset.intensity);
+                    render();
+                });
+            });
+
+            if (cta) {
+                cta.addEventListener('click', () => {
+                    const result = lastCalculation || calculate();
+                    const contactSection = document.getElementById('contact');
+                    const contactFormEl = document.getElementById('contact-form');
+                    const languageField = contactFormEl ? contactFormEl.querySelector('select[name="language"]') : null;
+                    const goalField = contactFormEl ? contactFormEl.querySelector('input[name="goal"]') : null;
+                    const summary = `Калькулятор: ${result.languageCode}, ${state.level} → ${result.goalLabel}, ${lessonPhrase(state.intensity)}, ${result.lessons}, ${result.months}, первый шаг: пакет 10 уроков ~25 200 ₽ / ~270 €, ${result.monthlyCost.text}`;
+
+                    if (languageField) languageField.value = result.languageLabel;
+                    if (goalField) {
+                        goalField.value = summary;
+                        goalField.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                    if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+
+            render(false);
+        })();
 
         // Документы в модальных окнах
         document.querySelectorAll('[data-doc-open]').forEach(button => {
