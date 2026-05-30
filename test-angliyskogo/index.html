@@ -13,6 +13,11 @@
     <meta property="og:image" content="https://larisakalugina.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Лариса Калугина">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Лариса Калугина — преподаватель нидерландского и английского онлайн">
+    <meta name="twitter:description" content="Адаптивный онлайн-тест поможет за 10 минут определить ориентировочный уровень английского A0-B2 и получить понятный диагностический профиль.">
+    <meta name="twitter:image:alt" content="Лариса Калугина — преподаватель нидерландского и английского онлайн">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Тест уровня английского за 10 минут">
@@ -111,6 +116,24 @@
       gtag('js', new Date());
       gtag('config', 'G-WPRVBVDXD3');
       gtag('config', 'GT-KFLHWCGT');
+
+  // Send useful interaction events to GA4 without including personal data.
+  window.trackAnalyticsEvent = function (name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  };
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (/^https?:\/\/(?:t\.me|telegram\.me)\//i.test(href)) {
+      window.trackAnalyticsEvent('click_telegram', { link_url: href });
+    } else if (/^mailto:/i.test(href)) {
+      window.trackAnalyticsEvent('click_email', { link_url: href.split('?')[0] });
+    }
+  });
     </script>
 </head>
 <body class="bg-white font-sans overflow-x-hidden w-full">
@@ -606,6 +629,7 @@
             </div>
         `;
         document.getElementById('start-test').addEventListener('click', function () {
+            window.trackAnalyticsEvent('test_start', { test_language: 'English' });
             state.screen = 'self';
             state.selfIndex = 0;
             state.self = {};
@@ -888,6 +912,11 @@
         const result = calculateResult();
         state.result = result;
         state.screen = 'result';
+        window.trackAnalyticsEvent('test_complete', {
+            test_language: 'English',
+            test_level: result.level,
+            test_confidence: result.confidence
+        });
         clearProgress();
         const weak = weakestSkill(result.profile);
         const recommendation = recommendationFor(result.level, state.self.goal, weak);
@@ -1049,6 +1078,11 @@
                 headers: { Accept: 'application/json' }
             }).then(function (response) {
                 if (!response.ok) throw new Error('Formspree error');
+                window.trackAnalyticsEvent('test_result_submit', {
+                    test_language: 'English',
+                    test_level: state.result ? state.result.level : 'unknown'
+                });
+                window.trackAnalyticsEvent('generate_lead', { form_name: 'test_result_form', test_language: 'English' });
                 status.textContent = 'Спасибо! Результат отправлен, я свяжусь с вами в течение дня.';
                 status.className = 'text-sm rounded-[8px] px-4 py-3 bg-mint text-emerald-800';
                 form.reset();

@@ -14,6 +14,11 @@
     <meta property="og:image" content="https://larisakalugina.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Лариса Калугина">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Лариса Калугина — преподаватель нидерландского и английского онлайн">
+    <meta name="twitter:description" content="Заговорите на нидерландском так, как давно хотели. 16 лет опыта, 5 лет жизни в Нидерландах. Много отзывов Профи.ру. Первый урок бесплатно.">
+    <meta name="twitter:image:alt" content="Лариса Калугина — преподаватель нидерландского и английского онлайн">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Лариса Калугина — репетитор нидерландского и английского онлайн">
@@ -344,6 +349,158 @@
   gtag('js', new Date());
   gtag('config', 'G-WPRVBVDXD3');
   gtag('config', 'GT-KFLHWCGT');
+
+  // Send useful interaction events to GA4 without including personal data.
+  window.trackAnalyticsEvent = function (name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  };
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (/^https?:\/\/(?:t\.me|telegram\.me)\//i.test(href)) {
+      window.trackAnalyticsEvent('click_telegram', { link_url: href });
+    } else if (/^mailto:/i.test(href)) {
+      window.trackAnalyticsEvent('click_email', { link_url: href.split('?')[0] });
+    }
+  });
+</script>
+<!-- Structured data: Larisa Kalugina and online tutoring service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://larisakalugina.com/#larisa-kalugina",
+      "name": "Лариса Калугина",
+      "url": "https://larisakalugina.com/",
+      "image": "https://larisakalugina.com/work-picture-900.webp",
+      "jobTitle": "Репетитор нидерландского и английского языков",
+      "description": "Преподаватель языков с 2010 года. Индивидуальные онлайн-занятия по нидерландскому и английскому, подготовка к Inburgering, NT2 и IELTS.",
+      "knowsLanguage": [
+        "ru",
+        "nl",
+        "en"
+      ],
+      "sameAs": [
+        "https://t.me/larisakalugina_nl",
+        "https://www.youtube.com/@larisakalugina_nl",
+        "https://www.tiktok.com/@larisakalugina_nl",
+        "https://www.instagram.com/larisakalugina_nl",
+        "https://profi.ru/profile/KaluginaLV2/"
+      ],
+      "worksFor": {
+        "@id": "https://larisakalugina.com/#online-language-tutoring"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://larisakalugina.com/#online-language-tutoring",
+      "name": "Лариса Калугина — онлайн-занятия по нидерландскому и английскому",
+      "url": "https://larisakalugina.com/",
+      "image": "https://larisakalugina.com/work-picture-900.webp",
+      "description": "Индивидуальные и групповые онлайн-занятия по нидерландскому и английскому языкам.",
+      "email": "info@godutch.ru",
+      "founder": {
+        "@id": "https://larisakalugina.com/#larisa-kalugina"
+      },
+      "sameAs": [
+        "https://t.me/larisakalugina_nl",
+        "https://www.youtube.com/@larisakalugina_nl",
+        "https://www.tiktok.com/@larisakalugina_nl",
+        "https://www.instagram.com/larisakalugina_nl"
+      ],
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Онлайн-занятия по иностранным языкам",
+          "serviceType": [
+            "Нидерландский язык",
+            "Английский язык",
+            "Подготовка к языковым экзаменам"
+          ],
+          "areaServed": "Worldwide"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://larisakalugina.com/#faq",
+      "inLanguage": "ru",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько длится одно занятие?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стандартный урок — 60 минут. Для детей возможен формат 45 минут. Для интенсивной подготовки к экзаменам (Inburgering, NT2, IELTS, Cambridge) — 90 минут, стоимость обсуждается индивидуально."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Где проходят занятия: онлайн или офлайн?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Все уроки проходят онлайн в Zoom — постоянная ссылка, без ограничений по времени. Это позволяет заниматься из любой точки мира: из России, Нидерландов или любой другой страны."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как перенести урок?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Перенести урок можно в любое время — без ограничений по количеству, при условии предупреждения за 24 часа и более. При переносе менее чем за 24 часа взимается небольшой организационный сбор — 50% стоимости урока. Болезнь и форс-мажор всегда рассматриваются индивидуально."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как оплатить занятия?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Принимаем карты РФ через СБП, а также европейские карты через IBAN. Оплата — минимум за 24 часа до урока. При оплате пакета из 10 уроков действует скидка 10% — удобно если хотите зафиксировать место в расписании на 2–3 месяца вперёд."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужно ли покупать учебники?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Все материалы — конспекты, аудио, тесты и домашние задания — предоставляются в цифровом виде через Google Drive. В базе более 100 пособий по нидерландскому и английскому, структурированных по уровням от A0 до C1, включая материалы для Inburgering и NT2. Покупка потребуется, только если вам лично комфортнее заниматься по бумажной книге, либо если для вашей специфической цели нужен узкопрофильный материал, которого пока нет в моей базе."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как быстро можно подготовиться к Inburgering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Зависит от стартового уровня, регулярности и самостоятельной работы. По расчёту CEFR с поправкой для носителей русского языка при 2 уроках в неделю путь от A0 до уровня Inburgering (A2) обычно занимает около 8–11 месяцев. При старте с A1 подготовка часто занимает 5–6 месяцев, а при уже достигнутом A2 — примерно 5–7 месяцев на формат экзамена."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли заниматься в паре?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, занятия в паре возможны — обсуждается индивидуально. Единственное условие: вы с партнёром должны быть примерно на одном уровне, иначе кто-то из двоих будет терять время."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли заниматься в группе?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, группы набираются в течение года. Запишитесь в лист ожидания — как только наберётся 4 человека вашего уровня, мы сразу начнём блок из 8 занятий."
+          }
+        }
+      ]
+    }
+  ]
+}
 </script>
 </head>
 <body class="bg-white font-sans overflow-x-hidden w-full">
@@ -1615,6 +1772,12 @@
             if (cta) {
                 cta.addEventListener('click', () => {
                     const result = lastCalculation || calculate();
+                    window.trackAnalyticsEvent('calculator_cta_click', {
+                        language: result.languageCode,
+                        current_level: state.level,
+                        goal: result.goalLabel,
+                        lessons_per_week: state.intensity
+                    });
                     const contactSection = document.getElementById('contact');
                     const contactFormEl = document.getElementById('contact-form');
                     const languageField = contactFormEl ? contactFormEl.querySelector('select[name="language"]') : null;
@@ -1808,6 +1971,7 @@
                     });
 
                     if (!response.ok) throw new Error('Form submission failed');
+                    window.trackAnalyticsEvent('generate_lead', { form_name: 'contact_form', language: 'Russian' });
                     contactForm.reset();
                     setContactState(true, 'Можно указать @telegram, email или номер телефона.');
                     if (successMessage) successMessage.classList.remove('hidden');

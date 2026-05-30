@@ -14,6 +14,11 @@
     <meta property="og:image" content="https://larisakalugina.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Лариса Калугина">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Larisa Kalugina — online Dutch and English tutor">
+    <meta name="twitter:description" content="Start speaking Dutch the way you always wanted. 16 years of experience, 5 years living in the Netherlands. Free first lesson.">
+    <meta name="twitter:image:alt" content="Larisa Kalugina — online Dutch and English tutor">
     <meta property="og:locale" content="en_GB">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Larisa Kalugina — Dutch & English Tutor Online">
@@ -273,6 +278,134 @@
   gtag('js', new Date());
   gtag('config', 'G-WPRVBVDXD3');
   gtag('config', 'GT-KFLHWCGT');
+
+  // Send useful interaction events to GA4 without including personal data.
+  window.trackAnalyticsEvent = function (name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  };
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (/^https?:\/\/(?:t\.me|telegram\.me)\//i.test(href)) {
+      window.trackAnalyticsEvent('click_telegram', { link_url: href });
+    } else if (/^mailto:/i.test(href)) {
+      window.trackAnalyticsEvent('click_email', { link_url: href.split('?')[0] });
+    }
+  });
+</script>
+<!-- Structured data: Larisa Kalugina and online tutoring service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://larisakalugina.com/#larisa-kalugina",
+      "name": "Larisa Kalugina",
+      "url": "https://larisakalugina.com/en/",
+      "image": "https://larisakalugina.com/work-picture-900.webp",
+      "jobTitle": "Dutch and English language tutor",
+      "description": "Language tutor since 2010. Individual online Dutch and English lessons, including preparation for Inburgering, NT2 and IELTS.",
+      "knowsLanguage": [
+        "ru",
+        "nl",
+        "en"
+      ],
+      "sameAs": [
+        "https://t.me/larisakalugina_nl",
+        "https://www.youtube.com/@larisakalugina_nl",
+        "https://www.tiktok.com/@larisakalugina_nl",
+        "https://www.instagram.com/larisakalugina_nl",
+        "https://profi.ru/profile/KaluginaLV2/"
+      ],
+      "worksFor": {
+        "@id": "https://larisakalugina.com/#online-language-tutoring"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://larisakalugina.com/#online-language-tutoring",
+      "name": "Larisa Kalugina — Online Dutch and English Lessons",
+      "url": "https://larisakalugina.com/en/",
+      "image": "https://larisakalugina.com/work-picture-900.webp",
+      "description": "Individual and group online Dutch and English language lessons.",
+      "email": "info@godutch.ru",
+      "founder": {
+        "@id": "https://larisakalugina.com/#larisa-kalugina"
+      },
+      "sameAs": [
+        "https://t.me/larisakalugina_nl",
+        "https://www.youtube.com/@larisakalugina_nl",
+        "https://www.tiktok.com/@larisakalugina_nl",
+        "https://www.instagram.com/larisakalugina_nl"
+      ],
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Online language lessons",
+          "serviceType": [
+            "Dutch lessons",
+            "English lessons",
+            "Language exam preparation"
+          ],
+          "areaServed": "Worldwide"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://larisakalugina.com/en/#faq",
+      "inLanguage": "en",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long is a lesson?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard lesson lasts 60 minutes. For intensive exam preparation, 90-minute sessions are possible; the price is agreed individually."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are lessons online or in person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All lessons take place online via Zoom. This allows us to use interactive whiteboards, record sessions for review and study at any convenient time from anywhere in the world."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I cancel or reschedule a lesson?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cancellation or rescheduling without losing payment is possible no later than 24 hours before the lesson starts. Cancellations with less than 24 hours' notice are charged in full."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Payment is accepted by direct bank transfer to an IBAN (European account) and via SBP (for Russian bank cards)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to buy textbooks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No purchases needed. All notes, audio, tests and homework are provided digitally via Google Drive. A purchase is only necessary if you personally prefer a physical book, or if your specific goal requires specialist material not yet in my library."
+          }
+        }
+      ]
+    }
+  ]
+}
 </script>
 </head>
 <body class="bg-white font-sans overflow-x-hidden w-full">
@@ -1080,6 +1213,7 @@
                         headers: { 'Accept': 'application/json' }
                     });
                     if (response.ok) {
+                        window.trackAnalyticsEvent('generate_lead', { form_name: 'contact_form', language: 'English' });
                         successMessage.classList.remove('hidden');
                         contactForm.reset();
                     } else {
