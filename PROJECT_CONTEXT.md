@@ -48,9 +48,9 @@ an older Codex thread remembered the shorter path.
 Recent production commits:
 
 ```text
+0b59202 Expand Dutch tutor landing page
 639cc5f Add analytics events and SEO metadata
 edeb4bc Add goal path calculator
-c0f357a Switch site metadata to larisakalugina.com
 ```
 
 Before starting new work, always run:
@@ -92,6 +92,11 @@ navigation and a CTA back to the main contact form:
 /razgovorny-gollandskiy/
 /niderlandskiy-yazyk-onlayn/
 ```
+
+`/repetitor-gollandskogo/` is intentionally richer than the other SEO pages. It
+is a compact standalone conversion page for the commercial search intent
+`репетитор голландского языка онлайн`: teacher profile, directions, lesson
+format, verified Profi.ru reviews link, prices, FAQ, and its own Formspree form.
 
 ## Shared Assets
 
@@ -504,4 +509,3 @@ Useful next steps:
 4. Consider connecting Yandex Webmaster.
 5. If the public mailbox changes, replace `info@godutch.ru` consistently across
    HTML and JSON-LD.
-
