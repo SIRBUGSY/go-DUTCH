@@ -316,7 +316,7 @@
     const SKILL_LABELS = { grammar: 'Грамматика', vocab: 'Лексика', reading: 'Чтение' };
     const MAX_QUESTIONS = 18;
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdoqzwv';
-    const STORAGE_KEY = 'godutch-english-level-test-v1';
+    const STORAGE_KEY = 'godutch-english-level-test-v2';
     const SELF_ASSESSMENT = [
         {
             id: 'experience',
@@ -795,7 +795,7 @@
         });
         if (correct) {
             state.streakCorrect += 1;
-            if (state.streakCorrect >= 2 && state.currentLevelIndex < LEVELS.length - 1) {
+            if (state.streakCorrect >= 3 && state.currentLevelIndex < LEVELS.length - 1) {
                 state.currentLevelIndex += 1;
                 state.streakCorrect = 0;
             }
@@ -835,9 +835,9 @@
         let highestEvidence = 'A0';
         LEVELS.forEach(function (level) {
             const stat = perLevel[level];
-            if (stat && stat.total >= 2 && stat.ok / stat.total >= 0.6) highestEvidence = level;
+            if (stat && stat.total >= 3 && stat.ok / stat.total >= 0.67) highestEvidence = level;
         });
-        const cappedIndex = Math.min(levelIndex(scoreLevel), Math.min(levelIndex(highestEvidence) + 1, 4));
+        const cappedIndex = Math.min(levelIndex(scoreLevel), levelIndex(highestEvidence));
         const level = LEVELS[Math.max(0, cappedIndex)];
         const coveredSkills = Object.values(perSkill).filter(function (s) { return s.total > 0; }).length;
         const confidence = answers.length >= 16 && coveredSkills === 3 ? 'high' : answers.length >= 10 ? 'medium' : 'low';
@@ -991,17 +991,19 @@
                                 </div>
                             </label>
                             <label class="block">
-                                <span class="sr-only">Telegram, WhatsApp или Email</span>
+                                <span class="sr-only">Telegram или WhatsApp</span>
                                 <div class="relative">
                                     <i class="ph ph-paper-plane-tilt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
-                                    <input id="result-contact" name="contact" type="text" required autocomplete="email tel" inputmode="text" placeholder="Telegram / WhatsApp / Email" class="w-full h-[52px] rounded-[8px] border border-gray-300 bg-white pl-12 pr-4 text-[16px] outline-none focus:border-amber focus:ring-2 focus:ring-amber/15">
+                                    <input id="result-contact" name="contact" type="text" required autocomplete="tel" inputmode="text" placeholder="Telegram / WhatsApp" class="w-full h-[52px] rounded-[8px] border border-gray-300 bg-white pl-12 pr-4 text-[16px] outline-none focus:border-amber focus:ring-2 focus:ring-amber/15">
                                 </div>
+                                <span class="block text-sm text-gray-500 mt-2">Укажите @telegram или номер WhatsApp.</span>
                                 <span id="result-contact-error" class="hidden text-sm text-red-500 mt-2"></span>
                             </label>
                             <button type="submit" id="result-submit" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[52px] inline-flex items-center justify-center gap-2">
                                 Получить разбор <i class="ph ph-paper-plane-tilt"></i>
                             </button>
                             <p id="result-form-status" class="hidden text-sm rounded-[8px] px-4 py-3"></p>
+                            <p class="text-sm text-gray-500 text-center">Если удобнее email, <a href="mailto:info@godutch.ru" class="text-amber hover:text-amber-hover transition-colors">напишите по email</a>.</p>
                         </div>
                     </form>
                 </div>
@@ -1019,9 +1021,9 @@
 
     function validateContact(value) {
         const contact = value.trim();
-        if (!contact) return { ok: false, message: 'Укажите Telegram, email или номер телефона.' };
-        if (/^@[a-zA-Z0-9_]{5,32}$/.test(contact)) return { ok: true, type: 'telegram' };
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) return { ok: true, type: 'email' };
+        if (!contact) return { ok: false, message: 'Укажите @telegram или номер WhatsApp.' };
+        if (/^(?:@|https?:\/\/(?:t\.me|telegram\.me)\/)[a-zA-Z0-9_]{5,32}\/?$/.test(contact)) return { ok: true, type: 'telegram' };
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) return { ok: false, message: 'Для заявки укажите @telegram или номер WhatsApp. Если удобнее email, напишите по ссылке ниже.' };
         const phone = normalizePhoneCandidate(contact);
         if (phone && window.libphonenumber) {
             try {
@@ -1030,7 +1032,7 @@
             } catch (error) {}
         }
         if (phone && /^\+?\d{9,15}$/.test(phone)) return { ok: true, type: 'phone' };
-        return { ok: false, message: 'Проверьте контакт: можно указать @telegram, email или номер телефона.' };
+        return { ok: false, message: 'Проверьте контакт: укажите @telegram или номер WhatsApp.' };
     }
 
     function formatContactInput(input) {

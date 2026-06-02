@@ -943,8 +943,8 @@
                 </div>
                 <div class="relative">
                     <div class="absolute top-0 left-0 h-[48px] pl-3.5 flex items-center pointer-events-none"><i class="ph ph-telegram-logo text-gray-400 text-lg"></i></div>
-                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required autocomplete="email" inputmode="text" data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
-                    <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">You can enter your @telegram, email or phone number.</p>
+                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp" required autocomplete="tel" inputmode="text" data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                    <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">Enter your @telegram or WhatsApp number.</p>
                 </div>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-translate text-gray-400 text-lg"></i></div>
@@ -970,7 +970,7 @@
                     <span class="text-gray-300 hidden sm:inline self-center">·</span>
                     <a href="mailto:info@godutch.ru" class="group inline-flex flex-col items-center gap-0.5 transition-colors font-medium">
                         <span class="inline-flex items-center gap-2 text-sm text-gray-600 group-hover:text-amber transition-colors">
-                            <i class="ph ph-envelope text-amber"></i> Send email
+                            <i class="ph ph-envelope text-amber"></i> Send an email
                         </span>
                         <span class="text-[11px] text-gray-400 group-hover:text-amber transition-colors tracking-wide">info@godutch.ru</span>
                     </a>
@@ -1201,8 +1201,56 @@
             const successMessage = document.querySelector('[data-fs-success]');
             const errorMessage = document.querySelector('[data-fs-error]');
             const submitButton = contactForm.querySelector('[data-fs-submit-btn]');
+            const contactField = document.getElementById('contact-field');
+            const contactHelp = document.getElementById('contact-help');
+            const setContactState = (isValid, message) => {
+                if (!contactField || !contactHelp) return;
+                contactField.classList.toggle('border-red-400', !isValid);
+                contactField.classList.toggle('focus:border-red-400', !isValid);
+                contactField.classList.toggle('focus:ring-red-400', !isValid);
+                contactField.classList.toggle('border-gray-300', isValid);
+                contactField.setAttribute('aria-invalid', String(!isValid));
+                contactHelp.textContent = message;
+                contactHelp.classList.toggle('text-red-500', !isValid);
+                contactHelp.classList.toggle('text-gray-400', isValid);
+            };
+            const validateContact = (value) => {
+                const raw = value.trim();
+                if (!raw) return { valid: false, message: 'Enter your @telegram or WhatsApp number.' };
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(raw)) {
+                    return { valid: false, message: 'Please enter your @telegram or WhatsApp number. If you prefer email, use the link below.' };
+                }
+                if (/^(?:@|https?:\/\/(?:t\.me|telegram\.me)\/)([A-Za-z0-9_]{5,32})\/?$/i.test(raw)) {
+                    return { valid: true, message: 'Telegram looks correct.' };
+                }
+                if (/^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(raw) && !raw.includes('.')) {
+                    return { valid: false, message: 'Add @ before your Telegram username, for example @larisakalugina_nl.' };
+                }
+                const compact = raw.replace(/[\s().-]/g, '');
+                const digits = compact.replace(/\D/g, '');
+                if (/^[+\d\s().-]+$/.test(raw) && digits.length >= 7 && digits.length <= 15 && (compact.startsWith('+') || compact.startsWith('0') || compact.startsWith('8'))) {
+                    return { valid: true, message: 'Phone number looks correct.' };
+                }
+                return { valid: false, message: 'Enter your @telegram or WhatsApp number.' };
+            };
+            if (contactField) {
+                contactField.addEventListener('input', () => {
+                    if (!contactField.value.trim()) {
+                        setContactState(true, 'Enter your @telegram or WhatsApp number.');
+                        return;
+                    }
+                    const result = validateContact(contactField.value);
+                    setContactState(result.valid, result.message);
+                });
+            }
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const contactResult = validateContact(contactField ? contactField.value : '');
+                if (!contactResult.valid) {
+                    setContactState(false, contactResult.message);
+                    if (contactField) contactField.focus();
+                    return;
+                }
                 submitButton.disabled = true;
                 successMessage.classList.add('hidden');
                 errorMessage.classList.add('hidden');
@@ -1216,6 +1264,7 @@
                         window.trackAnalyticsEvent('generate_lead', { form_name: 'contact_form', language: 'English' });
                         successMessage.classList.remove('hidden');
                         contactForm.reset();
+                        setContactState(true, 'Enter your @telegram or WhatsApp number.');
                     } else {
                         errorMessage.classList.remove('hidden');
                         submitButton.disabled = false;

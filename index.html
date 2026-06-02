@@ -1206,8 +1206,8 @@
                 </div>
                 <div class="relative">
                     <div class="absolute top-0 left-0 h-[48px] pl-3.5 flex items-center pointer-events-none"><i class="ph ph-telegram-logo text-gray-400 text-lg"></i></div>
-                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required autocomplete="email" inputmode="text" data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
-                    <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">Можно указать @telegram, email или номер телефона.</p>
+                    <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp" required autocomplete="tel" inputmode="text" data-fs-field aria-describedby="contact-help" class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
+                    <p id="contact-help" class="mt-2 text-[12px] text-gray-400 leading-relaxed">Укажите @telegram или номер WhatsApp.</p>
                 </div>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-translate text-gray-400 text-lg"></i></div>
@@ -1232,7 +1232,7 @@
                     </a>
                     <span class="text-gray-300 hidden sm:inline self-center">·</span>
                     <a href="mailto:info@godutch.ru" class="inline-flex min-h-[44px] items-center gap-2 text-sm text-gray-600 hover:text-amber transition-colors font-medium">
-                        <i class="ph ph-envelope text-amber"></i> Отправить email
+                        <i class="ph ph-envelope text-amber"></i> Написать по email
                     </a>
                 </div>
                 <p class="text-[12px] text-gray-400 leading-relaxed flex items-center gap-1.5">
@@ -1894,12 +1894,12 @@
             const validateContact = (value) => {
                 const raw = value.trim();
                 if (!raw) {
-                    return { valid: false, message: 'Укажите Telegram, email или телефон для связи.' };
+                    return { valid: false, message: 'Укажите @telegram или номер WhatsApp.' };
                 }
 
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
                 if (emailPattern.test(raw)) {
-                    return { valid: true, message: 'Email выглядит корректно.' };
+                    return { valid: false, message: 'Для заявки укажите @telegram или номер WhatsApp. Если удобнее email, напишите по ссылке ниже.' };
                 }
 
                 const telegramPattern = /^(?:@|https?:\/\/(?:t\.me|telegram\.me)\/)([A-Za-z0-9_]{5,32})\/?$/i;
@@ -1927,7 +1927,7 @@
                     }
                 }
 
-                return { valid: false, message: 'Введите @telegram, email или номер телефона.' };
+                return { valid: false, message: 'Введите @telegram или номер WhatsApp.' };
             };
 
             if (contactField) {
@@ -1938,7 +1938,7 @@
                     }
 
                     if (!contactField.value.trim()) {
-                        setContactState(true, 'Можно указать @telegram, email или номер телефона.');
+                        setContactState(true, 'Укажите @telegram или номер WhatsApp.');
                         return;
                     }
                     const result = validateContact(contactField.value);
@@ -1973,7 +1973,7 @@
                     if (!response.ok) throw new Error('Form submission failed');
                     window.trackAnalyticsEvent('generate_lead', { form_name: 'contact_form', language: 'Russian' });
                     contactForm.reset();
-                    setContactState(true, 'Можно указать @telegram, email или номер телефона.');
+                    setContactState(true, 'Укажите @telegram или номер WhatsApp.');
                     if (successMessage) successMessage.classList.remove('hidden');
                 } catch (error) {
                     if (errorMessage) errorMessage.classList.remove('hidden');

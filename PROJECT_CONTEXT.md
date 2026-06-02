@@ -151,16 +151,20 @@ Current endpoint:
 https://formspree.io/f/xzdoqzwv
 ```
 
-The main Russian form validates:
+All lead forms accept:
 
 - Telegram usernames such as `@username`
-- email addresses
-- international phone numbers
+- Telegram links such as `https://t.me/username`
+- phone numbers for WhatsApp, including international numbers
 
 Phone input formatting uses `libphonenumber` when available and includes
 fallback formatting.
 
-The English form and both test-result forms also submit through Formspree.
+Email is intentionally not accepted as the only contact in a lead form because
+a syntactically valid address may still be mistyped. Each form offers a
+separate `mailto:info@godutch.ru` link for users who prefer to send an email
+themselves. The English form and both test-result forms also submit through
+Formspree.
 
 ## Google Analytics
 
@@ -351,12 +355,28 @@ Both:
   JavaScript runs
 - use `sessionStorage` to preserve progress
 - show self-assessment questions first
-- adapt difficulty from `A0` to `B2`
 - test grammar, vocabulary, and reading
 - show results immediately without requiring contact information
 - offer an optional Formspree result form afterward
 
 The Dutch and English test storage keys must remain separate.
+
+The Dutch test is optimized for a fast first-lesson plan:
+
+- it starts with an objective six-question calibration; self-assessment is
+  context only and does not unlock levels
+- it then uses up to two sequential six-question checkpoints from `A0` to `B2`
+- each checkpoint contains two grammar, two vocabulary, and two reading questions
+- a checkpoint passes only with at least four correct answers and at least one
+  correct answer in every skill
+- the `B2` checkpoint is stricter: at least five correct answers and both
+  grammar questions must be correct
+- the next level opens only after the current written foundation is confirmed
+- the result is a preliminary written baseline, not a final CEFR certificate
+- the result form sends the level range, checkpoint summary, focus topics, and
+  detailed answers to the tutor
+
+The English test keeps the lighter adaptive difficulty flow from `A0` to `B2`.
 
 The Dutch test previously experimented with certificate PNG/PDF generation.
 Keep the stable current behavior unless the user explicitly asks to revisit

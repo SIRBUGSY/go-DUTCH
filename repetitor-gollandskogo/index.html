@@ -277,12 +277,12 @@
                 <input type="hidden" name="_subject" value="Новая заявка — репетитор голландского">
                 <input type="hidden" name="language" value="Нидерландский">
                 <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
-                <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required autocomplete="email" aria-describedby="contact-help">
-                <p class="field-help" id="contact-help">Можно указать @telegram, email или номер телефона.</p>
+                <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp" required autocomplete="tel" aria-describedby="contact-help">
+                <p class="field-help" id="contact-help">Укажите @telegram или номер WhatsApp.</p>
                 <input type="text" name="goal" placeholder="Ваша цель: переезд, экзамен, работа...">
                 <button type="submit" class="btn" data-fs-submit-btn>Отправить заявку <i class="ph ph-paper-plane-right"></i></button>
             </form>
-            <p style="margin-top:14px;font-size:13px">Или напишите в <a href="https://t.me/larisakalugina_nl" target="_blank" rel="noopener noreferrer" style="color:#C77D3A">Telegram</a></p>
+            <p style="margin-top:14px;font-size:13px">Или напишите в <a href="https://t.me/larisakalugina_nl" target="_blank" rel="noopener noreferrer" style="color:#C77D3A">Telegram</a> · <a href="mailto:info@godutch.ru" style="color:#C77D3A">Написать по email</a></p>
         </div>
     </section>
 
@@ -320,16 +320,16 @@
     return groupDigits(digits.slice(0,15),[3,3,3,3,3]);
   };
   const validate = value => {
-    const raw=value.trim(); if(!raw)return {valid:false,message:'Укажите Telegram, email или телефон для связи.'};
-    if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(raw))return {valid:true,message:'Email выглядит корректно.'};
+    const raw=value.trim(); if(!raw)return {valid:false,message:'Укажите @telegram или номер WhatsApp.'};
+    if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(raw))return {valid:false,message:'Для заявки укажите @telegram или номер WhatsApp. Если удобнее email, напишите по ссылке ниже.'};
     if(/^(?:@|https?:\/\/(?:t\.me|telegram\.me)\/)([A-Za-z0-9_]{5,32})\/?$/i.test(raw))return {valid:true,message:'Telegram выглядит корректно.'};
     if(/^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(raw)&&!raw.includes('.'))return {valid:false,message:'Для Telegram добавьте @ перед ником, например @larisakalugina_nl.'};
     const compact=raw.replace(/[\s().-]/g,''), digits=compact.replace(/\D/g,'');
     if(/^[+\d\s().-]+$/.test(raw)&&digits.length>=7&&digits.length<=15&&(compact.startsWith('+')||compact.startsWith('0')||compact.startsWith('8')))return {valid:true,message:'Телефон выглядит корректно.'};
-    return {valid:false,message:'Введите @telegram, email или номер телефона.'};
+    return {valid:false,message:'Введите @telegram или номер WhatsApp.'};
   };
   const setState=(valid,message)=>{help.textContent=message;help.classList.toggle('error',!valid);field.setAttribute('aria-invalid',String(!valid));};
-  field.addEventListener('input',()=>{field.value=formatPhone(field.value);if(!field.value.trim())return setState(true,'Можно указать @telegram, email или номер телефона.');const result=validate(field.value);setState(result.valid,result.message);});
+  field.addEventListener('input',()=>{field.value=formatPhone(field.value);if(!field.value.trim())return setState(true,'Укажите @telegram или номер WhatsApp.');const result=validate(field.value);setState(result.valid,result.message);});
   form.addEventListener('submit',async event=>{
     event.preventDefault(); success.classList.remove('show'); error.classList.remove('show');
     const result=validate(field.value); if(!result.valid){setState(false,result.message);field.focus();return;}
@@ -338,7 +338,7 @@
       const response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
       if(!response.ok)throw new Error('Form submission failed');
       window.trackAnalyticsEvent('generate_lead',{form_name:'repetitor_gollandskogo_form',language:'Russian'});
-      form.reset();setState(true,'Можно указать @telegram, email или номер телефона.');success.classList.add('show');
+      form.reset();setState(true,'Укажите @telegram или номер WhatsApp.');success.classList.add('show');
     }catch(e){error.classList.add('show');}
     finally{submit.disabled=false;submit.innerHTML=submitText;}
   });
