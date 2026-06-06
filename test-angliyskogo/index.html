@@ -982,6 +982,7 @@
                         <input type="hidden" name="test_profile" value="${escapeHtml(profileSummary(result))}">
                         <input type="hidden" name="test_answers_summary" value="${escapeHtml(answersSummary(result))}">
                         <input type="hidden" name="goal" value="${escapeHtml(state.self.goal || '')}">
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
                         <div class="grid gap-3">
                             <label class="block">
                                 <span class="sr-only">Ваше имя</span>
@@ -1046,6 +1047,19 @@
         } catch (error) {}
     }
 
+    function hasFilledHoneypot(form) {
+        const trap = form.querySelector('input[name="_gotcha"]');
+        return Boolean(trap && trap.value.trim());
+    }
+
+    function hasSuspiciousFormText(form) {
+        const suspiciousPattern = /(?:'\s*or\s*'?\d+'?\s*=\s*'?\d+|\bor\s+['"]?\d+['"]?\s*=\s*['"]?\d+['"]?|union\s+select|drop\s+table|<\s*script|--|\/\*)/i;
+        return Array.from(form.elements).some(function (field) {
+            if (!field.name || field.name === '_gotcha' || field.type === 'hidden') return false;
+            return suspiciousPattern.test(field.value || '');
+        });
+    }
+
     function initResultForm() {
         const form = document.getElementById('result-form');
         const input = document.getElementById('result-contact');
@@ -1060,6 +1074,13 @@
         });
         form.addEventListener('submit', function (event) {
             event.preventDefault();
+            status.className = 'hidden text-sm rounded-[8px] px-4 py-3';
+            if (hasFilledHoneypot(form)) return;
+            if (hasSuspiciousFormText(form)) {
+                status.textContent = 'Похоже на технический тест формы. Если это настоящая заявка, напишите в Telegram или по email ниже.';
+                status.className = 'text-sm rounded-[8px] px-4 py-3 bg-rose text-red-700';
+                return;
+            }
             formatContactInput(input);
             const validation = validateContact(input.value);
             if (!validation.ok) {
@@ -1071,7 +1092,6 @@
             }
             submit.disabled = true;
             submit.textContent = 'Отправляю...';
-            status.className = 'hidden text-sm rounded-[8px] px-4 py-3';
             const data = new FormData(form);
             if (validation.formatted) data.set('contact', validation.formatted);
             fetch(FORMSPREE_ENDPOINT, {

@@ -74,6 +74,8 @@ directly by the user between Codex sessions.
 | `/resursy/` | `resursy/index.html` | Curated language-learning resource library |
 | `/test-niderlandskogo/` | `test-niderlandskogo/index.html` | Adaptive Dutch level test |
 | `/test-angliyskogo/` | `test-angliyskogo/index.html` | Adaptive English level test |
+| `/knm-examen/` | `knm-examen/index.html` | Unofficial KNM/Inburgering SEO guide |
+| `/knm-trenazher/` | `knm-trenazher/index.html` | Unofficial KNM/Inburgering practice trainer |
 
 ### Russian SEO Landing Pages
 
@@ -157,6 +159,11 @@ All lead forms accept:
 - Telegram links such as `https://t.me/username`
 - phone numbers for WhatsApp, including international numbers
 
+All lead forms include a Formspree-compatible `_gotcha` honeypot field and
+client-side blocking for obvious automated test payloads such as SQL-injection
+probes. Do not add CAPTCHA unless spam volume becomes persistent, because it
+adds friction to high-intent lead forms.
+
 Phone input formatting uses `libphonenumber` when available and includes
 fallback formatting.
 
@@ -188,6 +195,9 @@ calculator_cta_click
 test_start
 test_complete
 test_result_submit
+knm_trainer_start
+knm_trainer_answer
+knm_trainer_complete
 ```
 
 Behavior:
@@ -198,6 +208,9 @@ Behavior:
 - `calculator_cta_click` fires when the calculator CTA is used.
 - `test_start` and `test_complete` fire inside both adaptive tests.
 - `test_result_submit` fires only after a successful test-result submission.
+- `knm_trainer_answer` never sends answer text; it sends only topic label,
+  correctness, and question index.
+- `knm_trainer_complete` sends only score, percent, and weak topic count.
 - Personal data such as names, phone numbers, email addresses, and Telegram
   usernames must never be sent to GA4.
 
@@ -241,9 +254,9 @@ sitemap.xml
 
 `robots.txt` allows crawling and points to the production sitemap.
 
-`sitemap.xml` currently lists 15 production URLs. Its `<lastmod>` values were
-updated to `2026-05-30` when SEO metadata was added. Update dates honestly when
-pages change. Do not generate fake rolling dates merely to imply freshness.
+`sitemap.xml` currently lists 17 production URLs. Update `<lastmod>` dates
+honestly when pages change. Do not generate fake rolling dates merely to imply
+freshness.
 
 ### Canonical And Social Preview Tags
 
@@ -381,6 +394,77 @@ The English test keeps the lighter adaptive difficulty flow from `A0` to `B2`.
 The Dutch test previously experimented with certificate PNG/PDF generation.
 Keep the stable current behavior unless the user explicitly asks to revisit
 certificates.
+
+## KNM Trainer
+
+The KNM guide page is:
+
+```text
+/knm-examen/
+```
+
+It is an unofficial SEO guide for Russian-speaking users researching
+`KNM examen`, `экзамен KNM`, `подготовка к KNM`, and `Inburgering KNM`.
+
+Guide content rules:
+
+- Keep it informational first and conversion-oriented second.
+- Link clearly to `/knm-trenazher/` as the practical next step.
+- Use official sources for factual framing: DUO/Inburgeren, Cito, and
+  `wetten.nl`.
+- Do not copy competitor wording or DUO oefenexamen questions.
+- Do not claim official affiliation with DUO/Cito, guaranteed pass, fake
+  ratings, or fake review data.
+- The guide form uses `form_name: knm_examen_guide_form` for `generate_lead`.
+
+The KNM practice trainer is a static page:
+
+```text
+/knm-trenazher/
+```
+
+It is an unofficial Russian-language practice tool for Inburgering KNM:
+
+- 25 fixed original situational questions
+- simple Dutch prompts and answer options
+- Russian explanations after every answer
+- no timer in v1
+- result by total score and by KNM topic
+- CTA form for reviewing mistakes with Larisa
+
+Storage key:
+
+```text
+larisa-knm-trainer-v1
+```
+
+Question content rules:
+
+- Do not copy DUO oefenexamen questions.
+- Keep questions original and based on the official KNM themes/eindtermen.
+- Keep the disclaimer visible: the trainer is not an official DUO exam and not
+  a copy of official questions.
+- Use official sources only for topic framing and source links, especially
+  DUO/Inburgeren, Cito, and `wetten.nl`.
+- Do not claim official affiliation, a guaranteed pass, fake reviews, or fake
+  ratings.
+
+The v1 trainer covers eight KNM themes:
+
+```text
+Werk en inkomen
+Omgangsvormen, waarden en normen
+Wonen
+Gezondheid en gezondheidszorg
+Geschiedenis en geografie
+Instanties
+Staatsinrichting en rechtsstaat
+Onderwijs en opvoeding
+```
+
+Lead behavior follows the shared lead rules: Formspree endpoint unchanged,
+Telegram/WhatsApp contact only, `mailto:info@godutch.ru` as the email fallback,
+`_gotcha` honeypot, suspicious-payload blocking, and no personal data in GA4.
 
 ## Resource Library
 

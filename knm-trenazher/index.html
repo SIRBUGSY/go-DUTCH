@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNM тренажер онлайн — подготовка к Inburgering</title>
+    <meta name="description" content="Бесплатный KNM-тренажер: 25 вопросов по темам Inburgering, объяснения на русском и план подготовки.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://larisakalugina.com/knm-trenazher/">
+    <link rel="canonical" href="https://larisakalugina.com/knm-trenazher/">
+    <meta property="og:title" content="KNM тренажер онлайн — подготовка к Inburgering">
+    <meta property="og:description" content="25 ситуаций по темам KNM: работа, жилье, медицина, школа, государство и повседневные правила.">
+    <meta property="og:image" content="https://larisakalugina.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Лариса Калугина">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Лариса Калугина — преподаватель нидерландского и английского онлайн">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KNM тренажер онлайн — подготовка к Inburgering">
+    <meta name="twitter:description" content="Бесплатный KNM-тренажер: 25 вопросов по темам Inburgering, объяснения на русском и план подготовки.">
+    <meta name="twitter:image" content="https://larisakalugina.com/og-image.jpg">
+    <meta name="twitter:image:alt" content="Лариса Калугина — преподаватель нидерландского и английского онлайн">
+    <link rel="alternate" hreflang="ru" href="https://larisakalugina.com/knm-trenazher/">
+    <link rel="alternate" hreflang="x-default" href="https://larisakalugina.com/knm-trenazher/">
+    <link rel="icon" type="image/png" href="/favicon.png?v=larisa">
+    <link rel="apple-touch-icon" href="/favicon.png?v=larisa">
+    <link rel="stylesheet" href="/transitions.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { DEFAULT: '#C77D3A', hover: '#A86528', light: '#E8B97A' },
+                        navy: '#1F2D3D',
+                        surface: '#F7F7F5',
+                        mint: '#EBF5ED',
+                        peach: '#FCEFE8',
+                        rose: '#FBECEF',
+                        sky: '#E8F3F8',
+                        notion_text: '#37352F'
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    boxShadow: {
+                        mockup: '0 24px 48px -8px rgba(15,15,15,0.25)',
+                        soft: '0 18px 45px -28px rgba(31,45,61,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body { color: #37352F; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; }
+        .touch-target { min-height: 44px; min-width: 44px; }
+        .btn-text { font-size: 14px; font-weight: 500; }
+        .h1-hero { font-weight: 600; line-height: 1.08; letter-spacing: -0.6px; font-size: clamp(34px, 9vw, 76px); }
+        .h2-section { font-weight: 600; line-height: 1.14; letter-spacing: -0.5px; font-size: clamp(28px, 7vw, 52px); }
+        .trainer-card { border: 1px solid rgba(31,45,61,0.1); box-shadow: 0 20px 60px -42px rgba(31,45,61,0.55); }
+        .answer-btn { transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease, box-shadow 140ms ease; }
+        .answer-btn:hover { border-color: rgba(199,125,58,0.45); background: #FFFBF7; }
+        .answer-btn:active { transform: scale(0.992); }
+        .answer-btn.is-selected { border-color: #C77D3A; background: #FCEFE8; box-shadow: inset 0 0 0 1px rgba(199,125,58,0.25); }
+        .answer-btn.is-correct { border-color: #15803d; background: #EBF5ED; }
+        .answer-btn.is-wrong { border-color: #dc2626; background: #FBECEF; }
+        .fade-panel { opacity: 1; transform: translateY(0); animation: panelIn 220ms ease-out both; }
+        @keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .bg-grid { background-image: radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px); background-size: 28px 28px; }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-panel { animation: none; }
+            .answer-btn { transition: none; }
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WPRVBVDXD3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WPRVBVDXD3');
+      gtag('config', 'GT-KFLHWCGT');
+
+      window.trackAnalyticsEvent = function (name, params) {
+        if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+      };
+
+      document.addEventListener('click', function (event) {
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        if (/^https?:\/\/(?:t\.me|telegram\.me)\//i.test(href)) {
+          window.trackAnalyticsEvent('click_telegram', { link_url: href });
+        } else if (/^mailto:/i.test(href)) {
+          window.trackAnalyticsEvent('click_email', { link_url: href.split('?')[0] });
+        }
+      });
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "KNM тренажер онлайн — подготовка к Inburgering",
+      "description": "Бесплатный тренажер по темам Kennis van de Nederlandse Maatschappij для подготовки к Inburgering.",
+      "url": "https://larisakalugina.com/knm-trenazher/",
+      "inLanguage": ["ru", "nl"],
+      "learningResourceType": "practice test",
+      "about": ["KNM", "Inburgering", "Kennis van de Nederlandse Maatschappij"],
+      "isAccessibleForFree": true,
+      "publisher": {
+        "@type": "Person",
+        "name": "Лариса Калугина",
+        "url": "https://larisakalugina.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Это официальный KNM-examen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Это независимый тренажер Ларисы Калугиной, не официальный DUO-examen и не копия официальных вопросов. Он помогает увидеть слабые темы и подготовиться к формату."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "На каком языке будут вопросы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ситуации и варианты ответов написаны на простом нидерландском, потому что настоящий KNM проходит на нидерландском. Объяснения после ответа даны по-русски."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько вопросов в настоящем KNM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DUO описывает KNM как компьютерный экзамен на 45 минут. Этот тренажер короче: 25 вопросов, чтобы быстро увидеть сильные и слабые темы."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли подготовиться только по тренажеру?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Тренажер полезен для самопроверки, но его лучше сочетать с официальными oefenexamens DUO, разбором тем и практикой нидерландского для бытовых ситуаций."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что делать после результата?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Посмотрите слабые темы в результате и отправьте заявку на разбор. На первом занятии можно пройти ошибки, разобрать логику KNM-вопросов и составить план подготовки."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+<body class="bg-white font-sans overflow-x-hidden w-full">
+    <a href="/#waitlist" class="bg-surface border-b border-gray-200 text-center py-2 px-4 btn-text text-gray-600 text-xs sm:text-sm flex items-center justify-center gap-2 hover:text-amber transition-colors">
+        <i class="ph ph-sparkle text-amber"></i> Waitlist открыт для групповых занятий - осталось 3 места
+    </a>
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-[64px] border-b border-gray-100 flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto w-full">
+        <div class="flex items-center gap-8 min-w-0">
+            <a href="/" class="font-semibold text-[18px] tracking-tight touch-target flex items-center gap-2 shrink-0">
+                <i class="ph ph-chalkboard-teacher text-amber text-xl"></i> <span class="truncate">Лариса Калугина</span>
+            </a>
+            <div class="hidden lg:flex gap-6 btn-text text-gray-500">
+                <a href="/#about" class="hover:text-notion_text transition-colors">О репетиторе</a>
+                <a href="/#languages" class="hover:text-notion_text transition-colors">Языки</a>
+                <a href="/test-niderlandskogo/" class="hover:text-notion_text transition-colors">Тест уровня</a>
+                <a href="/knm-examen/" class="hover:text-notion_text transition-colors">Гайд KNM</a>
+                <a href="/knm-trenazher/" class="text-amber font-semibold">Тренажер</a>
+                <a href="/#pricing" class="hover:text-notion_text transition-colors">Цены</a>
+                <a href="/resursy/" class="hover:text-notion_text transition-colors">Ресурсы</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+            <div class="hidden lg:flex items-center gap-1 mr-2">
+                <a href="https://www.tiktok.com/@larisakalugina_nl" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-tiktok-logo"></i></a>
+                <a href="https://www.instagram.com/larisakalugina_nl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-instagram-logo"></i></a>
+                <a href="https://www.youtube.com/@larisakalugina_nl" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-youtube-logo"></i></a>
+                <a href="https://t.me/larisakalugina_nl" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-8 h-8 flex items-center justify-center rounded-[6px] text-gray-400 hover:text-amber hover:bg-gray-50 transition-colors text-[18px]"><i class="ph ph-telegram-logo"></i></a>
+            </div>
+            <a href="/#contact" class="bg-amber hover:bg-amber-hover text-white btn-text px-4 py-2 rounded-[8px] transition-colors h-[44px] flex items-center justify-center gap-2 shadow-sm">
+                <i class="ph ph-calendar-plus text-[16px]"></i> <span class="hidden sm:inline">Пробный урок</span>
+            </a>
+        </div>
+    </nav>
+
+    <header class="bg-navy text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid opacity-70" aria-hidden="true"></div>
+        <div class="absolute -left-20 top-20 h-56 w-56 rounded-full bg-amber/20 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute right-[-80px] bottom-[-80px] h-64 w-64 rounded-full bg-sky/15 blur-3xl" aria-hidden="true"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 grid lg:grid-cols-[1.04fr_0.96fr] gap-10 lg:gap-14 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm text-white/85 mb-6">
+                    <i class="ph ph-house-line text-amber-light"></i> Kennis van de Nederlandse Maatschappij
+                </div>
+                <h1 class="h1-hero max-w-4xl mb-5">KNM-тренажер для Inburgering</h1>
+                <p class="text-[16px] sm:text-lg leading-relaxed text-white/78 max-w-2xl mb-8">25 ситуаций по темам нидерландского общества: работа, жилье, медицина, школы, государство и повседневные правила.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="#trainer" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] flex items-center justify-center gap-2">
+                        Начать тренажер <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a href="/knm-examen/" class="border border-white/25 hover:bg-white/10 text-white btn-text px-6 py-3 rounded-[8px] h-[48px] flex items-center justify-center gap-2">
+                        <i class="ph ph-book-open-text"></i> Гайд по KNM
+                    </a>
+                    <a href="#sources" class="border border-white/25 hover:bg-white/10 text-white btn-text px-6 py-3 rounded-[8px] h-[48px] flex items-center justify-center gap-2">
+                        <i class="ph ph-link"></i> Официальные источники
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white text-notion_text rounded-[12px] p-4 sm:p-6 shadow-mockup border border-white/20">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-5">
+                    <div class="flex gap-1.5">
+                        <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    </div>
+                    <span class="text-xs sm:text-sm text-gray-400 flex items-center gap-1.5"><i class="ph ph-check-square-offset"></i> 25 вопросов</span>
+                </div>
+                <div class="grid gap-3">
+                    <div class="flex items-center gap-3 rounded-[8px] border border-gray-100 bg-gray-50 p-3">
+                        <div class="w-10 h-10 rounded-[8px] bg-peach text-amber flex items-center justify-center shrink-0"><i class="ph ph-graduation-cap text-xl"></i></div>
+                        <div>
+                            <p class="font-semibold">Простые NL-ситуации</p>
+                            <p class="text-sm text-gray-500">вопросы и варианты на нидерландском</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 rounded-[8px] border border-gray-100 bg-gray-50 p-3">
+                        <div class="w-10 h-10 rounded-[8px] bg-mint text-emerald-700 flex items-center justify-center shrink-0"><i class="ph ph-chat-circle-text text-xl"></i></div>
+                        <div>
+                            <p class="font-semibold">Объяснения по-русски</p>
+                            <p class="text-sm text-gray-500">после каждого ответа, без регистрации</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 rounded-[8px] border border-gray-100 bg-gray-50 p-3">
+                        <div class="w-10 h-10 rounded-[8px] bg-sky text-sky-700 flex items-center justify-center shrink-0"><i class="ph ph-list-checks text-xl"></i></div>
+                        <div>
+                            <p class="font-semibold">План слабых тем</p>
+                            <p class="text-sm text-gray-500">работа, жилье, здоровье, школа, государство</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="trainer" class="py-10 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-6 rounded-[12px] border border-amber/20 bg-peach px-4 py-3 text-sm text-gray-700 leading-relaxed">
+                    <strong>Важно:</strong> это не официальный DUO-examen и не копия официальных вопросов. Тренажер помогает увидеть слабые темы и подготовиться к формату.
+                </div>
+                <div id="trainer-app" class="trainer-card bg-white rounded-[12px] overflow-hidden">
+                    <div class="p-5 sm:p-6 border-b border-gray-100">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <div>
+                                <p id="trainer-step" class="text-xs uppercase tracking-[0.18em] text-gray-400 font-semibold">Старт</p>
+                                <h2 id="trainer-title" class="text-2xl sm:text-3xl font-semibold tracking-tight mt-1">Готовы проверить KNM?</h2>
+                            </div>
+                            <div id="trainer-meta" class="flex flex-wrap gap-2 text-xs text-gray-500"></div>
+                        </div>
+                        <div class="mt-5 h-2 rounded-full bg-gray-200 overflow-hidden">
+                            <div id="trainer-progress" class="h-full bg-amber rounded-full transition-all duration-200" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <div id="trainer-screen" class="p-5 sm:p-8 lg:p-10">
+                        <div class="grid lg:grid-cols-[1fr_0.78fr] gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-semibold mb-4">Быстрая практика по темам KNM</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6">Ответьте на 25 оригинальных ситуационных вопросов. После каждого ответа вы увидите короткое объяснение, а в конце — слабые темы для подготовки.</p>
+                                <button type="button" id="static-start-trainer" class="w-full sm:w-auto bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">
+                                    Начать <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="rounded-[12px] bg-surface p-5 sm:p-6">
+                                <p class="font-semibold mb-3">Темы внутри</p>
+                                <div class="grid gap-2 text-sm text-gray-600">
+                                    <span><i class="ph ph-briefcase text-amber"></i> Werk en inkomen</span>
+                                    <span><i class="ph ph-house-line text-amber"></i> Wonen</span>
+                                    <span><i class="ph ph-heartbeat text-amber"></i> Gezondheid</span>
+                                    <span><i class="ph ph-bank text-amber"></i> Instanties en rechtsstaat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-xs sm:text-sm text-gray-400 mt-5">Результат является учебной самопроверкой, а не официальной оценкой DUO.</p>
+            </div>
+        </section>
+
+        <section class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-surface border-y border-gray-100">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-[0.85fr_1.15fr] gap-8 items-center">
+                <div>
+                    <p class="text-amber font-semibold text-sm mb-3">Разбор с преподавателем</p>
+                    <h2 class="h2-section mb-4">После тренажера понятно, что учить дальше</h2>
+                    <p class="text-gray-600 leading-relaxed">Лариса помогает готовиться к Inburgering и нидерландскому для жизни: письма от gemeente, huisarts, школа, работа, жилье и реальные бытовые ситуации.</p>
+                </div>
+                <div class="grid sm:grid-cols-3 gap-3">
+                    <div class="rounded-[12px] bg-white border border-gray-100 p-5"><p class="text-2xl font-semibold text-navy">25</p><p class="text-sm text-gray-500 mt-1">вопросов в v1</p></div>
+                    <div class="rounded-[12px] bg-white border border-gray-100 p-5"><p class="text-2xl font-semibold text-navy">8</p><p class="text-sm text-gray-500 mt-1">тем KNM</p></div>
+                    <div class="rounded-[12px] bg-white border border-gray-100 p-5"><p class="text-2xl font-semibold text-navy">RU</p><p class="text-sm text-gray-500 mt-1">объяснения</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sources" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="h2-section mb-5">На чем основан тренажер</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <a href="https://www.inburgeren.nl/examen-doen/inhoud-kennisexamens.jsp" target="_blank" rel="noopener noreferrer" class="rounded-[12px] border border-gray-100 bg-white p-5 hover:border-amber transition-colors">
+                        <p class="font-semibold">DUO: Kennisexamens</p>
+                        <p class="text-sm text-gray-500 mt-2">KNM как компьютерный экзамен, 45 минут и темы вроде wonen / werk en inkomen.</p>
+                    </a>
+                    <a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer" class="rounded-[12px] border border-gray-100 bg-white p-5 hover:border-amber transition-colors">
+                        <p class="font-semibold">DUO: Oefenen</p>
+                        <p class="text-sm text-gray-500 mt-2">Официальные oefenexamens A2, включая KNM 1 и KNM 2.</p>
+                    </a>
+                    <a href="https://cito.nl/onderwijs/inburgering-nt2/inburgeringsexamen/" target="_blank" rel="noopener noreferrer" class="rounded-[12px] border border-gray-100 bg-white p-5 hover:border-amber transition-colors">
+                        <p class="font-semibold">Cito: Inburgeringsexamen</p>
+                        <p class="text-sm text-gray-500 mt-2">Cito разрабатывает KNM-задания в opdracht van het Ministerie.</p>
+                    </a>
+                    <a href="https://wetten.overheid.nl/BWBR0045574/" target="_blank" rel="noopener noreferrer" class="rounded-[12px] border border-gray-100 bg-white p-5 hover:border-amber transition-colors">
+                        <p class="font-semibold">Regeling inburgering 2021</p>
+                        <p class="text-sm text-gray-500 mt-2">Bijlage 2 beschrijft de KNM-eindtermen en thema's.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-surface">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="h2-section mb-8 text-center">Частые вопросы</h2>
+                <div class="grid gap-3">
+                    <details class="rounded-[12px] bg-white border border-gray-100 p-5">
+                        <summary class="font-semibold cursor-pointer">Это официальный KNM-examen?</summary>
+                        <p class="mt-3 text-gray-600 leading-relaxed">Нет. Это независимый тренажер Ларисы Калугиной, не официальный DUO-examen и не копия официальных вопросов. Он помогает увидеть слабые темы и подготовиться к формату.</p>
+                    </details>
+                    <details class="rounded-[12px] bg-white border border-gray-100 p-5">
+                        <summary class="font-semibold cursor-pointer">На каком языке будут вопросы?</summary>
+                        <p class="mt-3 text-gray-600 leading-relaxed">Ситуации и варианты ответов написаны на простом нидерландском, потому что настоящий KNM проходит на нидерландском. Объяснения после ответа даны по-русски.</p>
+                    </details>
+                    <details class="rounded-[12px] bg-white border border-gray-100 p-5">
+                        <summary class="font-semibold cursor-pointer">Сколько вопросов в настоящем KNM?</summary>
+                        <p class="mt-3 text-gray-600 leading-relaxed">DUO описывает KNM как компьютерный экзамен на 45 минут. Этот тренажер короче: 25 вопросов, чтобы быстро увидеть сильные и слабые темы.</p>
+                    </details>
+                    <details class="rounded-[12px] bg-white border border-gray-100 p-5">
+                        <summary class="font-semibold cursor-pointer">Можно ли подготовиться только по тренажеру?</summary>
+                        <p class="mt-3 text-gray-600 leading-relaxed">Тренажер полезен для самопроверки, но его лучше сочетать с официальными oefenexamens DUO, разбором тем и практикой нидерландского для бытовых ситуаций.</p>
+                    </details>
+                    <details class="rounded-[12px] bg-white border border-gray-100 p-5">
+                        <summary class="font-semibold cursor-pointer">Что делать после результата?</summary>
+                        <p class="mt-3 text-gray-600 leading-relaxed">Посмотрите слабые темы в результате и отправьте заявку на разбор. На первом занятии можно пройти ошибки, разобрать логику KNM-вопросов и составить план подготовки.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface border-t border-gray-200 py-10 sm:py-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left">
+            <div>
+                <div class="font-semibold text-[18px] mb-4 tracking-tight flex items-center gap-2"><i class="ph ph-chalkboard-teacher text-amber text-xl"></i> Лариса Калугина</div>
+                <p class="text-[14px] text-gray-500 leading-relaxed max-w-xs">Индивидуальные уроки нидерландского и английского языков для жизни, работы и учебы.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-link"></i> Полезное</h4>
+                <ul class="space-y-2 text-[14px] text-gray-600">
+                    <li><a href="/#about" class="hover:text-amber transition-colors py-2 block">О репетиторе</a></li>
+                    <li><a href="/test-niderlandskogo/" class="hover:text-amber transition-colors py-2 block">Тест уровня</a></li>
+                    <li><a href="/knm-examen/" class="hover:text-amber transition-colors py-2 block">Гайд по KNM</a></li>
+                    <li><a href="/knm-trenazher/" class="hover:text-amber transition-colors py-2 block">KNM-тренажер</a></li>
+                    <li><a href="/repetitor-gollandskogo/" class="hover:text-amber transition-colors py-2 block">Репетитор голландского</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4 uppercase tracking-wider text-gray-400 text-xs flex items-center gap-2"><i class="ph ph-telegram-logo"></i> Контакт</h4>
+                <a href="https://t.me/larisakalugina_nl" target="_blank" rel="noopener noreferrer" class="text-[14px] text-gray-500 font-medium inline-flex min-h-[44px] items-center gap-2 hover:text-amber transition-colors">
+                    <i class="ph ph-telegram-logo text-lg"></i> @larisakalugina_nl
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 mt-8 pt-6 text-[12px] text-gray-400">
+            © 2026 Лариса Калугина. Все права защищены.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/libphonenumber-js@1/bundle/libphonenumber-js.min.js"></script>
+    <script src="/transitions.js" defer></script>
+    <script>
+    const STORAGE_KEY = 'larisa-knm-trainer-v1';
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdoqzwv';
+    const topicLabels = {
+        work: 'Werk en inkomen',
+        values: 'Omgangsvormen, waarden en normen',
+        housing: 'Wonen',
+        health: 'Gezondheid en gezondheidszorg',
+        history: 'Geschiedenis en geografie',
+        institutions: 'Instanties',
+        law: 'Staatsinrichting en rechtsstaat',
+        education: 'Onderwijs en opvoeding'
+    };
+    const questions = [
+        { id: 'work-uwv', topic: 'work', promptNl: 'U heeft twee jaar gewerkt. Nu bent u uw baan kwijt. Waar meldt u zich meestal voor een WW-uitkering?', optionsNl: ['Bij het UWV', 'Bij de huisarts', 'Bij de woningcorporatie', 'Bij DUO'], correctIndex: 0, explanationRu: 'После трудового стажа при потере работы обычно обращаются в UWV: регистрация, WW и помощь с поиском работы.', sourceTheme: 'Werk en inkomen', leadHint: 'UWV и gemeente при потере дохода' },
+        { id: 'work-gemeente', topic: 'work', promptNl: 'U heeft geen werk en geen recht op WW. U heeft geld nodig voor basisuitgaven. Waar vraagt u hulp?', optionsNl: ['Bij de rechtbank', 'Bij de gemeente', 'Bij de apotheek', 'Bij de basisschool'], correctIndex: 1, explanationRu: 'Если нет права на WW, за социальной поддержкой и bijstand обычно обращаются в gemeente.', sourceTheme: 'Werk en inkomen', leadHint: 'bijstand и социальная поддержка' },
+        { id: 'work-discrimination', topic: 'work', promptNl: 'Een werkgever zegt: "Wij nemen geen mensen aan met jouw afkomst." Wat klopt?', optionsNl: ['Dat mag altijd', 'Alleen de buurman beslist', 'Discriminatie op het werk is verboden', 'Dit hoort bij de zorgverzekering'], correctIndex: 2, explanationRu: 'Дискриминация на работе запрещена. В KNM важно понимать базовые права и куда обращаться при проблеме.', sourceTheme: 'Werk en inkomen', leadHint: 'права на работе' },
+        { id: 'work-kvk', topic: 'work', promptNl: 'U wilt een eigen bedrijf beginnen. Waar schrijft u uw bedrijf in?', optionsNl: ['Bij de bibliotheek', 'Bij het ziekenhuis', 'Bij de politie', 'Bij de KvK'], correctIndex: 3, explanationRu: 'Для собственного бизнеса нужна регистрация в Kamer van Koophandel (KvK).', sourceTheme: 'Werk en inkomen', leadHint: 'предпринимательство и KvK' },
+        { id: 'values-time', topic: 'values', promptNl: 'U heeft om 10.00 uur een afspraak bij de gemeente. Wat is normaal in Nederland?', optionsNl: ['Op tijd komen of op tijd afzeggen', 'Zonder bericht twee uur later komen', 'Niet komen en niets zeggen', 'Iemand anders laten beslissen'], correctIndex: 0, explanationRu: 'Пунктуальность и заранее предупредить об отмене — типичная практическая норма для встреч с instanties.', sourceTheme: 'Omgangsvormen, waarden en normen', leadHint: 'afspraken en op tijd komen' },
+        { id: 'values-direct', topic: 'values', promptNl: 'Een collega zegt direct wat hij niet goed vindt. Wat is vaak passend?', optionsNl: ['Meteen boos weglopen', 'Rustig luisteren en duidelijk antwoorden', 'Nooit meer praten', 'De politie bellen'], correctIndex: 1, explanationRu: 'В Нидерландах прямота часто нормальна, но ожидается спокойный и уважительный ответ.', sourceTheme: 'Omgangsvormen, waarden en normen', leadHint: 'directe communicatie' },
+        { id: 'values-family', topic: 'values', promptNl: 'Twee mannen wonen samen als partners. Wat past bij Nederlandse waarden en regels?', optionsNl: ['Dat is verboden', 'Zij moeten apart wonen', 'Dat is geaccepteerd en verdient respect', 'Alleen de werkgever beslist'], correctIndex: 2, explanationRu: 'KNM проверяет понимание равенства, уважения и разных форм семьи в Нидерландах.', sourceTheme: 'Omgangsvormen, waarden en normen', leadHint: 'gelijkheid en respect' },
+        { id: 'housing-moving', topic: 'housing', promptNl: 'U verhuist naar een andere stad. Waar geeft u uw nieuwe adres door?', optionsNl: ['Bij de tandarts', 'Bij de supermarkt', 'Bij de rechtbank', 'Bij de gemeente'], correctIndex: 3, explanationRu: 'При переезде нужно зарегистрировать новый адрес в gemeente.', sourceTheme: 'Wonen', leadHint: 'inschrijving bij gemeente' },
+        { id: 'housing-leak', topic: 'housing', promptNl: 'Er is lekkage in uw huurwoning. Wie belt u meestal eerst?', optionsNl: ['De verhuurder of woningcorporatie', 'DUO', 'De basisschool', 'De koning'], correctIndex: 0, explanationRu: 'При проблеме в арендном жилье первым шагом обычно является verhuurder или woningcorporatie.', sourceTheme: 'Wonen', leadHint: 'huurwoning en reparaties' },
+        { id: 'housing-energy', topic: 'housing', promptNl: 'U krijgt een nieuw energiecontract. Wat is belangrijk bij de start?', optionsNl: ['Een paspoort aanvragen', 'Meterstanden doorgeven', 'Een school kiezen', 'Een rijexamen doen'], correctIndex: 1, explanationRu: 'Для газа/электричества часто нужно передать meterstanden, чтобы счет начался корректно.', sourceTheme: 'Wonen', leadHint: 'energiecontract en meterstanden' },
+        { id: 'health-huisarts', topic: 'health', promptNl: 'U bent ziek, maar het is geen spoed. Waar gaat u meestal eerst heen?', optionsNl: ['Naar de rechter', 'Naar de Tweede Kamer', 'Naar de huisarts', 'Naar de KvK'], correctIndex: 2, explanationRu: 'Для неэкстренных медицинских вопросов первый контакт — huisarts.', sourceTheme: 'Gezondheid en gezondheidszorg', leadHint: 'huisarts als eerste stap' },
+        { id: 'health-112', topic: 'health', promptNl: 'Er is direct levensgevaar. Welk nummer belt u?', optionsNl: ['1400', '0800-0000', '9292', '112'], correctIndex: 3, explanationRu: 'При срочной опасности для жизни звонят 112.', sourceTheme: 'Gezondheid en gezondheidszorg', leadHint: 'spoed en 112' },
+        { id: 'health-pharmacy', topic: 'health', promptNl: 'De huisarts geeft een recept voor medicijnen. Waar haalt u die meestal op?', optionsNl: ['Bij de apotheek', 'Bij de gemeente', 'Bij de bibliotheek', 'Bij de bank'], correctIndex: 0, explanationRu: 'Лекарства по рецепту обычно получают в apotheek.', sourceTheme: 'Gezondheid en gezondheidszorg', leadHint: 'recept en apotheek' },
+        { id: 'history-water', topic: 'history', promptNl: 'Waarom zijn dijken en waterbeheer belangrijk in Nederland?', optionsNl: ['Omdat er geen rivieren zijn', 'Een deel van Nederland ligt laag en moet beschermd worden tegen water', 'Omdat niemand fietst', 'Omdat scholen dat betalen'], correctIndex: 1, explanationRu: 'География Нидерландов связана с водой: низкие земли, dijken, polders и waterbeheer.', sourceTheme: 'Geschiedenis en geografie', leadHint: 'Nederland en water' },
+        { id: 'history-may', topic: 'history', promptNl: 'Wat gebeurt er op 4 mei en 5 mei in Nederland?', optionsNl: ['Belastingaangifte en Prinsjesdag', 'Sinterklaas en Kerst', 'Herdenken en Bevrijdingsdag', 'Schoolvakantie en rijexamen'], correctIndex: 2, explanationRu: '4 мая — herdenking, 5 мая — Bevrijdingsdag. Это частая базовая тема истории и гражданской культуры.', sourceTheme: 'Geschiedenis en geografie', leadHint: '4 en 5 mei' },
+        { id: 'history-province', topic: 'history', promptNl: 'Nederland heeft gemeenten en provincies. Wat is een provincie?', optionsNl: ['Een soort zorgverzekering', 'Een schoolniveau', 'Een uitkering', 'Een bestuurlijk gebied, groter dan een gemeente'], correctIndex: 3, explanationRu: 'Provincie — административный уровень больше gemeente. Важно понимать базовую структуру страны.', sourceTheme: 'Geschiedenis en geografie', leadHint: 'gemeente en provincie' },
+        { id: 'institutions-tax', topic: 'institutions', promptNl: 'U heeft vragen over belasting of toeslagen. Welke instantie past het best?', optionsNl: ['Belastingdienst', 'UWV', 'Apotheek', 'Woningcorporatie'], correctIndex: 0, explanationRu: 'Налоги и toeslagen связаны с Belastingdienst.', sourceTheme: 'Instanties', leadHint: 'Belastingdienst en toeslagen' },
+        { id: 'institutions-svb', topic: 'institutions', promptNl: 'U krijgt kinderbijslag. Welke instantie regelt dit meestal?', optionsNl: ['DUO', 'SVB', 'Politie', 'Huisarts'], correctIndex: 1, explanationRu: 'Kinderbijslag обычно выплачивает Sociale Verzekeringsbank (SVB).', sourceTheme: 'Instanties', leadHint: 'SVB en kinderbijslag' },
+        { id: 'institutions-duo', topic: 'institutions', promptNl: 'U heeft vragen over studiefinanciering of inburgeringsexamens. Welke organisatie kent u hiervoor?', optionsNl: ['KvK', 'Apotheek', 'DUO', 'Woningcorporatie'], correctIndex: 2, explanationRu: 'DUO связан с образованием, studiefinanciering и inburgeringsexamens.', sourceTheme: 'Instanties', leadHint: 'DUO en examens' },
+        { id: 'law-vote', topic: 'law', promptNl: 'Nederland heeft verkiezingen. Wie kiezen burgers bij de Tweede Kamerverkiezing?', optionsNl: ['Huisartsen', 'Rechters', 'Schooldirecteuren', 'Leden van de Tweede Kamer'], correctIndex: 3, explanationRu: 'На выборах Tweede Kamer граждане выбирают депутатов парламента.', sourceTheme: 'Staatsinrichting en rechtsstaat', leadHint: 'verkiezingen en Tweede Kamer' },
+        { id: 'law-judge', topic: 'law', promptNl: 'Wie beslist uiteindelijk of iemand straf krijgt na een rechtszaak?', optionsNl: ['De rechter', 'De buurman', 'De huisarts', 'De werkgever'], correctIndex: 0, explanationRu: 'В rechtsstaat полиция расследует, но решение о наказании принимает rechter.', sourceTheme: 'Staatsinrichting en rechtsstaat', leadHint: 'politie en rechter' },
+        { id: 'law-freedom', topic: 'law', promptNl: 'Welke uitspraak past bij vrijheid in Nederland?', optionsNl: ['U mag altijd iedereen discrimineren', 'U mag uw mening geven, maar discriminatie is verboden', 'Alleen de koning mag spreken', 'Religie is altijd verboden'], correctIndex: 1, explanationRu: 'Свобода слова и религии важны, но есть границы: дискриминация и угрозы запрещены.', sourceTheme: 'Staatsinrichting en rechtsstaat', leadHint: 'vrijheid en grenzen' },
+        { id: 'education-attendance', topic: 'education', promptNl: 'Uw kind is leerplichtig en ziek. Wat doet u?', optionsNl: ['Niets laten weten', 'Alleen de supermarkt bellen', 'De school informeren', 'Een bedrijf inschrijven'], correctIndex: 2, explanationRu: 'При болезни ребенка родители сообщают в школу. Leerplicht и контакт со школой — базовая тема.', sourceTheme: 'Onderwijs en opvoeding', leadHint: 'leerplicht en ziekmelden' },
+        { id: 'education-route', topic: 'education', promptNl: 'Welke route past vaak na de havo?', optionsNl: ['Basisschool', 'Kinderopvang', 'Apotheek', 'Hbo'], correctIndex: 3, explanationRu: 'После havo обычно возможен переход в hbo. KNM часто требует понимать базовую структуру образования.', sourceTheme: 'Onderwijs en opvoeding', leadHint: 'schoolroutes' },
+        { id: 'education-parents', topic: 'education', promptNl: 'Een kind heeft problemen op school. Wat is een normale eerste stap voor ouders?', optionsNl: ['Praten met de leerkracht of mentor', 'Meteen verhuizen', 'Nooit reageren', 'Alleen de politie bellen'], correctIndex: 0, explanationRu: 'Обычно первым шагом является разговор с учителем, mentor или школой.', sourceTheme: 'Onderwijs en opvoeding', leadHint: 'ouders en schoolcontact' }
+    ];
+
+    let state = loadState();
+    const trainerStep = document.getElementById('trainer-step');
+    const trainerTitle = document.getElementById('trainer-title');
+    const trainerMeta = document.getElementById('trainer-meta');
+    const trainerProgress = document.getElementById('trainer-progress');
+    const screen = document.getElementById('trainer-screen');
+
+    function defaultState() {
+        return { screen: 'start', current: 0, answers: [], result: null, completedTracked: false };
+    }
+
+    function loadState() {
+        try {
+            const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null');
+            if (saved && Array.isArray(saved.answers)) return saved;
+        } catch (error) {}
+        return defaultState();
+    }
+
+    function saveState() {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[ch]));
+    }
+
+    function setHeader(step, title, progress, meta) {
+        trainerStep.textContent = step;
+        trainerTitle.textContent = title;
+        trainerProgress.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+        trainerMeta.innerHTML = (meta || []).map(item => `<span class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1"><i class="ph ${item.icon}"></i>${item.text}</span>`).join('');
+    }
+
+    function getAnswer(questionId) {
+        return state.answers.find(item => item.id === questionId);
+    }
+
+    function renderStart() {
+        state.screen = 'start';
+        state.current = 0;
+        state.answers = [];
+        state.result = null;
+        state.completedTracked = false;
+        saveState();
+        setHeader('Старт', 'Готовы проверить KNM?', 0, [
+            { icon: 'ph-list-checks', text: '25 вопросов' },
+            { icon: 'ph-translate', text: 'NL + RU' }
+        ]);
+        screen.innerHTML = `
+            <div class="fade-panel grid lg:grid-cols-[1fr_0.78fr] gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-semibold mb-4">Быстрая практика по темам KNM</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Ответьте на 25 оригинальных ситуационных вопросов. После каждого ответа вы увидите короткое объяснение, а в конце — слабые темы для подготовки.</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button type="button" id="start-trainer" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">Начать <i class="ph ph-arrow-right"></i></button>
+                        <a href="#sources" class="border border-gray-300 hover:border-amber hover:text-amber text-notion_text btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">Источники</a>
+                    </div>
+                </div>
+                <div class="rounded-[12px] bg-surface p-5 sm:p-6">
+                    <p class="font-semibold mb-3">Что вы получите</p>
+                    <ul class="grid gap-2 text-sm text-gray-600">
+                        <li><i class="ph ph-check-circle text-amber"></i> общий счет из 25</li>
+                        <li><i class="ph ph-check-circle text-amber"></i> слабые темы по KNM</li>
+                        <li><i class="ph ph-check-circle text-amber"></i> понятный первый план подготовки</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+        document.getElementById('start-trainer').addEventListener('click', startTrainer);
+    }
+
+    function startTrainer() {
+        state = defaultState();
+        state.screen = 'question';
+        saveState();
+        window.trackAnalyticsEvent('knm_trainer_start', { questions_total: questions.length });
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        const question = questions[state.current];
+        const answer = getAnswer(question.id);
+        const progress = (state.current / questions.length) * 100;
+        setHeader(`Вопрос ${state.current + 1} из ${questions.length}`, topicLabels[question.topic], progress, [
+            { icon: 'ph-tag', text: question.sourceTheme },
+            { icon: 'ph-percent', text: `${Math.round(progress)}%` }
+        ]);
+        screen.innerHTML = `
+            <div class="fade-panel">
+                <div class="rounded-[12px] bg-surface p-5 sm:p-6 mb-5">
+                    <p class="text-xs uppercase tracking-[0.16em] text-gray-400 font-semibold mb-3">${escapeHtml(question.sourceTheme)}</p>
+                    <p class="text-xl sm:text-2xl font-semibold leading-snug">${escapeHtml(question.promptNl)}</p>
+                </div>
+                <div class="grid gap-3" id="answers">
+                    ${question.optionsNl.map((option, index) => {
+                        const selected = answer && answer.selectedIndex === index;
+                        const correct = answer && question.correctIndex === index;
+                        const wrong = selected && !correct;
+                        const cls = answer ? (correct ? 'is-correct' : wrong ? 'is-wrong' : '') : '';
+                        return `<button type="button" class="answer-btn ${selected ? 'is-selected' : ''} ${cls} w-full rounded-[10px] border border-gray-200 bg-white px-4 py-4 text-left flex items-center gap-3" data-answer="${index}" ${answer ? 'disabled' : ''}>
+                            <span class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center shrink-0 text-sm font-semibold">${String.fromCharCode(65 + index)}</span>
+                            <span>${escapeHtml(option)}</span>
+                        </button>`;
+                    }).join('')}
+                </div>
+                <div id="explanation" class="${answer ? '' : 'hidden'} mt-5 rounded-[12px] border ${answer && answer.correct ? 'border-emerald-200 bg-mint text-emerald-900' : 'border-red-200 bg-rose text-red-900'} px-4 py-4">
+                    <p class="font-semibold mb-1">${answer && answer.correct ? 'Верно' : 'Нужно повторить'}</p>
+                    <p class="text-sm leading-relaxed">${escapeHtml(question.explanationRu)}</p>
+                </div>
+                <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                    <button type="button" id="restart-trainer" class="text-gray-500 hover:text-amber btn-text h-[44px] px-4 rounded-[8px] inline-flex items-center justify-center gap-2"><i class="ph ph-arrow-counter-clockwise"></i> Начать заново</button>
+                    <button type="button" id="next-question" class="${answer ? '' : 'hidden'} bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">${state.current === questions.length - 1 ? 'Показать результат' : 'Следующий вопрос'} <i class="ph ph-arrow-right"></i></button>
+                </div>
+            </div>
+        `;
+        document.querySelectorAll('[data-answer]').forEach(button => {
+            button.addEventListener('click', () => selectAnswer(Number(button.dataset.answer)));
+        });
+        document.getElementById('restart-trainer').addEventListener('click', renderStart);
+        document.getElementById('next-question').addEventListener('click', nextQuestion);
+    }
+
+    function selectAnswer(selectedIndex) {
+        const question = questions[state.current];
+        if (getAnswer(question.id)) return;
+        const correct = selectedIndex === question.correctIndex;
+        state.answers.push({ id: question.id, topic: question.topic, selectedIndex, correct });
+        saveState();
+        window.trackAnalyticsEvent('knm_trainer_answer', {
+            topic: topicLabels[question.topic],
+            is_correct: correct,
+            question_index: state.current + 1
+        });
+        renderQuestion();
+    }
+
+    function nextQuestion() {
+        if (state.current < questions.length - 1) {
+            state.current += 1;
+            saveState();
+            renderQuestion();
+            return;
+        }
+        renderResult(true);
+    }
+
+    function calculateResult() {
+        const score = state.answers.filter(answer => answer.correct).length;
+        const percent = Math.round((score / questions.length) * 100);
+        const topicStats = Object.keys(topicLabels).map(topic => {
+            const topicAnswers = state.answers.filter(answer => answer.topic === topic);
+            const correct = topicAnswers.filter(answer => answer.correct).length;
+            const total = topicAnswers.length;
+            return { topic, label: topicLabels[topic], correct, total, percent: total ? Math.round((correct / total) * 100) : 0 };
+        });
+        const weakTopics = topicStats.filter(item => item.total && item.correct / item.total < 0.5);
+        let message = 'Лучше начать с системной подготовки KNM + язык для ситуаций.';
+        if (score >= 20) message = 'Хорошая база, тренируйте формат и слабые темы.';
+        else if (score >= 15) message = 'Есть база, но перед экзаменом нужен разбор пробелов.';
+        return { score, percent, topicStats, weakTopics, message };
+    }
+
+    function answersSummary() {
+        return state.answers.map((answer, index) => {
+            const question = questions.find(item => item.id === answer.id);
+            return `${index + 1}. ${question.id} | ${topicLabels[answer.topic]} | ${answer.correct ? 'OK' : 'wrong'} | lead: ${question.leadHint}`;
+        }).join('; ');
+    }
+
+    function renderResult(shouldTrack = false) {
+        const result = calculateResult();
+        state.screen = 'result';
+        state.result = result;
+        saveState();
+        setHeader('Результат', `${result.score} из ${questions.length}`, 100, [
+            { icon: 'ph-percent', text: `${result.percent}%` },
+            { icon: 'ph-warning-circle', text: `${result.weakTopics.length} слабых тем` }
+        ]);
+        if (shouldTrack && !state.completedTracked) {
+            window.trackAnalyticsEvent('knm_trainer_complete', {
+                score: result.score,
+                percent: result.percent,
+                weak_topics_count: result.weakTopics.length
+            });
+            state.completedTracked = true;
+            saveState();
+        }
+        const weakText = result.weakTopics.length ? result.weakTopics.map(item => item.label).join(', ') : 'нет тем ниже 50%';
+        screen.innerHTML = `
+            <div class="fade-panel grid lg:grid-cols-[1fr_0.9fr] gap-8">
+                <div>
+                    <div class="rounded-[14px] bg-navy text-white p-6 sm:p-8 mb-5">
+                        <p class="text-white/65 text-sm mb-3">Ваш результат</p>
+                        <div class="flex items-end gap-3 mb-4">
+                            <span class="text-[60px] sm:text-[76px] leading-none font-semibold">${result.score}</span>
+                            <span class="text-xl text-white/70 pb-2">/ ${questions.length}</span>
+                        </div>
+                        <div class="h-2 bg-white/15 rounded-full overflow-hidden">
+                            <div class="h-full bg-amber rounded-full" style="width:${Math.max(6, result.percent)}%"></div>
+                        </div>
+                        <p class="text-sm text-white/78 mt-4">${escapeHtml(result.message)}</p>
+                    </div>
+                    <div class="rounded-[12px] border border-gray-100 bg-surface p-5">
+                        <p class="font-semibold mb-3">Темы по результату</p>
+                        <div class="grid gap-2">
+                            ${result.topicStats.map(item => `
+                                <div class="rounded-[8px] bg-white border border-gray-100 p-3">
+                                    <div class="flex justify-between gap-3 text-sm mb-2"><span>${escapeHtml(item.label)}</span><span class="font-semibold">${item.correct}/${item.total}</span></div>
+                                    <div class="h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full ${item.percent < 50 ? 'bg-red-400' : 'bg-amber'}" style="width:${Math.max(5, item.percent)}%"></div></div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="mt-5 flex flex-col sm:flex-row gap-3">
+                        <button type="button" id="retake-trainer" class="border border-gray-300 hover:border-amber hover:text-amber text-notion_text btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2"><i class="ph ph-arrow-counter-clockwise"></i> Пройти заново</button>
+                        <a href="#sources" class="border border-gray-300 hover:border-amber hover:text-amber text-notion_text btn-text px-6 py-3 rounded-[8px] h-[48px] inline-flex items-center justify-center gap-2">Официальные материалы</a>
+                    </div>
+                </div>
+                <div>
+                    <form id="result-form" action="${FORMSPREE_ENDPOINT}" method="POST" class="rounded-[12px] border border-gray-100 bg-surface p-5 sm:p-6">
+                        <h3 class="text-xl font-semibold mb-2">Разобрать ошибки с преподавателем</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5">Оставьте контакт, и Лариса посмотрит слабые темы: ${escapeHtml(weakText)}.</p>
+                        <input type="hidden" name="_subject" value="KNM тренажер — Лариса Калугина">
+                        <input type="hidden" name="source" value="KNM trainer">
+                        <input type="hidden" name="language" value="Нидерландский">
+                        <input type="hidden" name="score" value="${result.score}/${questions.length}">
+                        <input type="hidden" name="weak_topics" value="${escapeHtml(weakText)}">
+                        <input type="hidden" name="answers_summary" value="${escapeHtml(answersSummary())}">
+                        <input type="hidden" name="goal" value="KNM/Inburgering preparation">
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+                        <div class="grid gap-3">
+                            <label class="block">
+                                <span class="sr-only">Ваше имя</span>
+                                <div class="relative">
+                                    <i class="ph ph-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+                                    <input name="name" type="text" required placeholder="Ваше имя" class="w-full h-[52px] rounded-[8px] border border-gray-300 bg-white pl-12 pr-4 text-[16px] outline-none focus:border-amber focus:ring-2 focus:ring-amber/15">
+                                </div>
+                            </label>
+                            <label class="block">
+                                <span class="sr-only">Telegram или WhatsApp</span>
+                                <div class="relative">
+                                    <i class="ph ph-paper-plane-tilt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+                                    <input id="result-contact" name="contact" type="text" required autocomplete="tel" inputmode="text" placeholder="Telegram / WhatsApp" class="w-full h-[52px] rounded-[8px] border border-gray-300 bg-white pl-12 pr-4 text-[16px] outline-none focus:border-amber focus:ring-2 focus:ring-amber/15">
+                                </div>
+                                <span class="block text-sm text-gray-500 mt-2">Укажите @telegram или номер WhatsApp.</span>
+                                <span id="result-contact-error" class="hidden text-sm text-red-500 mt-2"></span>
+                            </label>
+                            <button type="submit" id="result-submit" class="bg-amber hover:bg-amber-hover text-white btn-text px-6 py-3 rounded-[8px] h-[52px] inline-flex items-center justify-center gap-2">
+                                Отправить результат <i class="ph ph-paper-plane-tilt"></i>
+                            </button>
+                            <p id="result-form-status" class="hidden text-sm rounded-[8px] px-4 py-3"></p>
+                            <p class="text-sm text-gray-500 text-center">Если удобнее email, <a href="mailto:info@godutch.ru" class="text-amber hover:text-amber-hover transition-colors">напишите по email</a>.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        document.getElementById('retake-trainer').addEventListener('click', renderStart);
+        initResultForm();
+    }
+
+    function normalizePhoneCandidate(value) {
+        const trimmed = value.trim();
+        if (!/^[+0-9 ()-]{7,22}$/.test(trimmed)) return null;
+        return trimmed.replace(/[^\d+]/g, '');
+    }
+
+    function validateContact(value) {
+        const contact = value.trim();
+        if (!contact) return { ok: false, message: 'Укажите @telegram или номер WhatsApp.' };
+        if (/^(?:@|https?:\/\/(?:t\.me|telegram\.me)\/)[a-zA-Z0-9_]{5,32}\/?$/.test(contact)) return { ok: true, type: 'telegram' };
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) return { ok: false, message: 'Для заявки укажите @telegram или номер WhatsApp. Если удобнее email, напишите по ссылке ниже.' };
+        const phone = normalizePhoneCandidate(contact);
+        if (phone && window.libphonenumber) {
+            try {
+                const parsed = window.libphonenumber.parsePhoneNumber(phone);
+                if (parsed && parsed.isValid()) return { ok: true, type: 'phone', formatted: parsed.formatInternational() };
+            } catch (error) {}
+        }
+        if (phone && /^\+?\d{9,15}$/.test(phone)) return { ok: true, type: 'phone' };
+        return { ok: false, message: 'Проверьте контакт: укажите @telegram или номер WhatsApp.' };
+    }
+
+    function formatContactInput(input) {
+        const raw = input.value.trim();
+        if (!raw || raw.includes('@') || /[a-zA-Zа-яА-Я]/.test(raw)) return;
+        const phone = normalizePhoneCandidate(raw);
+        if (!phone || !window.libphonenumber) return;
+        try {
+            const parsed = window.libphonenumber.parsePhoneNumber(phone);
+            if (parsed && parsed.isPossible()) input.value = parsed.formatInternational();
+        } catch (error) {}
+    }
+
+    function hasFilledHoneypot(form) {
+        const trap = form.querySelector('input[name="_gotcha"]');
+        return Boolean(trap && trap.value.trim());
+    }
+
+    function hasSuspiciousFormText(form) {
+        const suspiciousPattern = /(?:'\s*or\s*'?\d+'?\s*=\s*'?\d+|\bor\s+['"]?\d+['"]?\s*=\s*['"]?\d+['"]?|union\s+select|drop\s+table|<\s*script|--|\/\*)/i;
+        return Array.from(form.elements).some(function (field) {
+            if (!field.name || field.name === '_gotcha' || field.type === 'hidden') return false;
+            return suspiciousPattern.test(field.value || '');
+        });
+    }
+
+    function initResultForm() {
+        const form = document.getElementById('result-form');
+        const input = document.getElementById('result-contact');
+        const error = document.getElementById('result-contact-error');
+        const status = document.getElementById('result-form-status');
+        const submit = document.getElementById('result-submit');
+        if (!form || !input) return;
+        input.addEventListener('blur', function () { formatContactInput(input); });
+        input.addEventListener('input', function () {
+            error.classList.add('hidden');
+            input.classList.remove('border-red-400', 'focus:border-red-400');
+        });
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            status.className = 'hidden text-sm rounded-[8px] px-4 py-3';
+            if (hasFilledHoneypot(form)) return;
+            if (hasSuspiciousFormText(form)) {
+                status.textContent = 'Похоже на технический тест формы. Если это настоящая заявка, напишите в Telegram или по email ниже.';
+                status.className = 'text-sm rounded-[8px] px-4 py-3 bg-rose text-red-700';
+                return;
+            }
+            formatContactInput(input);
+            const validation = validateContact(input.value);
+            if (!validation.ok) {
+                error.textContent = validation.message;
+                error.classList.remove('hidden');
+                input.classList.add('border-red-400', 'focus:border-red-400');
+                input.focus();
+                return;
+            }
+            submit.disabled = true;
+            submit.textContent = 'Отправляю...';
+            const data = new FormData(form);
+            if (validation.formatted) data.set('contact', validation.formatted);
+            fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                body: data,
+                headers: { Accept: 'application/json' }
+            }).then(function (response) {
+                if (!response.ok) throw new Error('Formspree error');
+                window.trackAnalyticsEvent('generate_lead', { form_name: 'knm_trainer_form', test_language: 'Dutch' });
+                status.textContent = 'Спасибо! Результат отправлен, я свяжусь с вами в течение дня.';
+                status.className = 'text-sm rounded-[8px] px-4 py-3 bg-mint text-emerald-800';
+                form.reset();
+            }).catch(function () {
+                status.textContent = 'Не получилось отправить форму. Напишите мне в Telegram: @larisakalugina_nl.';
+                status.className = 'text-sm rounded-[8px] px-4 py-3 bg-rose text-red-700';
+            }).finally(function () {
+                submit.disabled = false;
+                submit.innerHTML = 'Отправить результат <i class="ph ph-paper-plane-tilt"></i>';
+            });
+        });
+    }
+
+    const staticStart = document.getElementById('static-start-trainer');
+    if (staticStart) staticStart.addEventListener('click', startTrainer);
+    if (state.screen === 'question') renderQuestion();
+    else if (state.screen === 'result' && state.result) renderResult(false);
+    else renderStart();
+    </script>
+</body>
+</html>

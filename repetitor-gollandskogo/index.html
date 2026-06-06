@@ -276,6 +276,7 @@
             <form id="contact-form" action="https://formspree.io/f/xzdoqzwv" method="POST">
                 <input type="hidden" name="_subject" value="Новая заявка — репетитор голландского">
                 <input type="hidden" name="language" value="Нидерландский">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
                 <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
                 <input id="contact-field" type="text" name="contact" placeholder="Telegram / WhatsApp" required autocomplete="tel" aria-describedby="contact-help">
                 <p class="field-help" id="contact-help">Укажите @telegram или номер WhatsApp.</p>
@@ -292,6 +293,8 @@
             <a href="/uchit-gollandskiy-s-nulya/">Голландский с нуля</a>
             <a href="/niderlandskiy-dlya-zhizni/">Нидерландский для жизни</a>
             <a href="/gollandskiy-dlya-pereezda/">Голландский для переезда</a>
+            <a href="/knm-examen/">Гайд по KNM</a>
+            <a href="/knm-trenazher/">KNM-тренажер</a>
             <a href="/razgovorny-gollandskiy/">Разговорный голландский</a>
             <a href="/niderlandskiy-yazyk-onlayn/">Нидерландский онлайн</a>
         </div>
@@ -309,6 +312,7 @@
   const submitText = submit.innerHTML;
   const success = document.querySelector('[data-fs-success]');
   const error = document.querySelector('[data-fs-error]');
+  const errorText = error.textContent;
   const groupDigits = (digits, groups) => { const parts=[]; let i=0; groups.forEach(size=>{if(i<digits.length){parts.push(digits.slice(i,i+size));i+=size;}}); if(i<digits.length)parts.push(digits.slice(i)); return parts.filter(Boolean).join(' '); };
   const formatPhone = value => {
     const raw=value.trim(); if(!raw||/[A-Za-zА-Яа-я@]/.test(raw)||!/^[+\d\s().-]+$/.test(raw))return value;
@@ -328,10 +332,18 @@
     if(/^[+\d\s().-]+$/.test(raw)&&digits.length>=7&&digits.length<=15&&(compact.startsWith('+')||compact.startsWith('0')||compact.startsWith('8')))return {valid:true,message:'Телефон выглядит корректно.'};
     return {valid:false,message:'Введите @telegram или номер WhatsApp.'};
   };
+  const hasFilledHoneypot=form=>{const trap=form.querySelector('input[name="_gotcha"]');return Boolean(trap&&trap.value.trim());};
+  const hasSuspiciousFormText=form=>{
+    const suspiciousPattern=/(?:'\s*or\s*'?\d+'?\s*=\s*'?\d+|\bor\s+['"]?\d+['"]?\s*=\s*['"]?\d+['"]?|union\s+select|drop\s+table|<\s*script|--|\/\*)/i;
+    return Array.from(form.elements).some(field=>field.name&&field.name!=='_gotcha'&&field.type!=='hidden'&&suspiciousPattern.test(field.value||''));
+  };
+  const showSuspiciousSubmissionError=()=>{error.textContent='Похоже на технический тест формы. Если это настоящая заявка, напишите в Telegram или по email ниже.';error.classList.add('show');};
   const setState=(valid,message)=>{help.textContent=message;help.classList.toggle('error',!valid);field.setAttribute('aria-invalid',String(!valid));};
   field.addEventListener('input',()=>{field.value=formatPhone(field.value);if(!field.value.trim())return setState(true,'Укажите @telegram или номер WhatsApp.');const result=validate(field.value);setState(result.valid,result.message);});
   form.addEventListener('submit',async event=>{
-    event.preventDefault(); success.classList.remove('show'); error.classList.remove('show');
+    event.preventDefault(); success.classList.remove('show'); error.textContent=errorText; error.classList.remove('show');
+    if(hasFilledHoneypot(form))return;
+    if(hasSuspiciousFormText(form)){showSuspiciousSubmissionError();return;}
     const result=validate(field.value); if(!result.valid){setState(false,result.message);field.focus();return;}
     submit.disabled=true;submit.innerHTML='Отправляем...';
     try{

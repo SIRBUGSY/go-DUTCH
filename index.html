@@ -555,6 +555,8 @@
             <a href="#about"     class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">О репетиторе <i class="ph ph-caret-right text-gray-400"></i></a>
             <a href="#languages" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Языки <i class="ph ph-caret-right text-gray-400"></i></a>
             <a href="/test-niderlandskogo/" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Тест уровня <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="/knm-examen/" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Гайд по KNM <i class="ph ph-caret-right text-gray-400"></i></a>
+            <a href="/knm-trenazher/" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">KNM-тренажер <i class="ph ph-caret-right text-gray-400"></i></a>
             <a href="/resursy/" class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Ресурсы <i class="ph ph-caret-right text-gray-400"></i></a>
             <a href="#method"    class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Методика <i class="ph ph-caret-right text-gray-400"></i></a>
             <a href="#pricing"   class="mob-nav-link flex items-center justify-between py-4 border-b border-gray-100 text-[17px] font-medium text-notion_text">Цены <i class="ph ph-caret-right text-gray-400"></i></a>
@@ -798,6 +800,8 @@
                 <div class="grid gap-3 sm:flex sm:flex-wrap">
                     <a href="#contact" class="inline-flex border border-gray-300 hover:bg-white/50 text-notion_text btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] items-center justify-center w-full sm:w-auto touch-target gap-2">Подробнее <i class="ph ph-caret-right"></i></a>
                     <a href="/test-niderlandskogo/" class="inline-flex bg-white/70 hover:bg-white text-notion_text border border-white/70 btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] items-center justify-center w-full sm:w-auto touch-target gap-2">Пройти тест нидерландского <i class="ph ph-arrow-right"></i></a>
+                    <a href="/knm-examen/" class="inline-flex bg-white/70 hover:bg-white text-notion_text border border-white/70 btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] items-center justify-center w-full sm:w-auto touch-target gap-2">Гайд по KNM <i class="ph ph-book-open-text"></i></a>
+                    <a href="/knm-trenazher/" class="inline-flex bg-white/70 hover:bg-white text-notion_text border border-white/70 btn-text px-6 py-2 rounded-[8px] transition-colors duration-150 h-[44px] items-center justify-center w-full sm:w-auto touch-target gap-2">KNM-тренажер <i class="ph ph-list-checks"></i></a>
                 </div>
             </div>
             <div class="bg-peach p-5 sm:p-10 lg:p-[48px] rounded-[12px] hover-lift border border-gray-100/50 flex flex-col h-full">
@@ -852,6 +856,10 @@
             <div class="max-w-2xl text-center lg:text-left flex flex-col items-center lg:items-start grow relative z-10">
                 <h2 class="h2-section mb-5 text-[#37352F]">Первый урок бесплатный — посмотрим, подходим ли друг другу</h2>
                 <p class="body-text text-[#37352F]/80 mb-8 max-w-xl text-sm sm:text-base">На пробном занятии (30 мин) мы определим ваш уровень, обсудим цели и составим предварительный план обучения.</p>
+                <div class="lg:hidden mb-6 inline-flex items-center justify-center gap-2 rounded-full bg-white/70 border border-white/80 px-4 py-2 text-[13px] font-medium text-[#37352F]/80 shadow-sm">
+                    <i class="ph ph-currency-circle-dollar text-amber text-base"></i>
+                    Бесплатно при заявке через сайт
+                </div>
                 <a href="#contact" class="inline-block bg-amber hover:bg-amber-hover text-white btn-text px-8 py-4 rounded-[8px] transition-colors duration-150 h-[52px] flex items-center justify-center w-full sm:w-auto touch-target gap-2 shadow-sm">Записаться бесплатно <i class="ph ph-paper-plane-right"></i></a>
             </div>
             <div class="hidden lg:block w-full max-w-xs bg-white p-4 rounded-[12px] shadow-mockup transform rotate-2 border border-gray-100 shrink-0 relative z-10">
@@ -1200,6 +1208,7 @@
 
             <form id="contact-form" action="https://formspree.io/f/xzdoqzwv" method="POST" class="max-w-md mx-auto flex flex-col gap-4 text-left w-full relative z-10">
                 <input type="hidden" name="_subject" value="Новая заявка — Лариса Калугина">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-user text-gray-400 text-lg"></i></div>
                     <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name" data-fs-field class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
@@ -1267,6 +1276,8 @@
                     <li><a href="#about" class="hover:text-amber transition-colors py-2 block">Обо мне</a></li>
                     <li><a href="#method" class="hover:text-amber transition-colors py-2 block">Методика</a></li>
                     <li><a href="/test-niderlandskogo/" class="hover:text-amber transition-colors py-2 block">Тест нидерландского</a></li>
+                    <li><a href="/knm-examen/" class="hover:text-amber transition-colors py-2 block">Гайд по KNM</a></li>
+                    <li><a href="/knm-trenazher/" class="hover:text-amber transition-colors py-2 block">KNM-тренажер</a></li>
                     <li><a href="/test-angliyskogo/" class="hover:text-amber transition-colors py-2 block">Тест английского</a></li>
                     <li><a href="/resursy/" class="hover:text-amber transition-colors py-2 block">Ресурсы</a></li>
                     <li><a href="#pricing" class="hover:text-amber transition-colors py-2 block">Стоимость</a></li>
@@ -1818,6 +1829,7 @@
         if (contactForm) {
             const successMessage = document.querySelector('[data-fs-success]');
             const errorMessage = document.querySelector('[data-fs-error]');
+            const errorMessageHTML = errorMessage ? errorMessage.innerHTML : '';
             const submitButton = contactForm.querySelector('[data-fs-submit-btn]');
             const submitButtonText = submitButton ? submitButton.innerHTML : '';
             const contactField = document.getElementById('contact-field');
@@ -1930,6 +1942,25 @@
                 return { valid: false, message: 'Введите @telegram или номер WhatsApp.' };
             };
 
+            const hasFilledHoneypot = (form) => {
+                const trap = form.querySelector('input[name="_gotcha"]');
+                return Boolean(trap && trap.value.trim());
+            };
+
+            const hasSuspiciousFormText = (form) => {
+                const suspiciousPattern = /(?:'\s*or\s*'?\d+'?\s*=\s*'?\d+|\bor\s+['"]?\d+['"]?\s*=\s*['"]?\d+['"]?|union\s+select|drop\s+table|<\s*script|--|\/\*)/i;
+                return Array.from(form.elements).some((field) => {
+                    if (!field.name || field.name === '_gotcha' || field.type === 'hidden') return false;
+                    return suspiciousPattern.test(field.value || '');
+                });
+            };
+
+            const showSuspiciousSubmissionError = () => {
+                if (!errorMessage) return;
+                errorMessage.textContent = 'Похоже на технический тест формы. Если это настоящая заявка, напишите в Telegram или по email ниже.';
+                errorMessage.classList.remove('hidden');
+            };
+
             if (contactField) {
                 contactField.addEventListener('input', () => {
                     const formattedContact = formatPhoneContact(contactField.value);
@@ -1949,7 +1980,17 @@
             contactForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 if (successMessage) successMessage.classList.add('hidden');
-                if (errorMessage) errorMessage.classList.add('hidden');
+                if (errorMessage) {
+                    errorMessage.innerHTML = errorMessageHTML;
+                    errorMessage.classList.add('hidden');
+                }
+
+                if (hasFilledHoneypot(contactForm)) return;
+
+                if (hasSuspiciousFormText(contactForm)) {
+                    showSuspiciousSubmissionError();
+                    return;
+                }
 
                 const contactResult = validateContact(contactField ? contactField.value : '');
                 if (!contactResult.valid) {

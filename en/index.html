@@ -937,6 +937,7 @@
 
             <form id="contact-form" action="https://formspree.io/f/xzdoqzwv" method="POST" class="max-w-md mx-auto flex flex-col gap-4 text-left w-full relative z-10">
                 <input type="hidden" name="_subject" value="New request — Larisa Kalugina">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none"><i class="ph ph-user text-gray-400 text-lg"></i></div>
                     <input type="text" name="name" placeholder="Your name" required data-fs-field class="w-full pl-10 pr-4 py-3 rounded-[8px] border border-gray-300 focus:outline-none focus:border-amber focus:ring-1 focus:ring-amber bg-white h-[48px] body-text text-sm transition-shadow shadow-inner">
@@ -1200,7 +1201,9 @@
         if (contactForm) {
             const successMessage = document.querySelector('[data-fs-success]');
             const errorMessage = document.querySelector('[data-fs-error]');
+            const errorMessageHTML = errorMessage ? errorMessage.innerHTML : '';
             const submitButton = contactForm.querySelector('[data-fs-submit-btn]');
+            const submitButtonText = submitButton ? submitButton.innerHTML : '';
             const contactField = document.getElementById('contact-field');
             const contactHelp = document.getElementById('contact-help');
             const setContactState = (isValid, message) => {
@@ -1233,6 +1236,22 @@
                 }
                 return { valid: false, message: 'Enter your @telegram or WhatsApp number.' };
             };
+            const hasFilledHoneypot = (form) => {
+                const trap = form.querySelector('input[name="_gotcha"]');
+                return Boolean(trap && trap.value.trim());
+            };
+            const hasSuspiciousFormText = (form) => {
+                const suspiciousPattern = /(?:'\s*or\s*'?\d+'?\s*=\s*'?\d+|\bor\s+['"]?\d+['"]?\s*=\s*['"]?\d+['"]?|union\s+select|drop\s+table|<\s*script|--|\/\*)/i;
+                return Array.from(form.elements).some((field) => {
+                    if (!field.name || field.name === '_gotcha' || field.type === 'hidden') return false;
+                    return suspiciousPattern.test(field.value || '');
+                });
+            };
+            const showSuspiciousSubmissionError = () => {
+                if (!errorMessage) return;
+                errorMessage.textContent = 'This looks like a technical form test. If this is a real request, please message on Telegram or send an email below.';
+                errorMessage.classList.remove('hidden');
+            };
             if (contactField) {
                 contactField.addEventListener('input', () => {
                     if (!contactField.value.trim()) {
@@ -1245,15 +1264,26 @@
             }
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                if (successMessage) successMessage.classList.add('hidden');
+                if (errorMessage) {
+                    errorMessage.innerHTML = errorMessageHTML;
+                    errorMessage.classList.add('hidden');
+                }
+                if (hasFilledHoneypot(contactForm)) return;
+                if (hasSuspiciousFormText(contactForm)) {
+                    showSuspiciousSubmissionError();
+                    return;
+                }
                 const contactResult = validateContact(contactField ? contactField.value : '');
                 if (!contactResult.valid) {
                     setContactState(false, contactResult.message);
                     if (contactField) contactField.focus();
                     return;
                 }
-                submitButton.disabled = true;
-                successMessage.classList.add('hidden');
-                errorMessage.classList.add('hidden');
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Sending... <i class="ph ph-spinner-gap animate-spin"></i>';
+                }
                 try {
                     const response = await fetch(contactForm.action, {
                         method: 'POST',
@@ -1267,11 +1297,14 @@
                         setContactState(true, 'Enter your @telegram or WhatsApp number.');
                     } else {
                         errorMessage.classList.remove('hidden');
-                        submitButton.disabled = false;
                     }
                 } catch {
                     errorMessage.classList.remove('hidden');
-                    submitButton.disabled = false;
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = submitButtonText;
+                    }
                 }
             });
         }
