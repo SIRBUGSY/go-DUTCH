@@ -153,6 +153,20 @@ Current endpoint:
 https://formspree.io/f/xzdoqzwv
 ```
 
+Public CTA concept:
+
+- use natural, sales-oriented consultation copy in Russian, for example
+  `15 минут с Ларисой — бесплатно` or `За 15 минут обсудим ваш уровень,
+  цель и сроки`
+- use natural, sales-oriented consultation copy in English, for example
+  `15 minutes with Larisa — free` or `In 15 minutes we'll look at your
+  level, goals and timeline`
+- do not advertise a zero-cost first/trial teaching session
+- position the consultation as a short, useful first step: meet Larisa, assess
+  the learner's level, discuss goals, and suggest a route
+- avoid visible disclaimer-style wording that contrasts the consultation with
+  paid lessons unless it is legally required in a policy context
+
 All lead forms accept:
 
 - Telegram usernames such as `@username`
